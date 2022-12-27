@@ -1,0 +1,704 @@
+/* your styles go here */
+/* ---------------------- 채민 ---------------------- */
+:root{
+  --sidecar100:#f6e1c4;
+  --sidecar200: #ffce85;
+  --sidecar300: #ff9000;
+  --sidecar400: #532f00;
+  --key: #ffaC34;
+  --gray100: #f2f2f2;
+  --gray200: #bfbfbf;
+  --gray300: #7f7f7f;
+  --gray400: #404040;
+  --red:#ff0000;
+  --body-font-size:1rem;
+  --body-font-weight: 400;
+  --body-line-height: 1.6;
+}
+
+@font-face{
+  font-family: 'Tenada';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-2@1.0/Tenada.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-Tenada{
+  font-family: 'Tenada';
+}
+
+@font-face{
+  font-family: 'HS-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/HS-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-HS{
+  font-family: 'HS-Regular';
+}
+
+img{
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.img-map{
+  width: 35rem;
+}
+
+.recomend-img{
+  border: 5px solid #ffce85;
+  border-radius: 50%;
+  width: 8rem;
+  height: 8rem;
+  line-height: 8rem;
+}
+
+.main-tag{
+  --btn-padding-x: 0.4rem;
+  --btn-padding-y: 0.1rem;
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 20px;
+  width: auto;
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  text-align: center;
+  font-size: 0.9rem;
+  margin: 0.2rem;
+}
+
+.box-shadow{
+  box-shadow: 2px 2px #ffce85;
+}
+
+.text-shadow-custom{
+  text-shadow: 5px 5px #976700;
+}
+
+.main-address{
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.ms-8{
+  margin-left: 12rem !important;
+}
+
+.line{
+	display:flex;
+	flex-basis:100%;
+	align-items:center;
+	color: #404040;
+	font-size:14px;
+	margin:8px 0px;
+}
+
+.line::after{
+	content:"";
+	flex-grow:1;
+	margin:0px 16px;
+	background: #404040;
+	height:1px;
+	font-size:0px;
+	line-height: 0px;
+}
+
+.kakao{
+  background-color: #f9e000;
+  color: #3c1e1e;
+}
+
+.naver{
+  background-color: #06be34;
+  color: #fff
+}
+
+.display-7{
+  font-size: calc(1.325rem + 0.9vw);
+  font-weight: 400;
+  line-height: 1.3;
+}
+@media (min-width: 1200px){
+  .display-7{
+    font-size: 2rem;
+  }
+}
+
+.display-8{
+  font-size: calc(1.275rem + 0.3vw);
+  font-weight: 400;
+  line-height: 1.3;
+}
+@media (min-width: 1200px){
+  .display-8{
+    font-size: 1.5rem;
+  }
+}
+
+.font-size100{
+  font-size: 1rem;
+}
+
+.font-size150{
+  font-size: 1.5rem;
+}
+
+.font-size200{
+  font-size: 2rem;
+}
+
+.font-size99{
+  font-size: large;
+}
+
+.ollemap{
+  width: 50rem;
+  display: block;
+}
+
+.like {
+  width: 2rem;
+}
+
+.text-custom-gray100{
+  color: var(--gray100);
+}
+
+.text-custom-gray200{
+  color: var(--gray200);
+}
+
+.text-custom-gray300{
+  color: var(--gray300);
+}
+
+.text-custom-gray400{
+  color: var(--gray400);
+}
+
+.text-custom-red{
+  color: var(--red);
+}
+
+.mt-8{
+  margin-top: 10rem;
+}
+
+.map-side-ct{
+  height: 100vh;
+  min-height: 400px;
+  z-index: 5;
+}
+@media (min-width: 992px) {
+  .map-side-lg {
+    position: fixed;
+    top: 72px;
+    right: 0;
+  }
+  .map-side-lg .map-full {
+    height: calc(100vh - 72px);
+  }
+}
+
+.nav-pills-tag {
+  flex-wrap: wrap;
+}
+.nav-pills-tag .nav-link {
+  margin: 10px;
+  color: #bfbfbf;
+  border: 1px solid #bfbfbf;
+  border-radius: 20px;
+}
+.nav-pills-tag .nav-link.active, .nav-pills-tag .nav-link:hover, .nav-pills-tag .nav-link:focus {
+  color: #ffaC34;
+  background: #ffffff;
+  border: 1px solid #ffaC34;
+}
+.nav-pills-tag .nav-link:first-of-type {
+  margin-left: 0;
+}
+
+.nav-pills-menu {
+  flex-wrap: wrap;
+}
+.nav-pills-menu .nav-link {
+  margin: 5px;
+  color: #ffffff;
+  border: 1px solid #bfbfbf;
+  background: #bfbfbf;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+.nav-pills-menu .nav-link.active, .nav-pills-menu .nav-link:hover, .nav-pills-menu .nav-link:focus {
+  color: #ffffff;
+  background: #ffaC34;
+  border: 1px solid #ffffff;
+}
+.nav-pills-menu .nav-link:first-of-type {
+  margin-left: 0;
+}
+
+.container-banner{
+  background: #ffffff;
+  border-radius: 5px;
+}
+
+.icon-weather{
+  width: 2rem;
+  height: 2rem;
+}
+
+.z-index-n20{
+  z-index: -20;
+}
+
+.btn-write{
+  border-radius: 5px;
+  border: 1px solid var(--key);
+  color: var(--key);
+  padding: 0rem 0.2rem;
+  width: auto;
+}
+
+.write-form{
+  border: 1px solid var(--gray200);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.write-form:focus {
+  border-color: #ffce85;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #ffefd8;
+}
+
+/* ---------------------- 수연 ---------------------- */
+.hero-home2{
+  position: relative;
+  text-align: center;
+  /* display: flex; */
+}
+
+.col-sm-25{
+  flex: 0 0 auto;
+  width: 20%;
+}
+.col-lg-25{
+  flex: 0 0 auto;
+  width:20%;
+}
+.path{
+  margin-bottom: 1%;
+  padding:0;
+  color:#404040;
+}
+
+.homeImg{
+  width: 1.1rem;
+  height:1.1rem;
+  margin: 1%;
+}
+
+
+.form-label2{
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  /* margin-bottom: 4%; */
+}
+
+.roundBtn{
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0.7px solid #404040;
+  border-radius: 100px;
+  margin-bottom: 10%;
+  color: gray;
+  padding: 4px;
+}
+.pop_name{
+  display: left;
+}
+.btn-primary2 {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--bs-link-color);
+  --bs-btn-border-color: #ffaC34;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #ffaC34;
+  --bs-btn-hover-border-color: #ffaC34;
+  --bs-btn-focus-shadow-rgb: 105, 125, 249;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #ffaC34;
+  --bs-btn-active-border-color: #ffaC34;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #ffaC34;
+  --bs-btn-disabled-border-color: #ffaC34;
+  /* float:left; */
+}
+
+.pagination2 {
+  --bs-pagination-padding-x: 0.75rem;
+  --bs-pagination-padding-y: 0.375rem;
+  --bs-pagination-font-size:1rem;
+  --bs-pagination-color: var(--bs-link-color);
+  --bs-pagination-bg: #fff;
+  --bs-pagination-border-width: 1px;
+  --bs-pagination-border-color: #dee2e6;
+  --bs-pagination-border-radius: 0.4rem;
+  --bs-pagination-hover-color: var(--bs-link-hover-color);
+  --bs-pagination-hover-bg: #e9ecef;
+  --bs-pagination-hover-border-color: #dee2e6;
+  --bs-pagination-focus-color: var(--bs-link-hover-color);
+  --bs-pagination-focus-bg: #e9ecef;
+  --bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(253, 173, 0, 0.25);
+  --bs-pagination-active-color: #fff;
+  --bs-pagination-active-bg: #ffaC34;
+  --bs-pagination-active-border-color: #ffaC34;
+  --bs-pagination-disabled-color: #ffaC34;
+  --bs-pagination-disabled-bg: #fff;
+  --bs-pagination-disabled-border-nav-pills-custom: #dee2e6;
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+}
+
+  .border1{
+  border: 0.5px solid #bfbfbf;
+  font-size: 1.3rem;
+  padding: 3%;
+  width:100px;
+}
+.border1 > a{
+  text-decoration: none;
+}
+.border1-active{
+  background-color: #ffaC34;
+  border-right: none;
+}
+
+.border1-active > a{
+  color: white;
+
+}
+.border1:hover, .border1.active, .border1:focus {
+  background-color: #ffaC34;
+}
+.border1:hover > a{
+  color:white;
+} 
+
+
+
+/* ==== 비짓서울 지도 api css ===== */
+.detail-map-infor {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0px auto;
+  padding: 30px 0px 20px 0px;
+}
+.detail-map-wrap .detail-map {
+  position: relative;
+  margin-top: 30px;
+  min-height: 450px;
+}
+.detail-map-infor dl {
+  position: relative;
+  padding: 10px 0px 0px 200px;
+  text-align: left;
+}
+.detail-map-infor dl dt {
+  position: absolute;
+  left: 0px;
+  top: 10px;
+  z-index: 1;
+  width: 200px;
+  font-size: 16px;
+  color: #222;
+  font-weight: 700;
+}
+.detail-map-infor dl dd {
+  font-size: 16px;
+  --bs-text-opacity: 1;
+  color: #6c757d !important;
+}
+
+/* ===== 비짓서울 사진, 상세보기 ====== */
+
+.wide-slide-element {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin: 30px auto;
+}
+.owl-carousel, .owl-carousel .owl-item {
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+.owl-carousel .owl-stage-outer {
+  position: relative;
+  overflow: hidden;
+}
+
+.loction {
+  width: 100%;
+  max-width: 1200px;
+  margin: 10px auto 10px auto;
+  padding: 20px 0px 20px 20px;
+  font-size: 16px;
+  color: #666;
+  box-sizing: border-box;
+  background: url(../image/icon/home.png) no-repeat 0px 22px;
+  background-size: 21px auto;
+}
+.loction span {
+  font-weight: 700;
+  font-size: 18px;
+  color: #555;
+}
+.loction span.ar {
+  padding: 0 15px 0 20px;
+}
+
+/* ====제주국제공항 렌터카==== */
+.exclamBox {
+  padding: 15px 20px;
+  border: 1px solid #f2e5ba;
+  background: #fffce6;
+}
+.exclamBox2 {
+  padding: 0;
+  border: 1px solid #f2e5ba;
+  background: #fffce6;
+}
+.exclamBox>.exclam.red{
+  margin: 0;
+  background-position: left 0 top 0;
+  font-size: 16px;
+}
+.exclam.red {
+  background: url(../image/icon/ico_cirExclam_red.png) no-repeat left top;
+}
+.exclam {
+  display: block;
+  min-height: 24px;
+  box-sizing: border-box;
+  padding: 0 0 0 34px;
+  margin-top: 10px;
+  font-size: 15px;
+  color: #000;
+  line-height: 1.6;
+  text-align: left;
+  letter-spacing: -1px;
+}
+.exclam2 {
+  /* min-height: 20px; */
+
+  box-sizing: border-box;
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-size: 17px;
+  color: #000;
+  line-height:1.2;
+  text-align: left;
+  letter-spacing: -1px;
+}
+
+.rentCarTip .exclamBox+.lineTop_tbArea {
+  margin-top: 20px;
+}
+.lineTop_tbArea {
+  overflow: auto;
+  border-top: 1px solid #252525;
+}
+.table2 {
+  display: table;
+  border-collapse: separate;
+  box-sizing: border-box;
+  text-indent: initial;
+  border-spacing: 2px;
+  border-color: grey;
+}
+.airportTip .lineTop_tbArea.tbScroll>table2 {
+  min-width: 900px;
+}
+.lineTop_tbArea .lineTop_tb2 {
+  max-width: none;
+  width: calc(100% - 1px);
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.lineTop_tbArea .lineTop_tb2 thead th {
+  background: #f4f5f9;
+  color: #000;
+  font-weight: 500;
+  vertical-align: middle;
+}
+.lineTop_tbArea .lineTop_tb2 th[rowspan], .lineTop_tbArea .lineTop_tb2 td[rowspan] {
+  border-right: 1px solid #dadee1;
+}
+.lineTop_tbArea .lineTop_tb2 tbody td {
+  color: #222;
+  font-weight: 400;
+}
+
+.lineTop_tbArea .lineTop_tb2 th, .lineTop_tbArea .lineTop_tb2 td {
+  height: 40px;
+  padding: 10px 20px;
+  border-right: 1px solid #dadee1;
+  border-bottom: 1px solid #dadee1;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: -1px;
+}
+.txtL {
+  text-align: left !important;
+}
+.list_dotBlue>li::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 11px;
+  overflow: hidden;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #000;
+}
+
+.list_dotBlue {
+  overflow: hidden;
+}
+.rentCar_step {
+  width: calc(100% + 20px);
+  max-width: 850px;
+  margin-left: -20px;
+  margin-bottom: 35px;
+  font-size: 0;
+}
+
+
+.rentBus{
+  width: 400px;
+  height:400px;
+
+}
+
+/*-------------- 가연 ---------------*/
+.display-3 text-shadow{
+  text-align: center;
+
+}
+
+.subtitle letter-spacing-4 mb-2 text-secondary text-shadow {
+  text-align: center;
+  color : white;
+}
+
+
+.nav-pills-custom {
+  flex-wrap: wrap;
+}
+.nav-pills-custom .nav-link {
+  margin: 10px;
+  color: #3d3d3d;
+  background-color: #e0e0e0;
+  border: 0px solid #5f5f5f;
+  border-radius: 50px;
+}
+.nav-pills-custom .nav-link.active, .nav-pills-custom .nav-link:hover, .nav-pills-custom .nav-link:focus {
+  color: #fff;
+  background: #ffaC34;
+}
+.nav-pills-custom .nav-link:first-of-type {
+  margin-left: 0;
+}
+
+
+.flight{
+  width: 1000px;
+  height: 100%;
+  margin-left:auto;margin-right:auto;
+}
+
+
+.input-group-addon,.input-group-text {
+  border-left: 0 none;
+  padding: 4px 9px 4px 9px;
+}
+
+.box-radio-input input[type="radio"]{
+  display:none;
+}
+
+.box-radio-input input[type="radio"] + span{
+  display:inline-block;
+  background:none;
+  border:1px solid #dfdfdf;  
+  padding:0px 10px;
+  text-align:center;
+  height:40px;
+  line-height:38px;
+  font-weight:400;
+  cursor:pointer;
+  color:#7f7f7f;
+  margin-top: 28px;
+  margin-right: 10px;
+  border-radius: 50rem;
+
+}
+
+.box-radio-input input[type="radio"]:checked + span{
+  border:1px solid  #ffaC34;
+  color: #ffaC34;
+  border-radius: 50rem;
+  
+}
+
+/*---- 가연  (끝) -----*/
+
+
+
+/* 시욱 테이블 css */
+.table6{
+  /* --bs-table-border-color: white; */
+  --bs-table-color: var(--bs-body-color);
+  --bs-table-bg: transparent;
+  /* --bs-table-border-color: var(--bs-border-color); */
+  --bs-table-accent-bg: transparent;
+  --bs-table-striped-color: var(--bs-body-color);
+  --bs-table-striped-bg: rgba(0, 0, 0, 0.01);
+  --bs-table-active-color: var(--bs-body-color);
+  --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+  --bs-table-hover-color: var(--bs-body-color);
+  --bs-table-hover-bg: rgba(0, 0, 0, 0.025);
+  width: 100%;
+  margin-bottom: 1rem;
+  color: var(--bs-table6-color);
+  vertical-align: top;
+  border-color: var(--bs-table6-border-color);
+}
+table6 {
+  caption-side: bottom;
+  border-collapse: collapse;
+}
+
+/* .table6 > :not(caption) > * > * {
+  padding: 1.25rem 1.25rem;
+  background-color: var(--bs-table6-bg);
+  border-bottom-width: 1px;
+  box-shadow: inset 0 0 0 9999px var(--bs-table6-accent-bg);
+} */
+.table6 > tbody {
+  vertical-align: inherit;
+}
+.table6 > thead {
+  vertical-align: bottom;
+}
+
+
+/* 시욱 테이블 css  끝 */
