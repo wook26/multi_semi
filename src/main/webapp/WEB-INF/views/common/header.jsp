@@ -10,7 +10,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>제브리띵</title>
+  <title>${param.title}</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
@@ -55,7 +55,7 @@
     <!-- Navbar-->
     <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
       <div class="container-fluid">
-        <a class="d-flex align-items-end ms-2" href="index.html"><img class="logo" src="${path}/resources/image/logoColored.svg"
+        <a class="d-flex align-items-end ms-2" href="${path}"><img class="logo" src="${path}/resources/image/logoColored.svg"
             alt="Jeverything logo"></a>
         <div class="collapse navbar-collapse ms-8" id="navbarCollapse">
           <ul class="navbar-nav ms-auto">
@@ -63,7 +63,7 @@
                 href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 제주소개/관광</a>
               <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item"
-                  href="category-olle.html">제주명소<span class="badge badge-info-light ms-1 mt-n1">hot</span></a><a
+                  href="${path}/category/category-olle">제주명소<span class="badge badge-info-light ms-1 mt-n1">hot</span></a><a
                   class="dropdown-item" href="category-weather.html">기상정보</a><a class="dropdown-item"
                   href="category-festival.html">축제/행사</a><a class="dropdown-item"
                   href="category-museum.html">박물관/미술관/전시관</a></div>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.multi.mvc.jejuism.model.mapper.VisitJejuMapper">
+
+	<resultMap type="VisitJeju" id="visitJejuResultMap">
+		<id 	property="no" 			column="NO"				/>
+		<result property="alltag" 		column="ALLTAG"			/>
+		<result property="code" 		column="CODE"			/>
+		<result property="title" 		column="TITLE"			/>
+		<result property="si" 			column="SI"				/>
+		<result property="gu" 			column="GU"				/>
+		<result property="address" 		column="ADDRESS"		/>
+		<result property="roadaddress" 	column="ROADADDRESS"	/>
+		<result property="tag" 			column="TAG"			/>
+		<result property="introduction" column="INTRODUCTION"	/>
+		<result property="latitude" 	column="LATITUDE"		/>
+		<result property="longitude" 	column="LONGITUDE"		/>
+		<result property="postcode" 	column="POSTCODE"		/>
+		<result property="phoneno" 		column="PHONENO"		/>
+		<result property="imgpath" 		column="IMGPATH"		/>
+		<result property="avgRate" 		column="AVG_RATE"		/>
+	</resultMap>
+
+	
+	<select id="selectVList" resultMap="visitJejuResultMap" parameterType="map">
+		SELECT  
+			NO, ALLTAG, CODE, TITLE, SI, GU, ADDRESS, ROADADDRESS, TAG, INTRODUCTION, LATITUDE, LONGITUDE, Postcode, phoneno, imgpath, avg_Rate
+		FROM VISIT_JEJU
+		WHERE 1=1
+		<if test="code != null">
+			AND CODE = #{code}
+		</if>
+		<if test="search != null">
+			AND (ALLTAG LIKE '%${search}%'
+			OR TITLE LIKE '%${search}%'
+			OR TAG LIKE '%${search}%')
+		</if>
+		
+		ORDER BY NO ASC LIMIT ${limit} OFFSET ${offset}
+	</select>
+	
+	<select id="selectVCount" resultType="int" parameterType="map">
+		SELECT  
+			COUNT(*)
+		FROM VISIT_JEJU V 
+		WHERE 1=1
+		<if test="code != null">
+			AND CODE = #{code}
+		</if>
+		<if test="search != null">
+			AND (ALLTAG LIKE '%${search}%'
+			OR TITLE LIKE '%${search}%'
+			OR TAG LIKE '%${search}%')
+		</if>
+	</select>
+	
+	
+</mapper>

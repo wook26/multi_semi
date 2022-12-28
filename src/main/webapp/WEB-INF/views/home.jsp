@@ -4,60 +4,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
-<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
-
-<body style="padding-top: 72px;">
-  <header class="header">
-    <!-- Navbar-->
-    <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
-      <div class="container-fluid">
-        <a class="d-flex align-items-end ms-2" href="index.html"><img class="logo" src="${path}/resources/image/logoColored.svg"
-            alt="Jeverything logo"></a>
-        <div class="collapse navbar-collapse ms-8" id="navbarCollapse">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item dropdown text-center"><a class="nav-link dropdown-toggle" id="homeDropdownMenuLink"
-                href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                제주소개/관광</a>
-              <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item"
-                  href="category-olle.html">제주명소<span class="badge badge-info-light ms-1 mt-n1">hot</span></a><a
-                  class="dropdown-item" href="category-weather.html">기상정보</a><a class="dropdown-item"
-                  href="category-festival.html">축제/행사</a><a class="dropdown-item"
-                  href="category-museum.html">박물관/미술관/전시관</a></div>
-            </li>
-            <li class="nav-item dropdown text-center"><a class="nav-link dropdown-toggle" id="homeDropdownMenuLink"
-                href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                맛집</a>
-              <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item"
-                  href="category-food.html">음식점</a><a class="dropdown-item" href="category-cafe.html">카페<span
-                    class="badge badge-info-light ms-1 mt-n1">hot</span></a>
-            </li>
-            <li class="nav-item text-center me-2"><a class="nav-link" href="category-room.html">숙소 </a>
-            </li>
-            <li class="nav-item dropdown text-center"><a class="nav-link dropdown-toggle" id="docsDropdownMenuLink"
-                href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                교통</a>
-              <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item"
-                  href="category-rent.html">렌트<span class="badge badge-info-light ms-1 mt-n1">hot</span></a><a
-                  class="dropdown-item" href="category-flight.html">항공</a>
-            </li>
-            <li class="nav-item dropdown text-center"><a class="nav-link dropdown-toggle" id="docsDropdownMenuLink"
-                href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                커뮤니티</a>
-              <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item"
-                  href="category-comunity.html">여행후기/일정공유<span
-                    class="badge badge-info-light ms-1 mt-n1">hot</span></a><a class="dropdown-item"
-                  href="category-accompany.html">동행모집</a>
-            </li>
-            <div class="d-lg-flex justify-content-end">
-              <li class="nav-item"><a class="nav-link" href="login.html">로그인</a></li>
-              <li class="nav-item"><a class="nav-link" href="signup.html">회원가입</a></li>
-            </div>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- /Navbar -->
-  </header>
+<jsp:include page="/WEB-INF/views/common/header.jsp">
+	<jsp:param value="제주이즘" name="title"/>
+</jsp:include>
 
   <section class="hero-home">
     <div class="swiper-container hero-slider mb-sm-1">
@@ -73,26 +22,21 @@
         <div class="col-xl-10">
           <div class="text-center text-lg-start">
             <h1 class="display-3 text-shadow font-HS">빛나는 제주</h1>
-            <p class="subtitle letter-spacing-4 mb-2 text-secondary text-shadow">제브리띵과 고치가게마씸!</p>
+            <p class="subtitle letter-spacing-4 mb-2 text-secondary text-shadow">제주이즘과 고치가게마씸!</p>
           </div>
           <div class="search-bar mt-5 p-3 p-lg-1 ps-lg-4">
-            <form action="#">
+            <form action="${path}/category/search-page" method="get">
               <div class="row">
                 <div class="col-lg-2 d-flex align-items-center form-group no-divider">
-                  <select class="selectpicker" title="관광" data-style="btn-form-control">
-                    <option value="small">맛집</option>
-                    <option value="medium">숙소</option>
+                  <select class="selectpicker" title="선택" data-style="btn-form-control">
+                    <option value="관광지" name="searchType">관광</option>
+                    <option value="맛집" name="searchType">맛집</option>
+                    <option value="숙박" name="searchType">숙소</option>
                   </select>
                 </div>
                 <div class="col-lg-8 d-flex align-items-center form-group no-divider">
-                  <input class="form-control border-0 shadow-0" type="text" name="search" placeholder="사려니 숲길을 검색해보세요!">
+                  <input class="form-control border-0 shadow-0" type="text" name="searchValue" value="${param.searchValue}" placeholder="사려니 숲길을 검색해보세요!">
                 </div>
-                <!-- <div class="col-lg-3 d-flex align-items-center form-group">
-                    <div class="input-label-absolute input-label-absolute-right w-100">
-                      <label class="label-absolute" for="location"><i class="fa fa-crosshairs"></i><span class="sr-only">City</span></label>
-                      <input class="form-control border-0 shadow-0" type="text" name="location" placeholder="Location" id="location">
-                    </div>
-                  </div> -->
                 <div class="col-lg-2 d-grid float-end">
                   <button class="btn btn-primary rounded-pill h-100" type="submit">검색</button>
                 </div>
@@ -103,7 +47,7 @@
       </div>
     </div>
   </section>
-  <section class="py-4 bg-secondary bg-opacity-10">
+ 	<section class="py-4 bg-secondary bg-opacity-10">
     <div class="container">
       <div class="row">
         <div class="col-lg-6 mb-5 mb-lg-0 text-center text-lg-start">
@@ -133,7 +77,7 @@
                     <!-- Slides-->
                     <div class="swiper-slide p-4">
                       <div class="testimonial card rounded-3 shadow border-0">
-                        <div class="testimonial-avatar"><img class="recomend-img" src="${path}/resources/image/img/hallasan.jpg"
+                        <div class="testimonial-avatar"><img class="recomend-img" src="${path}/resources/image/img/recom1.jpg"
                             alt="..."></div>
                         <div class="text">
                           <div class="testimonial-quote">
@@ -159,25 +103,25 @@
                     </div>
                     <div class="swiper-slide p-4">
                       <div class="testimonial card rounded-3 shadow border-0">
-                        <div class="testimonial-avatar"><img class="recomend-img" src="${path}/resources/image/img/hallasan.jpg"
+                        <div class="testimonial-avatar"><img class="recomend-img" src="${path}/resources/image/img/recom2.jpg"
                             alt="..."></div>
                         <div class="text">
                           <div class="testimonial-quote">
                             <i class="fas fa-quote-left"></i>
-                            <p class="fs-4 d-inline text-custom-gray400"> 한라산국립공원1</p>
+                            <p class="fs-4 d-inline text-custom-gray400"> 사려니숲길</p>
                           </div>
-                          <div class="main-tag box-shadow">#산</div>
+                          <div class="main-tag box-shadow">#숲길</div>
                           <div class="main-tag box-shadow">#걷기/등산</div>
-                          <div class="main-tag box-shadow">#경관/포토</div>
                           <div class="main-tag box-shadow">#친구</div>
-                          <div class="main-tag box-shadow">#사계절</div>
+                          <div class="main-tag box-shadow">#커플</div>
+                          <div class="main-tag box-shadow">#흐림</div>
+                          <div class="main-tag box-shadow">#봄</div>
                           <div class="main-tag box-shadow">#자연경관</div>
-                          <div class="main-tag box-shadow">#포토스팟</div>
-                          <div class="main-tag box-shadow">#한라산</div>
-                          <div class="main-tag box-shadow">#언택트</div>
+                          <div class="main-tag box-shadow">#도보여행</div>
+                          <div class="main-tag box-shadow">#도보</div>
+                          <div class="main-tag box-shadow">#숲</div>
                           <div class="main-tag box-shadow">#단풍</div>
-                          <div class="main-tag box-shadow">#유네스코</div>
-                          <p class="main-address mt-2 mb-4">주소 제주특별자치도 제주시 1100로 2070-61</p>
+                          <p class="main-address mt-2 mb-4">주소 제주특별자치도 제주시 조천읍 교래리 산 137-1</p>
                         </div>
                         <a class="text-center d-inline-block pe-5" href="#">상세보기 <i
                             class="fa-solid fa-arrow-up-right-from-square"></i></a>
@@ -185,25 +129,29 @@
                     </div>
                     <div class="swiper-slide p-4">
                       <div class="testimonial card rounded-3 shadow border-0">
-                        <div class="testimonial-avatar"><img class="recomend-img" src="${path}/resources/image/img/hallasan.jpg"
+                        <div class="testimonial-avatar"><img class="recomend-img" src="${path}/resources/image/img/recom3.jpg"
                             alt="..."></div>
                         <div class="text">
                           <div class="testimonial-quote">
                             <i class="fas fa-quote-left"></i>
-                            <p class="fs-4 d-inline text-custom-gray400"> 한라산국립공원2</p>
+                            <p class="fs-4 d-inline text-custom-gray400"> 협재해수욕장</p>
                           </div>
-                          <div class="main-tag box-shadow">#산</div>
-                          <div class="main-tag box-shadow">#걷기/등산</div>
-                          <div class="main-tag box-shadow">#경관/포토</div>
-                          <div class="main-tag box-shadow">#친구</div>
-                          <div class="main-tag box-shadow">#사계절</div>
+                          <div class="main-tag box-shadow">#일몰</div>
+                          <div class="main-tag box-shadow">#해수욕장</div>
+                          <div class="main-tag box-shadow">#액티비티</div>
+                          <div class="main-tag box-shadow">#아이</div>
+                          <div class="main-tag box-shadow">#맑음</div>
+                          <div class="main-tag box-shadow">#여름</div>
                           <div class="main-tag box-shadow">#자연경관</div>
-                          <div class="main-tag box-shadow">#포토스팟</div>
-                          <div class="main-tag box-shadow">#한라산</div>
-                          <div class="main-tag box-shadow">#언택트</div>
-                          <div class="main-tag box-shadow">#단풍</div>
-                          <div class="main-tag box-shadow">#유네스코</div>
-                          <p class="main-address mt-2 mb-4">주소 제주특별자치도 제주시 1100로 2070-61</p>
+                          <div class="main-tag box-shadow">#체험</div>
+                          <div class="main-tag box-shadow">#레저/체험</div>
+                          <div class="main-tag box-shadow">#해변</div>
+                          <div class="main-tag box-shadow">#물놀이</div>
+                          <div class="main-tag box-shadow">#어린이</div>
+                          <div class="main-tag box-shadow">#수상레저</div>
+                          <div class="main-tag box-shadow">#반려동물</div>
+                          <div class="main-tag box-shadow">#혼저옵서개</div>
+                          <p class="main-address mt-2 mb-4">주소 제주특별자치도 제주시 한림읍 한림로 329-10</p>
                         </div>
                         <a class="text-center d-inline-block pe-5" href="#">상세보기 <i
                             class="fa-solid fa-arrow-up-right-from-square"></i></a>
@@ -211,25 +159,136 @@
                     </div>
                     <div class="swiper-slide p-4">
                       <div class="testimonial card rounded-3 shadow border-0">
-                        <div class="testimonial-avatar"><img class="recomend-img" src="${path}/resources/image/img/hallasan.jpg"
+                        <div class="testimonial-avatar"><img class="recomend-img" src="${path}/resources/image/img/recom4.png"
                             alt="..."></div>
                         <div class="text">
                           <div class="testimonial-quote">
                             <i class="fas fa-quote-left"></i>
-                            <p class="fs-4 d-inline text-custom-gray400"> 한라산국립공원3</p>
+                            <p class="fs-4 d-inline text-custom-gray400"> 에코랜드 테마파크</p>
                           </div>
-                          <div class="main-tag box-shadow">#산</div>
-                          <div class="main-tag box-shadow">#걷기/등산</div>
+                          <div class="main-tag box-shadow">#테마공원</div>
+                          <div class="main-tag box-shadow">#아이</div>
+                          <div class="main-tag box-shadow">#맑음</div>
+                          <div class="main-tag box-shadow">#봄</div>
+                          <div class="main-tag box-shadow">#가을</div>
+                          <div class="main-tag box-shadow">#겨울</div>
+                          <div class="main-tag box-shadow">#실내관광지</div>
+                          <div class="main-tag box-shadow">#어린이</div>
+                          <div class="main-tag box-shadow">#어트랙션</div>
+                          <p class="main-address mt-2 mb-4">주소 제주특별자치도 제주시 조천읍 번영로 1278-169</p>
+                        </div>
+                        <a class="text-center d-inline-block pe-5" href="#">상세보기 <i
+                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-pagination"> </div>
+                </div>
+              </div>
+            </div>
+            <!-- Seoguipo -->
+            <div class="tab-pane fade active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
+              tabindex="0">
+              <div class="container">
+                <!-- Slider main container-->
+                <div class="swiper-container testimonials-slider testimonials">
+                  <!-- Additional required wrapper-->
+                  <div class="swiper-wrapper pt-2 pb-5">
+                    <!-- Slides-->
+                    <div class="swiper-slide p-4">
+                      <div class="testimonial card rounded-3 shadow border-0">
+                        <div class="testimonial-avatar"><img class="recomend-img" src="${path}/resources/image/img/recom5.jpg"
+                            alt="..."></div>
+                        <div class="text">
+                          <div class="testimonial-quote">
+                            <i class="fas fa-quote-left"></i>
+                            <p class="fs-4 d-inline text-custom-gray400"> 성산일출봉</p>
+                          </div>
+                          <div class="main-tag box-shadow">#일출</div>
+                          <div class="main-tag box-shadow">#오름</div>
                           <div class="main-tag box-shadow">#경관/포토</div>
-                          <div class="main-tag box-shadow">#친구</div>
-                          <div class="main-tag box-shadow">#사계절</div>
+                          <div class="main-tag box-shadow">#부모</div>
                           <div class="main-tag box-shadow">#자연경관</div>
                           <div class="main-tag box-shadow">#포토스팟</div>
-                          <div class="main-tag box-shadow">#한라산</div>
-                          <div class="main-tag box-shadow">#언택트</div>
-                          <div class="main-tag box-shadow">#단풍</div>
                           <div class="main-tag box-shadow">#유네스코</div>
-                          <p class="main-address mt-2 mb-4">주소 제주특별자치도 제주시 1100로 2070-61</p>
+                          <p class="main-address mt-2 mb-4">주소 제주특별자치도 서귀포시 성산읍 일출로 284-12</p>
+                        </div>
+                        <a class="text-center d-inline-block pe-5" href="#">상세보기 <i
+                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide p-4">
+                      <div class="testimonial card rounded-3 shadow border-0">
+                        <div class="testimonial-avatar"><img class="recomend-img" src="${path}/resources/image/img/recom6.jpg"
+                            alt="..."></div>
+                        <div class="text">
+                          <div class="testimonial-quote">
+                            <i class="fas fa-quote-left"></i>
+                            <p class="fs-4 d-inline text-custom-gray400"> 섭지코지</p>
+                          </div>
+                          <div class="main-tag box-shadow">#일출</div>
+                          <div class="main-tag box-shadow">#해변</div>
+                          <div class="main-tag box-shadow">#경관/포토</div>
+                          <div class="main-tag box-shadow">#커플</div>
+                          <div class="main-tag box-shadow">#맑음</div>
+                          <div class="main-tag box-shadow">#가을</div>
+                          <div class="main-tag box-shadow">#자연경관</div>
+                          <div class="main-tag box-shadow">#포토스팟</div>
+                          <div class="main-tag box-shadow">#봄꽃</div>
+                          <div class="main-tag box-shadow">#유채꽃</div>
+                          <div class="main-tag box-shadow">#반려동물</div>
+                          <p class="main-address mt-2 mb-4">주소 제주특별자치도 서귀포시 성산읍 섭지코지로 107</p>
+                        </div>
+                        <a class="text-center d-inline-block pe-5" href="#">상세보기 <i
+                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide p-4">
+                      <div class="testimonial card rounded-3 shadow border-0">
+                        <div class="testimonial-avatar"><img class="recomend-img" src="${path}/resources/image/img/recom7.jpg"
+                            alt="..."></div>
+                        <div class="text">
+                          <div class="testimonial-quote">
+                            <i class="fas fa-quote-left"></i>
+                            <p class="fs-4 d-inline text-custom-gray400"> 천지연폭포</p>
+                          </div>
+                          <div class="main-tag box-shadow">#폭포</div>
+                          <div class="main-tag box-shadow">#밤</div>
+                          <div class="main-tag box-shadow">#경관/포토</div>
+                          <div class="main-tag box-shadow">#부모</div>
+                          <div class="main-tag box-shadow">#맑음</div>
+                          <div class="main-tag box-shadow">#여름</div>
+                          <div class="main-tag box-shadow">#자연경관</div>
+                          <div class="main-tag box-shadow">#포토스팟</div>
+                          <div class="main-tag box-shadow">#유네스코</div>
+                          <p class="main-address mt-2 mb-4">주소 제주특별자치도 서귀포시 남성중로 2-15</p>
+                        </div>
+                        <a class="text-center d-inline-block pe-5" href="#">상세보기 <i
+                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                      </div>
+                    </div>
+                    <div class="swiper-slide p-4">
+                      <div class="testimonial card rounded-3 shadow border-0">
+                        <div class="testimonial-avatar"><img class="recomend-img" src="${path}/resources/image/img/recom8.jpg"
+                            alt="..."></div>
+                        <div class="text">
+                          <div class="testimonial-quote">
+                            <i class="fas fa-quote-left"></i>
+                            <p class="fs-4 d-inline text-custom-gray400"> 카멜리아힐</p>
+                          </div>
+                          <div class="main-tag box-shadow">#경관/포토</div>
+                          <div class="main-tag box-shadow">#커플</div>
+                          <div class="main-tag box-shadow">#아이</div>
+                          <div class="main-tag box-shadow">#맑음</div>
+                          <div class="main-tag box-shadow">#겨울</div>
+                          <div class="main-tag box-shadow">#힐링</div>
+                          <div class="main-tag box-shadow">#자연경관</div>
+                          <div class="main-tag box-shadow">#포토스팟</div>
+                          <div class="main-tag box-shadow">#어린이</div>
+                          <div class="main-tag box-shadow">#어트랙션</div>
+                          <div class="main-tag box-shadow">#동백</div>
+                          <div class="main-tag box-shadow">#수국</div>
+                          <p class="main-address mt-2 mb-4">주소 제주 서귀포시 안덕면 병악로 166</p>
                         </div>
                         <a class="text-center d-inline-block pe-5" href="#">상세보기 <i
                             class="fa-solid fa-arrow-up-right-from-square"></i></a>
@@ -241,13 +300,7 @@
               </div>
             </div>
           </div>
-          <!-- Seoguipo -->
-          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
-            tabindex="0">
-            서귀포용
-          </div>
         </div>
-
         <div class="col-lg-6 d-inline-block align-items-end">
           <div class="text-end">
             <img class="img-map figure py-5" src="${path}/resources/image/custom/map_jeju.png" />
@@ -271,8 +324,8 @@
         <div class="swiper-wrapper pb-5">
           <!-- Slides-->
           <div class="swiper-slide h-auto px-2">
-            <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link"
-                href="category.html"></a><img class="bg-image" src="${path}/resources/img/photo/new-york.jpg" alt="Card image">
+            <div class="card card-poster hover-animate mb-4 mb-lg-0 shadow"><a class="tile-link"
+                href="category.html"></a><img class="bg-image" src="${path}/resources/image/custom/foodrecom1.png" alt="Card image">
               <div class="card-body overlay-content">
                 <h6 class="card-title text-shadow text-uppercase">New York</h6>
                 <p class="card-text text-sm">The big apple</p>
@@ -280,30 +333,18 @@
             </div>
           </div>
           <div class="swiper-slide h-auto px-2">
-            <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link"
-                href="category.html"></a><img class="bg-image" src="${path}/resources/img/photo/paris.jpg" alt="Card image">
-              <div class="card-body overlay-content">
-                <h6 class="card-title text-shadow text-uppercase">Paris</h6>
-                <p class="card-text text-sm">Artist capital of Europe</p>
-              </div>
+            <div class="card card-poster hover-animate mb-4 mb-lg-0 shadow"><a class="tile-link"
+                href="category.html"></a><img class="bg-image" src="${path}/resources/image/custom/foodrecom2.png" alt="Card image">
             </div>
           </div>
           <div class="swiper-slide h-auto px-2">
-            <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link"
-                href="category.html"></a><img class="bg-image" src="${path}/resources/img/photo/barcelona.jpg" alt="Card image">
-              <div class="card-body overlay-content">
-                <h6 class="card-title text-shadow text-uppercase">Barcelona</h6>
-                <p class="card-text text-sm">Dalí, Gaudí, Barrio Gotico</p>
-              </div>
+            <div class="card card-poster hover-animate mb-4 mb-lg-0 shadow"><a class="tile-link"
+                href="category.html"></a><img class="bg-image" src="${path}/resources/image/custom/foodrecom3.png" alt="Card image">
             </div>
           </div>
           <div class="swiper-slide h-auto px-2">
-            <div class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"><a class="tile-link"
-                href="category.html"></a><img class="bg-image" src="${path}/resources/img/photo/prague.jpg" alt="Card image">
-              <div class="card-body overlay-content">
-                <h6 class="card-title text-shadow text-uppercase">Prague</h6>
-                <p class="card-text text-sm">City of hundred towers</p>
-              </div>
+            <div class="card card-poster hover-animate mb-4 mb-lg-0 shadow"><a class="tile-link"
+                href="category.html"></a><img class="bg-image" src="${path}/resources/image/custom/foodrecom4.png" alt="Card image">
             </div>
           </div>
         </div>
