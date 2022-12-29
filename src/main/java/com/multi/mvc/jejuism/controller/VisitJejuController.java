@@ -1,6 +1,5 @@
 package com.multi.mvc.jejuism.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.multi.mvc.common.util.PageInfo;
+import com.multi.mvc.jejuism.api.VisitJejuApiManager;
 import com.multi.mvc.jejuism.model.service.VisitJejuService;
 import com.multi.mvc.jejuism.model.vo.Review;
 import com.multi.mvc.jejuism.model.vo.VisitJeju;
@@ -28,6 +28,20 @@ public class VisitJejuController {
 	
 	@Autowired
 	private VisitJejuService service;
+	
+	@GetMapping("/api-init")
+	public void apiInit() {
+		for (int i = 1; i < 6; i++) {
+			if (i == 2) {
+				continue;
+			}
+			List<VisitJeju> list = VisitJejuApiManager.parsingVisitJeju("c" + i);
+			for(VisitJeju v : list) {
+				System.out.println(v);
+				service.insertV(v);
+			}
+		}
+	}
 	
 	@GetMapping("/category/search-page")
 	public String vList(Model model, @RequestParam Map<String, String> param) {

@@ -35,7 +35,7 @@ public class HomeController {
 		logger.info("Welcome home! The client locale is {}.", locale);
 //		Member member = memberService.login("admin", "1212");// 관리자 자동 로그인용, 완성 이후 삭제
 //		session.setAttribute("loginMember", member);// 관리자 자동 로그인용, 완성 이후 삭제
-		// test();
+//		test();
 		return "home";
 	}
 	

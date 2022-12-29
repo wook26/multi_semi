@@ -41,7 +41,9 @@ public class VisitJejuService {
 
 	@Transactional(rollbackFor = Exception.class)
 	public int insertV(VisitJeju visitJeju) {
-		return mapper.insertV(visitJeju);
+		int result = 0;
+		result = mapper.insertV(visitJeju);
+		return result;
 	}
 	
 	@Transactional(rollbackFor = Exception.class)

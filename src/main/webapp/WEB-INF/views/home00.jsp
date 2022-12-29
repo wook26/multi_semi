@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
   
-<jsp:include page="/WEB-INF/views/common/header2.jsp">
+<jsp:include page="/WEB-INF/views/common/header00.jsp">
 	<jsp:param value="Spring 홈페이지" name="title"/>
 </jsp:include>
 
@@ -44,6 +44,6 @@
 	
 </section>
 
-<jsp:include page="/WEB-INF/views/common/footer2.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/common/footer00.jsp"></jsp:include>
 
 
