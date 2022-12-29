@@ -14,7 +14,7 @@ import com.multi.mvc.member.model.vo.Member;
 @Mapper
 public interface MemberMapper {
 	int selectCount();
-	List<Member> selectAll();
+	List<Member> selectAll(); 
 	Member selectMember(@Param("id") String id); // @Param : 파라메터임을 알리는 어노테이션. 없어 된다.
 	int insertMember(Member member);
 //	int updateMember(Member member);

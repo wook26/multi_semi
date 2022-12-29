@@ -33,7 +33,7 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
-	@Autowired
+	@Autowired 
 	private KaKaoService kakaoService;
 	
 	@GetMapping("/member/login")

@@ -89,7 +89,7 @@
             </li>
             <li class="nav-item dropdown text-center"><a class="nav-link dropdown-toggle" id="docsDropdownMenuLink"
                 href="${path}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                커뮤니티</a>
+                커뮤니티</a> 
               <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item"
                   href="category-comunity.html">여행후기/일정공유<span
                     class="badge badge-info-light ms-1 mt-n1">hot</span></a><a class="dropdown-item"

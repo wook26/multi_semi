@@ -16,7 +16,7 @@ public class MemberService {
 
 	@Autowired
 	private MemberMapper mapper;
-	
+	 
 	@Autowired
 	private BCryptPasswordEncoder pwEncoder; //  SHA-256 hash code로 패스워드 일방향 암호 지원 모듈
 	// 1234 -> nsikldvnisoldjhv2423jo23 (평문 -> hashCode)
