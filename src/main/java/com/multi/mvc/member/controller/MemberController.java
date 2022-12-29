@@ -36,8 +36,14 @@ public class MemberController {
 	@Autowired
 	private KaKaoService kakaoService;
 	
+	@GetMapping("/member/login")
+	public String loginPage() {
+	//	log.info("로그인 페이지 요청");
+		return "/member/login";
+	}
+	
 //	@RequestMapping(name = "/login", method = RequestMethod.POST )
-	@PostMapping("/login")
+	@PostMapping("/member/login")
 	public String login(Model model, String userId, String userPwd) {
 		log.info("id : " + userId +", pw : " + userPwd);
 		Member loginMember = service.login(userId, userPwd);
@@ -52,7 +58,7 @@ public class MemberController {
 		}
 	}
 	
-	@RequestMapping("/logout")
+	@RequestMapping("/member/logout")
 	public String logout(SessionStatus status) {
 		log.info("status : " + status.isComplete());
 		status.setComplete(); // 세션을 종료하는 코드
@@ -154,73 +160,73 @@ public class MemberController {
 		return "member/view";
 	}
 	
+	
+	
+	
 	// @SessionAttribute : 세션으로 가지고 있는 값을 command 객체로 땡겨올때 쓰는 어노테이션
-	@PostMapping("/member/update")
-	public String update(Model model,
-			@ModelAttribute Member member, // @ModelAttribute 생략가능하다.
-			@SessionAttribute(name = "loginMember", required = false) Member loginMember
-			) {
-		if(loginMember == null || loginMember.getId().equals(member.getId()) == false) {
-			model.addAttribute("msg","잘못된 접근입니다.");
-			model.addAttribute("location", "/");
-			return "common/msg";
-		}
-		
-//		log.debug("@@@@@@ member : "  + member);
-//		log.debug("@@@@@@ loginMember : "  + loginMember);
+//	@PostMapping("/member/update")
+//	public String update(Model model,
+//			@ModelAttribute Member member, // @ModelAttribute 생략가능하다.
+//			@SessionAttribute(name = "loginMember", required = false) Member loginMember
+//			) {
+//		if(loginMember == null || loginMember.getId().equals(member.getId()) == false) {
+//			model.addAttribute("msg","잘못된 접근입니다.");
+//			model.addAttribute("location", "/");
+//			return "common/msg";
+//		}
 //		
-		member.setNo(loginMember.getNo());
-		int result = service.save(member);
-		
-		if(result > 0) {
-			model.addAttribute("loginMember", service.findById(member.getId())); // DB에 있는 값을 다시 세션으로 업데이트 
-			model.addAttribute("msg", "회원정보를 수정하였습니다.");
-			model.addAttribute("location", "/member/view");
-		}else {
-			model.addAttribute("msg", "회원정보를 수정을 실패하였습니다.");
-			model.addAttribute("location", "/member/view");
-		}
-		
-		return "common/msg";
-	}
-	
-	
-	@GetMapping("/member/delete")
-	public String delete(Model model,
-			@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
-		int result = service.delete(loginMember.getNo());
-		
-		if(result > 0) {
-			model.addAttribute("msg","정상적으로 탈퇴 되었습니다.");
-			model.addAttribute("location","/logout");
-		}else {
-			model.addAttribute("msg","회원탈퇴에 실패하였습니다.");
-			model.addAttribute("location","/member/view");
-		}
-		
-		return "common/msg";
-	}
-	
-	
-	@GetMapping("/member/updatePwd")
-	public String updatePwd() {
-		return "member/updatePwd";
-	}
-	
-	@PostMapping("/member/updatePwd")
-	public String updatePwd(Model model,
-		@SessionAttribute(name = "loginMember", required = false) Member loginMember,
-		String userPwd) {
-		int result = service.updatePwd(loginMember, userPwd);
-		
-		if(result > 0) {
-			model.addAttribute("msg","정상적으로 수정 되었습니다.");
-		}else {
-			model.addAttribute("msg","비밀번호 변경에 실패하였습니다.");
-		}
-		model.addAttribute("script", "self.close()");
-		return "common/msg";
-	}
+//		member.setNo(loginMember.getNo());
+//		int result = service.save(member);
+//		
+//		if(result > 0) {
+//			model.addAttribute("loginMember", service.findById(member.getId())); // DB에 있는 값을 다시 세션으로 업데이트 
+//			model.addAttribute("msg", "회원정보를 수정하였습니다.");
+//			model.addAttribute("location", "/member/view");
+//		}else {
+//			model.addAttribute("msg", "회원정보를 수정을 실패하였습니다.");
+//			model.addAttribute("location", "/member/view");
+//		}
+//		
+//		return "common/msg";
+//	}
+//	
+//	
+//	@GetMapping("/member/delete")
+//	public String delete(Model model,
+//			@SessionAttribute(name = "loginMember", required = false) Member loginMember) {
+//		int result = service.delete(loginMember.getNo());
+//		
+//		if(result > 0) {
+//			model.addAttribute("msg","정상적으로 탈퇴 되었습니다.");
+//			model.addAttribute("location","/logout");
+//		}else {
+//			model.addAttribute("msg","회원탈퇴에 실패하였습니다.");
+//			model.addAttribute("location","/member/view");
+//		}
+//		
+//		return "common/msg";
+//	}
+//	
+//	
+//	@GetMapping("/member/updatePwd")
+//	public String updatePwd() {
+//		return "member/updatePwd";
+//	}
+//	
+//	@PostMapping("/member/updatePwd")
+//	public String updatePwd(Model model,
+//		@SessionAttribute(name = "loginMember", required = false) Member loginMember,
+//		String userPwd) {
+//		int result = service.updatePwd(loginMember, userPwd);
+//		
+//		if(result > 0) {
+//			model.addAttribute("msg","정상적으로 수정 되었습니다.");
+//		}else {
+//			model.addAttribute("msg","비밀번호 변경에 실패하였습니다.");
+//		}
+//		model.addAttribute("script", "self.close()");
+//		return "common/msg";
+//	}
 }
 
 

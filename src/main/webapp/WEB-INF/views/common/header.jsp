@@ -97,8 +97,8 @@
             </li>
             <div class="d-lg-flex justify-content-end">
               <c:if test="${loginMember == null}">
-                <li class="nav-item"><a class="nav-link" href="${path}/user/login">로그인</a></li>
-                <li class="nav-item"><a class="nav-link" href="${path}/user/enroll">회원가입</a></li>
+                <li class="nav-item"><a class="nav-link" href="${path}/member/login">로그인</a></li>
+                <li class="nav-item"><a class="nav-link" href="${path}/member/enroll">회원가입</a></li>
               </c:if>
               <c:if test="${ loginMember != null }">
 				<%--로그인 된 사용자 정보 보여주는 폼 영역 시작--%>
