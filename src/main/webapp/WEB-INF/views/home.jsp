@@ -28,14 +28,14 @@
             <form action="${path}/category/search-page" method="get">
               <div class="row">
                 <div class="col-lg-2 d-flex align-items-center form-group no-divider">
-                  <select class="selectpicker" title="선택" data-style="btn-form-control">
-                    <option value="관광지" name="searchType">관광</option>
-                    <option value="맛집" name="searchType">맛집</option>
-                    <option value="숙박" name="searchType">숙소</option>
+                  <select class="selectpicker" title="선택" name="code" data-style="btn-form-control">
+                    <option value="관광지">관광</option>
+                    <option value="음식점">맛집</option>
+                    <option value="숙박">숙소</option>
                   </select>
                 </div>
                 <div class="col-lg-8 d-flex align-items-center form-group no-divider">
-                  <input class="form-control border-0 shadow-0" type="text" name="searchValue" value="${param.searchValue}" placeholder="사려니 숲길을 검색해보세요!">
+                  <input class="form-control border-0 shadow-0" type="search" name="search" value="${param.search}" placeholder="사려니 숲길을 검색해보세요!">
                 </div>
                 <div class="col-lg-2 d-grid float-end">
                   <button class="btn btn-primary rounded-pill h-100" type="submit">검색</button>
@@ -47,7 +47,7 @@
       </div>
     </div>
   </section>
- 	<section class="py-4 bg-secondary bg-opacity-10">
+ 	<section class="py-4 bg-secondary bg-opacity-10" style="height: 520px;">
     <div class="container">
       <div class="row">
         <div class="col-lg-6 mb-5 mb-lg-0 text-center text-lg-start">
@@ -73,7 +73,7 @@
                 <!-- Slider main container-->
                 <div class="swiper-container testimonials-slider testimonials">
                   <!-- Additional required wrapper-->
-                  <div class="swiper-wrapper pt-2 pb-5">
+                  <div class="swiper-wrapper pt-2 pb-2">
                     <!-- Slides-->
                     <div class="swiper-slide p-4">
                       <div class="testimonial card rounded-3 shadow border-0">
@@ -97,7 +97,7 @@
                           <div class="main-tag box-shadow">#유네스코</div>
                           <p class="main-address mt-2 mb-4">주소 제주특별자치도 제주시 1100로 2070-61</p>
                         </div>
-                        <a class="text-center d-inline-block pe-5" href="#">상세보기 <i
+                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=1053" target="_blank">상세보기 <i
                             class="fa-solid fa-arrow-up-right-from-square"></i></a>
                       </div>
                     </div>
@@ -123,7 +123,7 @@
                           <div class="main-tag box-shadow">#단풍</div>
                           <p class="main-address mt-2 mb-4">주소 제주특별자치도 제주시 조천읍 교래리 산 137-1</p>
                         </div>
-                        <a class="text-center d-inline-block pe-5" href="#">상세보기 <i
+                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=1109" target="_blank">상세보기 <i
                             class="fa-solid fa-arrow-up-right-from-square"></i></a>
                       </div>
                     </div>
@@ -153,7 +153,7 @@
                           <div class="main-tag box-shadow">#혼저옵서개</div>
                           <p class="main-address mt-2 mb-4">주소 제주특별자치도 제주시 한림읍 한림로 329-10</p>
                         </div>
-                        <a class="text-center d-inline-block pe-5" href="#">상세보기 <i
+                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=986" target="_blank">상세보기 <i
                             class="fa-solid fa-arrow-up-right-from-square"></i></a>
                       </div>
                     </div>
@@ -177,7 +177,7 @@
                           <div class="main-tag box-shadow">#어트랙션</div>
                           <p class="main-address mt-2 mb-4">주소 제주특별자치도 제주시 조천읍 번영로 1278-169</p>
                         </div>
-                        <a class="text-center d-inline-block pe-5" href="#">상세보기 <i
+                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=1124" target="_blank">상세보기 <i
                             class="fa-solid fa-arrow-up-right-from-square"></i></a>
                       </div>
                     </div>
@@ -193,7 +193,7 @@
                 <!-- Slider main container-->
                 <div class="swiper-container testimonials-slider testimonials">
                   <!-- Additional required wrapper-->
-                  <div class="swiper-wrapper pt-2 pb-5">
+                  <div class="swiper-wrapper pt-2" style="padding-bottom: 2.5rem">
                     <!-- Slides-->
                     <div class="swiper-slide p-4">
                       <div class="testimonial card rounded-3 shadow border-0">
@@ -213,7 +213,7 @@
                           <div class="main-tag box-shadow">#유네스코</div>
                           <p class="main-address mt-2 mb-4">주소 제주특별자치도 서귀포시 성산읍 일출로 284-12</p>
                         </div>
-                        <a class="text-center d-inline-block pe-5" href="#">상세보기 <i
+                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=1055" target="_blank">상세보기 <i
                             class="fa-solid fa-arrow-up-right-from-square"></i></a>
                       </div>
                     </div>
@@ -239,7 +239,7 @@
                           <div class="main-tag box-shadow">#반려동물</div>
                           <p class="main-address mt-2 mb-4">주소 제주특별자치도 서귀포시 성산읍 섭지코지로 107</p>
                         </div>
-                        <a class="text-center d-inline-block pe-5" href="#">상세보기 <i
+                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=965" target="_blank">상세보기 <i
                             class="fa-solid fa-arrow-up-right-from-square"></i></a>
                       </div>
                     </div>
@@ -263,7 +263,7 @@
                           <div class="main-tag box-shadow">#유네스코</div>
                           <p class="main-address mt-2 mb-4">주소 제주특별자치도 서귀포시 남성중로 2-15</p>
                         </div>
-                        <a class="text-center d-inline-block pe-5" href="#">상세보기 <i
+                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=1051" target="_blank">상세보기 <i
                             class="fa-solid fa-arrow-up-right-from-square"></i></a>
                       </div>
                     </div>
@@ -290,7 +290,7 @@
                           <div class="main-tag box-shadow">#수국</div>
                           <p class="main-address mt-2 mb-4">주소 제주 서귀포시 안덕면 병악로 166</p>
                         </div>
-                        <a class="text-center d-inline-block pe-5" href="#">상세보기 <i
+                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=1132" target="_blank">상세보기 <i
                             class="fa-solid fa-arrow-up-right-from-square"></i></a>
                       </div>
                     </div>
@@ -325,26 +325,29 @@
           <!-- Slides-->
           <div class="swiper-slide h-auto px-2">
             <div class="card card-poster hover-animate mb-4 mb-lg-0 shadow"><a class="tile-link"
-                href="category.html"></a><img class="bg-image" src="${path}/resources/image/custom/foodrecom1.png" alt="Card image">
+                href="${path}/detail/detail-olle?no=3603"></a><img class="bg-image" src="${path}/resources/image/custom/foodrecom1.png" alt="제주김만복">
               <div class="card-body overlay-content">
-                <h6 class="card-title text-shadow text-uppercase">New York</h6>
-                <p class="card-text text-sm">The big apple</p>
               </div>
             </div>
           </div>
           <div class="swiper-slide h-auto px-2">
             <div class="card card-poster hover-animate mb-4 mb-lg-0 shadow"><a class="tile-link"
-                href="category.html"></a><img class="bg-image" src="${path}/resources/image/custom/foodrecom2.png" alt="Card image">
+                href="${path}/detail/detail-olle?no=3135"></a><img class="bg-image" src="${path}/resources/image/custom/foodrecom2.png" alt="올래국수">
             </div>
           </div>
           <div class="swiper-slide h-auto px-2">
             <div class="card card-poster hover-animate mb-4 mb-lg-0 shadow"><a class="tile-link"
-                href="category.html"></a><img class="bg-image" src="${path}/resources/image/custom/foodrecom3.png" alt="Card image">
+                href="${path}/detail/detail-olle?no=3598"></a><img class="bg-image" src="${path}/resources/image/custom/foodrecom3.png" alt="제주선">
             </div>
           </div>
           <div class="swiper-slide h-auto px-2">
             <div class="card card-poster hover-animate mb-4 mb-lg-0 shadow"><a class="tile-link"
-                href="category.html"></a><img class="bg-image" src="${path}/resources/image/custom/foodrecom4.png" alt="Card image">
+                href="${path}/detail/detail-olle?no=3657"></a><img class="bg-image" src="${path}/resources/image/custom/foodrecom4.png" alt="돈사돈">
+            </div>
+          </div>
+          <div class="swiper-slide h-auto px-2">
+            <div class="card card-poster hover-animate mb-4 mb-lg-0 shadow"><a class="tile-link"
+                href="${path}/detail/detail-olle?no=3238"></a><img class="bg-image" src="${path}/resources/image/custom/foodrecom5.png" alt="카페공작소">
             </div>
           </div>
         </div>
@@ -609,7 +612,7 @@
       <div class="overlay-content text-white py-lg-5">
         <h3 class="display-5 font-Tenada text-shadow mb-5 text-shadow-custom">올레길 초보를 위한<br>초심자 코스로 함께 떠나볼까요?</h3>
         <p class="font-size150">코스길이 ~15km | 소요시간 ~5시간</p>
-        <a class="btn btn-light" href="category-rooms.html">코스 둘러보기</a><!-- 이후 올레길 난이도 하 선택된 페이지로 보내기 -->
+        <a class="btn btn-light" href="${path}/category/category-olle?search=올레">코스 둘러보기</a><!-- 이후 올레길 난이도 하 선택된 페이지로 보내기 -->
       </div>
     </div>
   </section>

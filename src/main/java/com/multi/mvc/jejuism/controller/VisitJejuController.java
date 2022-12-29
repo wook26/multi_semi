@@ -33,20 +33,21 @@ public class VisitJejuController {
 	public String vList(Model model, @RequestParam Map<String, String> param) {
 		log.info("검색, param : " + param);
 		int page = 1;
-		Map<String, Object> searchMap = new HashMap<String, Object>();
+		Map<String, Object> searchMap = new HashMap<>();
 		try {
-			String searchValue = param.get("searchValue");
-			if(searchValue != null && searchValue.length() > 0) {
-				String searchType = param.get("searchType");
-				searchMap.put(searchType, searchValue);
-			}
+			String search = param.get("search");
+			searchMap.put("search", search);
+			String category = param.get("code");
+			searchMap.put("code", category);
 			page = Integer.parseInt(param.get("page"));
-		} catch (Exception e) {}
-		
-		int vCount = service.selectVCount(searchMap);
-		PageInfo pageInfo = new PageInfo(page, 10, vCount, 10);
+		} catch (Exception e) {
+		}
+		int vCodeCount = service.selectVCount(searchMap);
+		PageInfo pageInfo = new PageInfo(page, 10, vCodeCount, 12);
 		List<VisitJeju> list = service.selectVList(pageInfo, searchMap);
-		
+		for (VisitJeju visitJeju : list) {
+			visitJeju.setTag("#" + String.join(" #",visitJeju.getTag().split(",")));
+		}
 		model.addAttribute("list", list);
 		model.addAttribute("param", param);
 		model.addAttribute("pageInfo", pageInfo);

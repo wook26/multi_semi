@@ -46,19 +46,6 @@
                 <button class="btn btn-primary h-100" type="submit">검색 </button>
               </div>
             </div>
-	
-	          <!-- 태그 -->
-	          <!-- <ul class="nav nav-pills-tag justify-content-start mt-3">
-	            <li class="nav-item"><a class="nav-link active" name="nav-click" href="#">#전체</a></li>
-	            <li class="nav-item"><a class="nav-link hover" name="nav-click" href="#">#박물관</a></li>
-	            <li class="nav-item"><a class="nav-link hover" name="nav-click" href="#">#미술관</a></li>
-	            <li class="nav-item"><a class="nav-link hover" name="nav-click" href="#">#전시관</a></li>
-	            <li class="nav-item"><a class="nav-link hover" name="nav-click" href="#">#제주시</a></li>
-	            <li class="nav-item"><a class="nav-link hover" name="nav-click" href="#">#서귀포시</a></li>
-	            <li class="nav-item"><a class="nav-link hover" name="nav-click" href="#">#문화관광</a></li>
-	            <li class="nav-item"><a class="nav-link hover" name="nav-click" href="#">#실내관광지</a></li>
-	          </ul>
-	 		-->    
           </form>
           <form action="${path}/category/category-olle">
 			 <ul class="nav nav-pills-tag">
@@ -176,7 +163,9 @@
 	                      class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
 	                  </p>
 	                </div>
-	                <p class="card-text text-muted">${item.tag}</p>
+	                <div style="height: 50px;overflow: hidden;">
+	                  <p class="card-text text-muted">${item.tag}</p>
+	                </div>
 	              </div>
 	            </div>
 	          </div>

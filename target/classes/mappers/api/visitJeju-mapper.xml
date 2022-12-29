@@ -41,13 +41,13 @@
 			NO, ALLTAG, CODE, TITLE, SI, GU, ADDRESS, ROADADDRESS, TAG, INTRODUCTION, LATITUDE, LONGITUDE, POSTCODE, PHONENO, IMGPATH, AVG_RATE
 		FROM VISIT_JEJU
 		WHERE 1=1
-		<if test="code != null">
-			AND CODE = #{code}
-		</if>
 		<if test="search != null">
 			AND (ALLTAG LIKE '%${search}%'
 			OR TITLE LIKE '%${search}%'
 			OR TAG LIKE '%${search}%')
+		</if>
+		<if test="code != null">
+			AND CODE = #{code}
 		</if>
 		
 		ORDER BY NO ASC LIMIT ${limit} OFFSET ${offset}
@@ -58,13 +58,13 @@
 			COUNT(*)
 		FROM VISIT_JEJU V 
 		WHERE 1=1
-		<if test="code != null">
-			AND CODE = #{code}
-		</if>
 		<if test="search != null">
 			AND (ALLTAG LIKE '%${search}%'
 			OR TITLE LIKE '%${search}%'
 			OR TAG LIKE '%${search}%')
+		</if>
+		<if test="code != null">
+			AND CODE = #{code}
 		</if>
 	</select>
 	
