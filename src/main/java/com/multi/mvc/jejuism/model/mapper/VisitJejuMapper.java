@@ -13,11 +13,11 @@ public interface VisitJejuMapper {
 	double selectAvgRate(int no);
 	int selectVCount(Map<String, Object> map);
 	List<VisitJeju> selectVList(Map<String, Object> map);
-	
-	
 	VisitJeju selectVByNo(int no);
-	int insertV(VisitJeju visitJeju);
 	int insertReview(Review review);
+	
+	
+	int insertV(VisitJeju visitJeju);
 	int updateReview(Review review);
 	int deleteReview(int no);
 }

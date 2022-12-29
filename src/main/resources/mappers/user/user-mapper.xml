@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 향후 Mapper interface가 정의 될 위치 -->
+<mapper namespace="com.multi.mvc.user.model.mapper.UserMapper">
+	<sql id="selectMemberSql">
+		SELECT 	
+			NO, ID, PASSWORD, NAME, KAKAOTOKEN, ROLE,
+			STATUS, ENROLL_DATE
+		FROM USER
+	</sql>
+	
+	<resultMap type="User" id="memberResultMap">
+		<id 	property="no" 		column="NO" />
+		<result property="id" 		column="ID" />
+		<result property="password" column="PASSWORD" />
+		<result property="name" 	column="NAME" />
+		<result property="kakaoToken" 	column="KAKAOTOKEN" />
+		<result property="role" 	column="ROLE" />
+		<result property="enrollDate" column="ENROLL_DATE" />
+		<result property="status" 	column="STATUS" />
+	</resultMap>
+	
+	<select id="selectCount" resultType="int">
+		SELECT COUNT(*) FROM MEMBER
+	</select>
+	
+	<select id="selectAll" resultMap="memberResultMap">
+		<include refid="selectMemberSql"/>
+	</select>
+	
+	<select id="selectMember" parameterType="string" resultMap="memberResultMap">
+		<include refid="selectMemberSql"/>
+		WHERE ID = #{id} AND STATUS = 'Y'
+	</select>	
+	
+	<insert id="insertMember" parameterType="User">
+		INSERT INTO USER(
+			NO,	ID, PASSWORD, 	
+			NAME, KAKAOTOKEN, 
+			ROLE,ENROLL_DATE, STATUS
+		) VALUES (
+			 0, #{id}, #{password},
+			 #{name},DEFAULT,
+			 DEFAULT,DEFAULT, DEFAULT)
+	</insert>
+	
+	
+	<!-- 비번 찾기
+	 <update id="updatePwd" parameterType="map">
+	 	UPDATE MEMBER 
+	 		SET PASSWORD = #{newPwd} 
+ 		WHERE NO = #{no}
+	 </update>
+	 -->
+	 
+	 <update id="deleteMember" parameterType="int">
+	 	UPDATE MEMBER 
+	 		SET STATUS = 'N' 
+	 	WHERE NO = #{no}
+	 </update>
+	
+</mapper>

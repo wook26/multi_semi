@@ -22,10 +22,23 @@
 		<result property="avgRate" 		column="AVG_RATE"		/>
 	</resultMap>
 
+	<resultMap type="Review" id="reviewResultMap">
+		<id 	property="no"			column="NO"			/>
+		<result property="vno" 			column="VNO" 		/>	
+		<result property="uno" 			column="UNO" 		/>	
+		<result property="userName"		column="NAME" 		/>
+		<result property="rate" 		column="RATE" 		/>
+		<result property="content" 		column="CONTENT" 	/>	
+		<result property="createDate" 	column="CREATE_DATE"/>
+	</resultMap>
+
+	<resultMap type="VisitJeju" id="visitJejuDetailResultMap" extends="visitJejuResultMap">
+		<collection property="reviews" javaType="arrayList" columnPrefix="R_" resultMap="reviewResultMap"/>
+	</resultMap>
 	
 	<select id="selectVList" resultMap="visitJejuResultMap" parameterType="map">
 		SELECT  
-			NO, ALLTAG, CODE, TITLE, SI, GU, ADDRESS, ROADADDRESS, TAG, INTRODUCTION, LATITUDE, LONGITUDE, Postcode, phoneno, imgpath, avg_Rate
+			NO, ALLTAG, CODE, TITLE, SI, GU, ADDRESS, ROADADDRESS, TAG, INTRODUCTION, LATITUDE, LONGITUDE, POSTCODE, PHONENO, IMGPATH, AVG_RATE
 		FROM VISIT_JEJU
 		WHERE 1=1
 		<if test="code != null">
@@ -55,5 +68,24 @@
 		</if>
 	</select>
 	
+	<select id="selectVByNo" parameterType="int" resultMap="visitJejuDetailResultMap">
+		SELECT  
+			V.NO, V.ALLTAG, V.CODE, V.TITLE, V.ADDRESS, V.ROADADDRESS, V.TAG, V.INTRODUCTION, V.PHONENO, V.LATITUDE, V.LONGITUDE, V.IMGPATH, V.AVG_RATE,
+			R.NO AS R_NO, 
+		    R.VNO AS R_VNO, 
+		    R.CONTENT  AS R_CONTENT, 
+		    U.NAME AS R_NAME, 
+		    R.CREATE_DATE AS R_CREATE_DATE, 
+		    R.MODIFY_DATE AS R_MODIFY_DATE
+		FROM VISIT_JEJU V
+		LEFT OUTER JOIN REVIEW R ON (V.NO = R.VNO)
+		LEFT OUTER JOIN USER U ON (R.UNO = U.NO)
+		WHERE V.NO = #{no}
+	</select>
+	
+	<insert id="insertReview" parameterType="Review">
+		INSERT INTO REVIEW(NO, VNO, UNO, RATE, CONTENT, CREATE_DATE, MODIFY_DATE)
+		VALUES(0, #{vno}, #{uno}, #{rate}, #{content}, #{createDate}, #{modifyDate})
+	</insert>
 	
 </mapper>

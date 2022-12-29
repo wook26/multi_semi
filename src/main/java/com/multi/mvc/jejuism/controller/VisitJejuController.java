@@ -1,5 +1,6 @@
 package com.multi.mvc.jejuism.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,9 +67,11 @@ public class VisitJejuController {
 		} catch (Exception e) {
 		}
 		int vCodeCount = service.selectVCount(searchMap);
-		PageInfo pageInfo = new PageInfo(page, 8, vCodeCount, 12);
+		PageInfo pageInfo = new PageInfo(page, 10, vCodeCount, 12);
 		List<VisitJeju> list = service.selectVList(pageInfo, searchMap);
-		
+		for (VisitJeju visitJeju : list) {
+			visitJeju.setTag("#" + String.join(" #",visitJeju.getTag().split(",")));
+		}
 		model.addAttribute("list", list);
 		model.addAttribute("param", param);
 		model.addAttribute("pageInfo", pageInfo);
@@ -82,10 +85,13 @@ public class VisitJejuController {
 		if(visitJeju == null) {
 			return "redirect:error";
 		}
-		visitJeju.setAvgRate(service.selectAvgRate(no));
+//		visitJeju.setAvgRate(service.selectAvgRate(no));
+		String[] tags = visitJeju.getTag().split(",");
+		model.addAttribute("tags", tags);
+		model.addAttribute("tagsSize", tags.length);
 		model.addAttribute("visitJeju", visitJeju);
 		model.addAttribute("reviewList", visitJeju.getReviews());
-		return "/detail/detail-view";
+		return "/detail/detail-olle";
 	}
 	
 	@GetMapping("/error")
@@ -108,7 +114,7 @@ public class VisitJejuController {
 		}else {
 			model.addAttribute("msg", "리뷰 등록에 실패하였습니다.");
 		}
-		model.addAttribute("location", "/detail/detail-view?no=" + reiew.getVno());
+		model.addAttribute("location", "/detail/detail-olle?no=" + reiew.getVno());
 		return "/common/msg";
 	}
 	

@@ -1,8 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -10,7 +11,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>${param.title}</title>
+  <title>${param.header}</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
@@ -48,6 +49,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/dd4a6a23ab.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body style="padding-top: 72px;">
@@ -56,11 +58,12 @@
     <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
       <div class="container-fluid">
         <a class="d-flex align-items-end ms-2" href="${path}"><img class="logo" src="${path}/resources/image/logoColored.svg"
-            alt="Jeverything logo"></a>
+            alt="Jejuism logo"></a>
         <div class="collapse navbar-collapse ms-8" id="navbarCollapse">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item dropdown text-center"><a class="nav-link dropdown-toggle" id="homeDropdownMenuLink"
-                href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li class="nav-item dropdown text-center"><a class="nav-link dropdown-toggle"
+                id="homeDropdownMenuLink" href="${path}" data-bs-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
                 제주소개/관광</a>
               <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item"
                   href="${path}/category/category-olle">제주명소<span class="badge badge-info-light ms-1 mt-n1">hot</span></a><a
@@ -69,32 +72,39 @@
                   href="category-museum.html">박물관/미술관/전시관</a></div>
             </li>
             <li class="nav-item dropdown text-center"><a class="nav-link dropdown-toggle" id="homeDropdownMenuLink"
-                href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                href="${path}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 맛집</a>
               <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item"
                   href="category-food.html">음식점</a><a class="dropdown-item" href="category-cafe.html">카페<span
-                    class="badge badge-info-light ms-1 mt-n1">hot</span></a>
+                    class="badge badge-info-light ms-1 mt-n1">hot</span></a></div>
             </li>
             <li class="nav-item text-center me-2"><a class="nav-link" href="category-room.html">숙소 </a>
             </li>
             <li class="nav-item dropdown text-center"><a class="nav-link dropdown-toggle" id="docsDropdownMenuLink"
-                href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                href="${path}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 교통</a>
               <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item"
                   href="category-rent.html">렌트<span class="badge badge-info-light ms-1 mt-n1">hot</span></a><a
-                  class="dropdown-item" href="category-flight.html">항공</a>
+                  class="dropdown-item" href="category-flight.html">항공</a></div>
             </li>
             <li class="nav-item dropdown text-center"><a class="nav-link dropdown-toggle" id="docsDropdownMenuLink"
-                href="index.html" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                href="${path}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 커뮤니티</a>
               <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item"
                   href="category-comunity.html">여행후기/일정공유<span
                     class="badge badge-info-light ms-1 mt-n1">hot</span></a><a class="dropdown-item"
-                  href="category-accompany.html">동행모집</a>
+                  href="category-accompany.html">동행모집</a></div>
             </li>
             <div class="d-lg-flex justify-content-end">
-              <li class="nav-item"><a class="nav-link" href="login.html">로그인</a></li>
-              <li class="nav-item"><a class="nav-link" href="signup.html">회원가입</a></li>
+              <c:if test="${loginMember == null}">
+                <li class="nav-item"><a class="nav-link" href="${path}/user/login">로그인</a></li>
+                <li class="nav-item"><a class="nav-link" href="${path}/user/enroll">회원가입</a></li>
+              </c:if>
+              <c:if test="${ loginMember != null }">
+				<%--로그인 된 사용자 정보 보여주는 폼 영역 시작--%>
+				<li class="nav-item dropdown ms-lg-3"><a id="userDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img class="avatar avatar-sm avatar-border-white me-2" src="${path}/resources/image/icon/user.png" alt="user">{$loginMember.name} 님</a>
+				<div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdownMenuLink"><a class="dropdown-item" href="${path}"><i class="fas fa-sign-out-alt me-2 text-muted"></i> 로그아웃</a></div>
+				</c:if>
             </div>
           </ul>
         </div>

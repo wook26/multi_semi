@@ -58,20 +58,22 @@
 	            <li class="nav-item"><a class="nav-link hover" name="nav-click" href="#">#문화관광</a></li>
 	            <li class="nav-item"><a class="nav-link hover" name="nav-click" href="#">#실내관광지</a></li>
 	          </ul>
-	 -->    
-			 <ul class="nav nav-pills-tag">
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="cp_item" value="opt2" ><span>#박물관</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="cp_item" value="opt3" ><span>#미술관</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="cp_item" value="opt4" ><span>#전시관</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="cp_item" value="opt5" ><span>#제주시</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="cp_item" value="opt6" ><span>#서귀포시</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="cp_item" value="opt7" ><span>#문화관광</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="cp_item" value="opt8" ><span>#실내관광지</span></label></li>
-			</ul>
+	 		-->    
           </form>
-
-        
+          <form action="${path}/category/category-olle">
+			 <ul class="nav nav-pills-tag">
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="박물관" onchange="this.form.submit();"><span>#박물관</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="미술관" onchange="this.form.submit();"><span>#미술관</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="전시관" onchange="this.form.submit();"><span>#전시관</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="제주시" onchange="this.form.submit();"><span>#제주시</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="서귀포시" onchange="this.form.submit();"><span>#서귀포시</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="문화관광" onchange="this.form.submit();"><span>#문화관광</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="실내관광지" onchange="this.form.submit();"><span>#실내관광지</span></label></li>
+			  <input type="hidden" id="searchValue" value="${param.search}">
+			</ul>
+		  </form>
         </div>
+        
 
 
       </div>
@@ -91,19 +93,19 @@
 	      <div class="row">
 	        <div class="d-flex align-items-lg-stretch mb-4 col-lg-8">
 	          <div class="card shadow-lg border-0 w-100 border-0 hover-animate"
-	            style="background: center center url(${path}/resources/img/photo/photo-1449034446853-66c86144b0ad.jpg) no-repeat; background-size: cover;">
+	            style="background: center center url(${path}/resources/image/img/recom1.jpg) no-repeat; background-size: cover;">
 	            <a class="tile-link" href="detail-olle.html"> </a>
 	            <div class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
-	              <h3 class="text-shadow text-uppercase mb-0">San Francisco</h3>
+	              <h3 class="text-shadow text-uppercase mb-0">한라산국립공원</h3>
 	            </div>
 	          </div>
 	        </div>
 	        <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
 	          <div class="card shadow-lg border-0 w-100 border-0 hover-animate"
-	            style="background: center center url(${path}/resources/img/photo/photo-1429554429301-1c7d5ae2d42e.jpg) no-repeat; background-size: cover;">
+	            style="background: center center url(${path}/resources/image/img/recom2.jpg) no-repeat; background-size: cover;">
 	            <a class="tile-link" href="detail-olle.html"> </a>
 	            <div class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
-	              <h3 class="text-shadow text-uppercase mb-0">Los Angeles</h3>
+	              <h3 class="text-shadow text-uppercase mb-0">사려니숲길</h3>
 	            </div>
 	          </div>
 	        </div>
@@ -111,28 +113,28 @@
 	      <div class="row">
 	        <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
 	          <div class="card shadow-lg border-0 w-100 border-0 hover-animate"
-	            style="background: center center url(${path}/resources/img/photo/photo-1523430410476-0185cb1f6ff9.jpg) no-repeat; background-size: cover;">
+	            style="background: center center url(${path}/resources/image/img/recom3.jpg) no-repeat; background-size: cover;">
 	            <a class="tile-link" href="detail-olle.html"> </a>
 	            <div class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
-	              <h3 class="text-shadow text-uppercase mb-0">Santa Monica</h3>
+	              <h3 class="text-shadow text-uppercase mb-0">협재해수욕장</h3>
 	            </div>
 	          </div>
 	        </div>
 	        <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
 	          <div class="card shadow-lg border-0 w-100 border-0 hover-animate"
-	            style="background: center center url(${path}/resources/img/photo/photo-1505245208761-ba872912fac0.jpg) no-repeat; background-size: cover;">
+	            style="background: center center url(${path}/resources/image/img/recom4.png) no-repeat; background-size: cover;">
 	            <a class="tile-link" href="detail-olle.html"> </a>
 	            <div class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
-	              <h3 class="text-shadow text-uppercase mb-0">San Diego</h3>
+	              <h3 class="text-shadow text-uppercase mb-0">에코랜드 테마파크</h3>
 	            </div>
 	          </div>
 	        </div>
 	        <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
 	          <div class="card shadow-lg border-0 w-100 border-0 hover-animate"
-	            style="background: center center url(${path}/resources/img/photo/photo-1519867850-74775a87e783.jpg) no-repeat; background-size: cover;">
+	            style="background: center center url(${path}/resources/image/img/recom5.jpg) no-repeat; background-size: cover;">
 	            <a class="tile-link" href="detail-olle.html"> </a>
 	            <div class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
-	              <h3 class="text-shadow text-uppercase mb-0">Fresno</h3>
+	              <h3 class="text-shadow text-uppercase mb-0">성산일출봉</h3>
 	            </div>
 	          </div>
 	        </div>
@@ -155,28 +157,26 @@
       	
 	        <div class="col-3 hover-animate mb-4" data-marker-id="59c0c8e33b1527bfe2abaf92">
 	          <div class="card h-100 border-0 shadow">
-	            <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid"
-	                src="${item.imgpath}" alt="Modern, Well-Appointed Room" /><a
-	                class="tile-link" href="detail-rooms.html"></a>
+	            <div class="card-img-top overflow-hidden gradient-overlay">
+	            	<div style="height: 200px;">
+		            	<img class="img-fluid" style="object-fit: cover;"
+		                src="${item.imgpath}" alt="Modern, Well-Appointed Room" /><a
+		                class="tile-link" href="${path}/detail/detail-olle?no=${item.no}"></a>
+	            	</div>
 	              <div class="card-img-overlay-bottom z-index-20">
 	              </div>
-	              <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40"
-	                  href="javascript: void();">
-	                  <svg class="svg-icon text-white">
-	                    <use xlink:href="#heart-1"> </use>
-	                  </svg></a></div>
 	            </div>
 	            <div class="card-body d-flex align-items-center">
 	              <div class="w-100">
-	                <h6 class="card-title"><a class="text-decoration-none text-dark" href="detail-rooms.html">${item.title}</a></h6>
+	                <h5 class="card-title"><a class="text-decoration-none text-dark" href="detail-rooms.html">${item.title}</a></h5>
 	                <div class="d-flex card-subtitle mb-3">
-	                  <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
+	                  <p class="flex-grow-1 mb-0 text-muted">${item.si} > ${item.gu}</p>
 	                  <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i
 	                      class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
 	                      class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
 	                  </p>
 	                </div>
-	                <p class="card-text text-muted"><span class="h4 text-primary">$80</span> per night</p>
+	                <p class="card-text text-muted">${item.tag}</p>
 	              </div>
 	            </div>
 	          </div>
@@ -189,13 +189,27 @@
     <!-- Pagination -->
     <nav aria-label="Page navigation pt-3">
       <ul class="pagination pagination-template d-flex justify-content-center">
-        <li class="page-item"><a class="page-link" href="#"> <i class="fa fa-angle-left"></i></a></li>
-        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#"> <i class="fa fa-angle-right"></i></a></li>
+        <li class="page-item"><a class="page-link" onclick="movePage('${path}/category/category-olle?page=${pageInfo.prevPage}');"> <i class="fa fa-angle-left"></i></a></li>
+        
+        <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" step="1" varStatus="status">
+			<c:if test="${status.current == pageInfo.currentPage}">
+				<li class="page-item active"><a class="page-link">${status.current}</a></li>
+			</c:if>
+			<c:if test="${status.current != pageInfo.currentPage}">
+				<li class="page-item"><a class="page-link" onclick="movePage('${path}/category/category-olle?page=${status.current}');">${status.current}</a></li>
+			</c:if>
+		</c:forEach>
+        <li class="page-item"><a class="page-link" onclick="movePage('${path}/category/category-olle?page=${pageInfo.nextPage}');"> <i class="fa fa-angle-right"></i></a></li>
       </ul>
     </nav>
   </section>
+  
+  <script type="text/javascript">
+	function movePage(pageUrl){
+		var search = document.getElementById("searchValue").value; // 갤럭시
+		pageUrl = pageUrl + '&search=' + search; 
+		location.href = encodeURI(pageUrl);	
+	}
+</script>
   
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
