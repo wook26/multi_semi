@@ -16,7 +16,7 @@ public class MemberService {
 
 	@Autowired
 	private MemberMapper mapper;
-	
+	 
 	@Autowired
 	private BCryptPasswordEncoder pwEncoder; //  SHA-256 hash code로 패스워드 일방향 암호 지원 모듈
 	// 1234 -> nsikldvnisoldjhv2423jo23 (평문 -> hashCode)
@@ -53,10 +53,10 @@ public class MemberService {
 		if(member.getNo() == 0) { // 회원가입
 			String encodePW = pwEncoder.encode(member.getPassword());
 			member.setPassword(encodePW);
-			result = mapper.insertMember(member);
-		}else { // 회원 수정
-			result = mapper.updateMember(member);
-		}
+			result = mapper.insertMember(member);}
+//		else { // 회원 수정
+//			result = mapper.updateMember(member);
+//		}
 		return result;
 	}
 	

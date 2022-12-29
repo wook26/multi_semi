@@ -33,7 +33,7 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
-	@Autowired
+	@Autowired 
 	private KaKaoService kakaoService;
 	
 	@GetMapping("/member/login")
@@ -41,6 +41,8 @@ public class MemberController {
 	//	log.info("로그인 페이지 요청");
 		return "/member/login";
 	}
+	
+	
 	
 //	@RequestMapping(name = "/login", method = RequestMethod.POST )
 	@PostMapping("/member/login")

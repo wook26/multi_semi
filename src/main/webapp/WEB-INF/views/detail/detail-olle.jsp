@@ -179,11 +179,12 @@
 								<div>
 									<h6 class="mt-2 mb-1">${review.userName}</h6>
 									<div class="mb-2">
-										<i class="fa fa-xs fa-star text-primary"></i><i
-											class="fa fa-xs fa-star text-primary"></i><i
-											class="fa fa-xs fa-star text-primary"></i><i
-											class="fa fa-xs fa-star text-primary"></i><i
-											class="fa fa-xs fa-star text-primary"></i>
+										<c:forEach var="i" begin="1" end="${review.rate}">
+											<i class="fa fa-xs fa-star text-primary"></i>
+										</c:forEach>
+										<c:forEach var="i" begin="${review.rate}" end="4">
+											<i class="fa fa-xs fa-star text-gray-300"></i>
+										</c:forEach>
 									</div>
 									<p class="text-muted text-sm">${review.content}</p>
 								</div>
@@ -202,19 +203,24 @@
 							작성하기</button>
 						<div class="collapse mt-4" id="leaveReview">
 							<h5 class="mb-4">리뷰 작성</h5>
-							<form class="form" id="contact-form" method="get" action="#">
+							<form class="form" id="contact-form" method="post" action="${path}/category/category-olle/review">
 								<div class="row">
 									<div class="col-sm-6">
 										<div class="mb-4">
+											<input type="hidden" name="vno" value="${visitJeju.no}"/>
+											<c:set var="name" value="${loginMember.name}" />
+											<c:set var="totalLength" value="${fn:length(name) }" />
+											<c:set var="first" value="${fn:substring(name, 0, 1) }" />
+											<c:set var="last" value="${fn:substring(name, 2, totalLength) }" />
 											<label class="form-label" for="name">작성자 *</label> <input
 												class="form-control" type="text" name="name" id="name"
-												placeholder="작성자를 적어주세요." required="required">
+												placeholder="<c:if test="${!empty  name}"><c:out value="${first}*${last}"/></c:if>" readonly>
 										</div>
 									</div>
 									<div class="col-sm-6">
 										<div class="mb-4">
 											<label class="form-label" for="rating">별점 *</label> <select
-												class="form-select focus-shadow-0" name="rating" id="rating">
+												class="form-select focus-shadow-0" name="rate" id="rate">
 												<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;
 													(5/5)</option>
 												<option value="4">&#9733;&#9733;&#9733;&#9733;&#9734;
@@ -231,8 +237,8 @@
 								</div>
 								<div class="mb-4">
 									<label class="form-label" for="review">내용 *</label>
-									<textarea class="form-control" rows="4" name="review"
-										id="review"
+									<textarea class="form-control" rows="4" name="content"
+										id="reviewContent"
 										placeholder="자세하고 꼼꼼한 리뷰를 작성해주시면 다른 여행자에게 큰 도움이 됩니다."
 										required="required"></textarea>
 								</div>

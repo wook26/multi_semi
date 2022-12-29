@@ -114,7 +114,7 @@ public class VisitJejuController {
 		return "/common/error";
 	}
 	
-	@RequestMapping("/review")
+	@RequestMapping("/category/category-olle/review")
 	public String writeReply(Model model, 
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
 			@ModelAttribute Review reiew

@@ -89,7 +89,7 @@
             </li>
             <li class="nav-item dropdown text-center"><a class="nav-link dropdown-toggle" id="docsDropdownMenuLink"
                 href="${path}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                커뮤니티</a>
+                커뮤니티</a> 
               <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item"
                   href="category-comunity.html">여행후기/일정공유<span
                     class="badge badge-info-light ms-1 mt-n1">hot</span></a><a class="dropdown-item"
@@ -102,7 +102,7 @@
               </c:if>
               <c:if test="${ loginMember != null }">
 				<%--로그인 된 사용자 정보 보여주는 폼 영역 시작--%>
-				<li class="nav-item dropdown ms-lg-3"><a id="userDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img class="avatar avatar-sm avatar-border-white me-2" src="${path}/resources/image/icon/user.png" alt="user">{$loginMember.name} 님</a>
+				<li class="nav-item dropdown ms-lg-3"><a id="userDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img class="avatar avatar-sm avatar-border-white me-2" src="${path}/resources/image/icon/user.png" alt="user"> ${loginMember.name} 님</a>
 				<div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdownMenuLink"><a class="dropdown-item" href="${path}"><i class="fas fa-sign-out-alt me-2 text-muted"></i> 로그아웃</a></div>
 				</c:if>
             </div>

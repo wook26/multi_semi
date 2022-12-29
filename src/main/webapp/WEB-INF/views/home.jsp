@@ -439,7 +439,7 @@
                       <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i
                           class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
                           class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
-                          class="fa fa-star text-gray-300"> </i>
+                          class="fa fa-star text-gray-300"></i>
                       </p>
                     </div>
                     <p class="card-text text-muted"><span class="h4 text-primary">$121</span> per night</p>

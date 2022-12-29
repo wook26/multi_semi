@@ -73,13 +73,14 @@
 			V.NO, V.ALLTAG, V.CODE, V.TITLE, V.ADDRESS, V.ROADADDRESS, V.TAG, V.INTRODUCTION, V.PHONENO, V.LATITUDE, V.LONGITUDE, V.IMGPATH, V.AVG_RATE,
 			R.NO AS R_NO, 
 		    R.VNO AS R_VNO, 
-		    R.CONTENT  AS R_CONTENT, 
+		    R.CONTENT  AS R_CONTENT,
+		    R.RATE AS R_RATE,
 		    U.NAME AS R_NAME, 
 		    R.CREATE_DATE AS R_CREATE_DATE, 
 		    R.MODIFY_DATE AS R_MODIFY_DATE
 		FROM VISIT_JEJU V
 		LEFT OUTER JOIN REVIEW R ON (V.NO = R.VNO)
-		LEFT OUTER JOIN USER U ON (R.UNO = U.NO)
+		LEFT OUTER JOIN MEMBER U ON (R.UNO = U.NO)
 		WHERE V.NO = #{no}
 	</select>
 	
@@ -94,7 +95,8 @@
 	
 	<insert id="insertReview" parameterType="Review">
 		INSERT INTO REVIEW(NO, VNO, UNO, RATE, CONTENT, CREATE_DATE, MODIFY_DATE)
-		VALUES(0, #{vno}, #{uno}, #{rate}, #{content}, #{createDate}, #{modifyDate})
+		VALUES(0, #{vno}, #{uno}, #{rate}, #{content}, DEFAULT, DEFAULT)
 	</insert>
+	
 	
 </mapper>
