@@ -53,10 +53,10 @@ public class MemberService {
 		if(member.getNo() == 0) { // 회원가입
 			String encodePW = pwEncoder.encode(member.getPassword());
 			member.setPassword(encodePW);
-			result = mapper.insertMember(member);
-		}else { // 회원 수정
-			result = mapper.updateMember(member);
-		}
+			result = mapper.insertMember(member);}
+//		else { // 회원 수정
+//			result = mapper.updateMember(member);
+//		}
 		return result;
 	}
 	
@@ -74,13 +74,14 @@ public class MemberService {
 		return mapper.deleteMember(no);
 	}
 	
-	@Transactional(rollbackFor = Exception.class)
-	public int updatePwd(Member loginMember, String userPW) {
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("no", "" + loginMember.getNo());
-		map.put("newPwd", pwEncoder.encode(userPW));
-		return mapper.updatePwd(map);
-	}
+// 비번 바꾸기	
+//	@Transactional(rollbackFor = Exception.class)
+//	public int updatePwd(Member loginMember, String userPW) {
+//		Map<String, String> map = new HashMap<String, String>();
+//		map.put("no", "" + loginMember.getNo());
+//		map.put("newPwd", pwEncoder.encode(userPW));
+//		return mapper.updatePwd(map);
+//	}
 	
 	public Member loginKaKao(String kakaoToken) {
 		Member member = mapper.selectMemberByKakaoToken(kakaoToken);

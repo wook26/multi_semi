@@ -17,8 +17,8 @@ public interface MemberMapper {
 	List<Member> selectAll();
 	Member selectMember(@Param("id") String id); // @Param : 파라메터임을 알리는 어노테이션. 없어 된다.
 	int insertMember(Member member);
-	int updateMember(Member member);
-	int updatePwd(Map<String, String> map);
+//	int updateMember(Member member);
+//	int updatePwd(Map<String, String> map);
 	int deleteMember(int no);
 	Member selectMemberByKakaoToken(String kakaoToken);
 }
