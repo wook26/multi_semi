@@ -57,7 +57,7 @@
 	              <hr class="my-3 hr-text letter-spacing-2" data-content="OR">
 	              <div class="d-grid gap-2">
 	                <button class="btn btn-social kakao"><img class="btn-social-icon" src="${path}/resources/image/kakao.svg">
-	                	<a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=f535aeafadc3e2dee406558334647304&redirect_uri=http://localhost/mvc/user/login">카카오 아이디로 <span class="d-none d-sm-inline">로그인</span></a>
+	                	<a class="kakao" href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=f535aeafadc3e2dee406558334647304&redirect_uri=http://localhost/mvc/user/login">카카오 아이디로 <span class="d-none d-sm-inline">로그인</span></a>
 	                </button>
 	                <button class="btn btn-social naver"><img class="btn-social-icon" src="${path}/resources/image/naver.svg">네이버 아이디로 <span class="d-none d-sm-inline">로그인</span></button>
 	              </div>
@@ -68,7 +68,7 @@
 	              	</small>
 	              </p>
             </form>
-            <a class="close-absolute me-md-5 me-xl-6 pt-5" href="index.html"> 
+            <a class="close-absolute me-md-5 me-xl-6 pt-5" href="${path}"> 
               <svg class="svg-icon w-3rem h-3rem">
                 <use xlink:href="#close-1"> </use>
               </svg></a>

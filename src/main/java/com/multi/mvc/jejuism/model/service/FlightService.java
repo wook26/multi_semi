@@ -1,32 +1,20 @@
-package com.jeverything.model.service;
+package com.multi.mvc.jejuism.model.service;
 
-import static com.jeverything.common.JDBCTemplate.commit;
-import static com.jeverything.common.JDBCTemplate.openConnection;
-import static com.jeverything.common.JDBCTemplate.rollback;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.sql.Connection;
+import com.multi.mvc.jejuism.model.mapper.FlightMapper;
+import com.multi.mvc.jejuism.model.vo.Flight;
 
-import com.jeverything.model.dao.FlightDao;
-import com.jeverything.model.vo.Flight;
-
+@Service
 public class FlightService {
-
-	private FlightDao dao = new FlightDao();
-	private Connection conn = null;
 	
-	public FlightService() {
-		conn = openConnection();
-	}
-
-	public int insert(Flight flight) {
-		int result = dao.insert(conn, flight);
-		if(result > 0) {
-			commit(conn);
-		}else {
-			rollback(conn);
-		}
+	@Autowired
+	private FlightMapper mapper;
+	
+	public int insertF(Flight flight) {
+		int result = 0;
+		result = mapper.insertF(flight);
 		return result;
 	}
-
-	
 }

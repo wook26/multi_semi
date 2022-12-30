@@ -1,153 +1,199 @@
 package com.multi.mvc.jejuism.api;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.jeverything.model.vo.Flight;
+import com.multi.mvc.jejuism.model.vo.Flight;
 
 public class FlightApiManager {
 
-	public static final String KEY = "hI%2Fi1UtBPWuP6lSyMMBdHq82V9sGbso%2BJMHxipv3PEgJvd8NUMTAPEhCLzkMO48DkSbBL5eHT09YNx5Af%2FBjTA%3D%3D";
-	public static final String FLIGHT_JSON_URL = "https://api.odcloud.kr/api/15043890/v1/uddi:9840de90-5907-49bd-94ed-acd173ea9ae1";
+	public static final String KEY = "hI%2Fi1UtBPWuP6lSyMMBdHq82V9sGbso%2BJMHxipv3PEgJvd8NUMTAPEhCLzkMO48DkSbBL5eHT09YNx5Af%2FBjTA%3D%3D&";
+	public static final String FLIGHT_XML_URL  = "http://openapi.airport.co.kr/service/rest/FlightScheduleList/getDflightScheduleList";
 
+	public static final SimpleDateFormat sdf1 = new SimpleDateFormat("yyyyMMdd");
+	public static final SimpleDateFormat sdf2 = new SimpleDateFormat("HHmm");
+	
 	public static void main(String[] args) {
-		List<Flight> list = parsingFlight();
-		for (Flight f : list) {
+		Calendar cal = Calendar.getInstance();
+		
+		List<Flight> list = parsingFlight(cal.getTime(), "schDeptCityCode");
+		for(Flight f : list) {
 			System.out.println(f.toString());
 		}
 	}
+	
+	public static int pageCount(String searchDate, String doA) {
+		int result = 0;
+		
+		StringBuffer urlBuffer = new StringBuffer();		
+		urlBuffer.append(FLIGHT_XML_URL);
+		urlBuffer.append("?serviceKey=" + KEY);
+		urlBuffer.append("&schDate=" + searchDate);
+		urlBuffer.append("&" + doA + "=CJU");
+		
+		System.out.println(urlBuffer);
 
-	public static List<Flight> parsingFlight() {
-		List<Flight> list = new ArrayList<>();
 		try {
-			// 1. URL을 가공하는 코드 시작
-			StringBuilder urlBuilder = new StringBuilder(FLIGHT_JSON_URL);
-			
-			// 간단한 버전 = 영문과 숫자로만 필요할때
-			urlBuilder.append("?" + "page=" + 1); // 첫번째만 물음표로 요청 필요!
-			urlBuilder.append("&" + "perPage=" + "1110");
-			urlBuilder.append("&" + "serviceKey=" + KEY);
-			
-			System.out.println(urlBuilder.toString());
-			// 1. URL을 가공하는 코드 끝
-			
-			// 2. URL을 HTTP 객체를 통해 요청하는 코드 시작
-			URL url = new URL(urlBuilder.toString());
+			URL url = new URL(urlBuffer.toString());
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Accept", "application/xml");
+			int code = conn.getResponseCode(); 
+			System.out.println("ResponseCode : " + code); 
 			
-			// setRequestProperty 이부분은 API마다 권장하는 방식 따로 있어서 반드시 문서 참고바람, 예제코드 참고필요
-			//conn.setRequestProperty("Content-type", "application/json");
-//				conn.setRequestProperty("Accept", "application/xml");
-			
-			int result = conn.getResponseCode(); // 실제 page를 요청하는 코드부
-			System.out.println("ResponseCode : " + result);
-			if (result < 200 || result >= 300) {
+			if(code < 200 || code > 300) {
 				System.out.println("페이지가 잘못되었습니다.");
-				return list;
+				return 0;
 			}
-			// 2. URL을 HTTP 객체를 통해 요청하는 코드 끝
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			 
+			Document doc = db.parse(conn.getInputStream()); 
 			
-			// 3. JSON 파싱부 시작!
-			InputStreamReader isr = new InputStreamReader(conn.getInputStream(), "UTF-8");
-			BufferedReader br = new BufferedReader(isr);
+			doc.getDocumentElement().normalize();
 			
-			JSONParser jsonParser = new JSONParser(); 
-			JSONObject rootObj = (JSONObject) jsonParser.parse(br);
-			//JSONObject childObj = (JSONObject) rootObj.get("items");
-			JSONArray data = (JSONArray) rootObj.get("data");
-			for(int j = 0; j < data.size(); j++) {
-				JSONObject obj = (JSONObject) data.get(j);
-				String model = getStrData(obj, "기종");
-				String arrAirport = getStrData(obj, "도착공항");
-				String arrTime = getStrData(obj, "도착시간");
-				String startDate = getStrData(obj, "시작일자");
-				String flightDay = getStrData(obj, "운항요일");
-				String endDate = getStrData(obj, "종료일자");
-				String depAirport = getStrData(obj, "출발공항");
-				String depTime = getStrData(obj, "출발시간");
-				String flightNo = getStrData(obj, "편명");
-				String airline = getStrData(obj, "항공사");
-				Flight flight = new Flight(model, arrAirport, arrTime, startDate, flightDay, endDate, depAirport, depTime, flightNo, airline);
-				list.add(flight);
+			NodeList nList = doc.getElementsByTagName("body");
+			for(int i = 0; i < nList.getLength(); i++) {
+				Node node = nList.item(i);
+				if(node.getNodeType() == Node.ELEMENT_NODE) {
+					try {
+						Element eElement = (Element) node;
+						int res = getIntData(eElement, "totalCount"); 
+						if(res % 10 == 0) {
+							result = res / 10;
+						}else {
+							result = (res / 10) + 1;
+						}
+						return result;
+					}catch(Exception e) {}
 				}
-		}catch(Exception e) {
-			e.printStackTrace();
+			}
+		}catch(Exception e) {}
+		return 0;
+	}
+	
+	public static List<Flight> parsingFlight(Date searchDate, String doA) {
+		String dateStr = sdf1.format(searchDate);
+		List<Flight> list = new ArrayList<>();
+		int pageCount = pageCount(dateStr, doA);
+		System.out.println(pageCount);
+		
+		for (int i = 0; i < pageCount; i++) {
+			StringBuffer urlBuffer = new StringBuffer();
+			urlBuffer.append(FLIGHT_XML_URL);
+			urlBuffer.append("?serviceKey=" + KEY);
+			urlBuffer.append("&schDate=" + dateStr);
+			urlBuffer.append("&" + doA + "CJU");
+			urlBuffer.append("&pageNo=" + (i + 1));
+			
+			
+			System.out.println(urlBuffer);
+			
+			try {
+				URL url = new URL(urlBuffer.toString());
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				conn.setRequestMethod("GET");
+				conn.setRequestProperty("Accept", "application/xml");
+				int code = conn.getResponseCode(); 
+				System.out.println("ResponseCode : " + code); 
+				
+				if(code < 200 || code > 300) {
+					System.out.println("페이지가 잘못되었습니다.");
+					return null;
+				}
+				DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+				DocumentBuilder db = dbf.newDocumentBuilder();
+				
+				Document doc = db.parse(conn.getInputStream()); 
+				
+				doc.getDocumentElement().normalize();
+				
+				NodeList nList = doc.getElementsByTagName("item");
+				for(int j = 0; j < nList.getLength(); j++) {
+					Node node = nList.item(j);
+					if(node.getNodeType() == Node.ELEMENT_NODE) {
+						try {
+							Element eElement = (Element) node;
+							String airlineKorean = getStrData(eElement, "airlineKorean");               
+							String startcity = getStrData(eElement, "startcity");                
+							String arrivalcity = getStrData(eElement, "arrivalcity");              
+							Date domesticStartTime = getTimeData(eElement, "domesticStartTime");         
+							Date domesticArrivalTime = getTimeData(eElement, "domesticArrivalTime");         
+							Date domesticStdate = getDateData(eElement, "domesticStdate");         
+							Date domesticEddate = getDateData(eElement, "domesticEddate");         
+							String domesticMon = getStrData(eElement, "domesticMon");         
+							String domesticTue = getStrData(eElement, "domesticTue");              
+							String domesticWed = getStrData(eElement, "domesticWed");             
+							String domesticThu = getStrData(eElement, "domesticThu");  
+							String domesticFri = getStrData(eElement, "domesticFri");             
+							String domesticSat = getStrData(eElement, "domesticSat");             
+							String domesticSun = getStrData(eElement, "domesticSun");           
+							String domesticNum = getStrData(eElement, "domesticNum");             
+							Flight flight = new Flight(airlineKorean, startcity, arrivalcity, domesticStartTime, domesticArrivalTime, domesticStdate, domesticEddate, domesticMon, domesticTue, domesticWed, domesticThu, domesticFri, domesticSat, domesticSun, domesticNum);
+							list.add(flight);
+						} catch (Exception e){
+							System.out.println("데이터가 잘못되었습니다!");
+						}
+					}
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 		return list;
 	}
-
-	private static String getStrData(JSONObject obj, String key) {
-		String str = (String) obj.get(key);
-		if (str == null) {
+			
+	private static String getStrData(Element eElement, String tagName){
+		try {
+			return eElement.getElementsByTagName(tagName).item(0).getTextContent();
+		} catch (Exception e) {
 			return "-";
-		} else {
-			return str;
 		}
 	}
-
-	public static final SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
-
-	private static Date getDateData(JSONObject obj, String key) {
-		String str = (String) obj.get(key);
-		if (str != null) {
-			try {
-				return sdf2.parse(str);
-			} catch (Exception e) {
-			}
+	
+	private static int getIntData(Element eElement, String tagName){
+		try {
+			return Integer.parseInt(eElement.getElementsByTagName(tagName).item(0).getTextContent());
+		} catch (Exception e) {
+			return 0;
 		}
-		return null;
 	}
-
-	private static long getLongData(JSONObject obj, String key) {
-		String str = (String) obj.get(key);
-		if (str != null) {
-			try {
-				return Long.parseLong(str);
-			} catch (Exception e) {
-			}
+	
+	private static Date getDateData(Element eElement, String tagName){
+		try {
+//			System.out.println(eElement.getElementsByTagName(tagName).item(0).getTextContent());
+			Date date = sdf1.parse(eElement.getElementsByTagName(tagName).item(0).getTextContent());
+//			System.out.println(date);
+			return date;
+		} catch (Exception e) {
+			return null;
 		}
-		return 0;
 	}
-
-	private static int getIntData(JSONObject obj, String key) {
-		String str = (String) obj.get(key);
-		if (str != null) {
-			try {
-				return Integer.parseInt(str);
-			} catch (Exception e) {
-			}
+	
+	private static Date getTimeData(Element eElement, String tagName){
+		try {
+//			System.out.println(eElement.getElementsByTagName(tagName).item(0).getTextContent());
+			Date date = sdf2.parse(eElement.getElementsByTagName(tagName).item(0).getTextContent());
+//			System.out.println(date);
+			return date;
+		} catch (Exception e) {
+			return null;
 		}
-		return 0;
 	}
-
-	private static double getDoubleData(JSONObject obj, String key) {
-		String str = String.valueOf(obj.get(key));
-		if (str != null) {
-			try {
-				return Double.valueOf(str).doubleValue();
-			} catch (Exception e) {
-			}
-		}
-		return 0;
-	}
-
+	
+	
 }
-

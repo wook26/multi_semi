@@ -15,7 +15,8 @@ public interface VisitJejuMapper {
 	List<VisitJeju> selectVList(Map<String, Object> map);
 	VisitJeju selectVByNo(int no);
 	int insertReview(Review review);
-	
+	List<VisitJeju> selectVListForO();
+	int selectVCountForO();
 	
 	int insertV(VisitJeju visitJeju);
 	int updateReview(Review review);

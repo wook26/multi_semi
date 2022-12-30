@@ -29,19 +29,19 @@ public class VisitJejuController {
 	@Autowired
 	private VisitJejuService service;
 	
-	@GetMapping("/api-init")
-	public void apiInit() {
-		for (int i = 1; i < 6; i++) {
-			if (i == 2) {
-				continue;
-			}
-			List<VisitJeju> list = VisitJejuApiManager.parsingVisitJeju("c" + i);
-			for(VisitJeju v : list) {
-				System.out.println(v);
-				service.insertV(v);
-			}
-		}
-	}
+//	@GetMapping("/api-init")
+//	public void apiInit() {
+//		for (int i = 1; i < 6; i++) {
+//			if (i == 2) {
+//				continue;
+//			}
+//			List<VisitJeju> list = VisitJejuApiManager.parsingVisitJeju("c" + i);
+//			for(VisitJeju v : list) {
+//				System.out.println(v);
+//				service.insertV(v);
+//			}
+//		}
+//	}
 	
 	@GetMapping("/category/search-page")
 	public String vList(Model model, @RequestParam Map<String, String> param) {
@@ -72,18 +72,9 @@ public class VisitJejuController {
 	@RequestMapping("/category/category-olle")
 	public String categoryView(Model model, @RequestParam Map<String, String> param) {
 		int page = 1;
-		Map<String, Object> searchMap = new HashMap<>();
-		try {
-			String category = param.get("code");
-			searchMap.put("code", category);
-			String search = param.get("search");
-			searchMap.put("search", search);
-			page = Integer.parseInt(param.get("page"));
-		} catch (Exception e) {
-		}
-		int vCodeCount = service.selectVCount(searchMap);
+		int vCodeCount = service.selectVCountForO();
 		PageInfo pageInfo = new PageInfo(page, 10, vCodeCount, 12);
-		List<VisitJeju> list = service.selectVList(pageInfo, searchMap);
+		List<VisitJeju> list = service.selectVListForO();
 		for (VisitJeju visitJeju : list) {
 			visitJeju.setTag("#" + String.join(" #",visitJeju.getTag().split(",")));
 		}

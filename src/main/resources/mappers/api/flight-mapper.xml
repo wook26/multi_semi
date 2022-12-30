@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.multi.mvc.jejuism.model.mapper.FlightMapper">
+
+	<resultMap type="VisitJeju" id="visitJejuResultMap">
+		<id 	property="airlineKorean" 			column="AIRLINE_KOREAN"			/>
+		<result property="startcity" 				column="STARTCITY"				/>
+		<result property="arrivalcity" 				column="ARRIVALCITY"			/>
+		<result property="domesticStartTime" 		column="DOMESTIC_START_TIME"	/>
+		<result property="domesticArrivalTime" 		column="DOMESTIC_ARRIVAL_TIME"	/>
+		<result property="domesticStdate" 			column="DOMESTIC_STDATE"		/>
+		<result property="domesticEddate" 			column="DOMESTIC_EDDATE"		/>
+		<result property="domesticMon" 				column="DOMESTIC_MON"			/>
+		<result property="domesticTue" 				column="DOMESTIC_TUE"			/>
+		<result property="domesticWed" 				column="DOMESTIC_WED"			/>
+		<result property="domesticThu" 				column="DOMESTIC_THU"			/>
+		<result property="domesticFri" 				column="DOMESTIC_FRI"			/>
+		<result property="domesticSat" 				column="DOMESTIC_SAT"			/>
+		<result property="domesticSun" 				column="DOMESTIC_SUN"			/>
+		<result property="domesticNum" 				column="DOMESTIC_NUM"			/>
+	</resultMap>
+	
+	<insert id="insertF" parameterType="Flight">
+		INSERT INTO FLIGHT(AIRLINE_KOREAN, STARTCITY, ARRIVALCITY, DOMESTIC_START_TIME, DOMESTIC_ARRIVAL_TIME, DOMESTIC_STDATE, DOMESTIC_EDDATE,
+			DOMESTIC_MON, DOMESTIC_TUE, DOMESTIC_WED, DOMESTIC_THU, DOMESTIC_FRI, DOMESTIC_SAT, DOMESTIC_SUN, DOMESTIC_NUM)
+		VALUES(#{airlineKorean}, #{startcity}, #{arrivalcity}, #{domesticStartTime}, #{domesticArrivalTime}, #{domesticStdate}, #{domesticEddate},
+			#{domesticMon}, #{domesticTue}, #{domesticWed}, #{domesticThu}, #{domesticFri},#{domesticSat},#{domesticSun},#{domesticNum})
+	</insert>
+
+</mapper>

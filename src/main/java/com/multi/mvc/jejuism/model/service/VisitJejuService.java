@@ -32,6 +32,13 @@ public class VisitJejuService {
 		return mapper.selectVCount(param);
 	}
 	
+	public List<VisitJeju> selectVListForO(){
+		return mapper.selectVListForO();
+	}
+	
+	public int selectVCountForO() {
+		return mapper.selectVCountForO();
+	}
 	
 	@Transactional(rollbackFor = Exception.class)
 	public VisitJeju selectVByNo(int visitJejuNo) {

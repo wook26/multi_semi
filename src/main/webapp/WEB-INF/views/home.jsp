@@ -606,12 +606,73 @@
       </div>
     </div>
   </section>
+  <!-- Community Section -->
+  <section class="container">
+  	<div class = "row">
+	    <div class="col-5 container my-6">
+	      <div class="row mb-2">
+	        <div class="col-md-8">
+	          <p class="subtitle text-primary">제주 여행가들의 생생한</p>
+	          <h2 class="font-Tenada">여행후기/일정공유 </h2>
+	        </div>
+	        <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a class="text-muted text-sm"
+	            href="${path}/category/">
+	            더 둘러보기<i class="fas fa-angle-double-right ms-2"></i></a></div>
+	      </div>
+	      <table class="table text-start">
+	        <tr>
+	          <td><a href="#">후기 1</a></td>
+	        </tr>
+	        <tr>
+	          <td><a href="#">후기 1</a></td>
+	        </tr>
+	        <tr>
+	          <td><a href="#">후기 1</a></td>
+	        </tr>
+	        <tr>
+	          <td><a href="#">후기 1</a></td>
+	        </tr>
+	        <tr>
+	          <td class="border-0"><a href="#">후기 1</a></td>
+	        </tr>
+	      </table>
+	    </div>
+	    <div class="col-5 container my-6">
+	      <div class="row mb-2">
+	        <div class="col-md-8">
+	          <p class="subtitle text-primary">설레는 새 여행을 함께할</p>
+	          <h2 class="font-Tenada">동행모집 </h2>
+	        </div>
+	        <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a class="text-muted text-sm"
+	            href="category-room.html">
+	            더 둘러보기<i class="fas fa-angle-double-right ms-2"></i></a></div>
+	      </div>
+	      <table class="table text-start">
+	        <tr>
+	          <td><a href="#">후기 1</a></td>
+	        </tr>
+	        <tr>
+	          <td><a href="#">후기 1</a></td>
+	        </tr>
+	        <tr>
+	          <td><a href="#">후기 1</a></td>
+	        </tr>
+	        <tr>
+	          <td><a href="#">후기 1</a></td>
+	        </tr>
+	        <tr>
+	          <td class="border-0"><a href="#">후기 1</a></td>
+	        </tr>
+	      </table>
+	    </div>
+	</div>
+  </section>
   <!-- Divider Section-->
   <section class="py-1 position-relative dark-overlay"><img class="bg-image" src="${path}/resources/image/custom/bg3.png" alt="">
     <div class="container">
       <div class="overlay-content text-white py-lg-5">
         <h3 class="display-5 font-Tenada text-shadow mb-5 text-shadow-custom">올레길 초보를 위한<br>초심자 코스로 함께 떠나볼까요?</h3>
-        <p class="font-size150">코스길이 ~15km | 소요시간 ~5시간</p>
+        <p class="font-size150 text-shadow">코스길이 ~15km | 소요시간 ~5시간</p>
         <a class="btn btn-light" href="${path}/category/category-olle?search=올레">코스 둘러보기</a><!-- 이후 올레길 난이도 하 선택된 페이지로 보내기 -->
       </div>
     </div>
