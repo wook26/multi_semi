@@ -103,7 +103,7 @@
               <c:if test="${ loginMember != null }">
 				<%--로그인 된 사용자 정보 보여주는 폼 영역 시작--%>
 				<li class="nav-item dropdown ms-lg-3"><a id="userDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img class="avatar avatar-sm avatar-border-white me-2" src="${path}/resources/image/icon/user.png" alt="user"> ${loginMember.name} 님</a>
-				<div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdownMenuLink"><a class="dropdown-item" href="${path}"><i class="fas fa-sign-out-alt me-2 text-muted"></i> 로그아웃</a></div>
+				<div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdownMenuLink"><a class="dropdown-item" href="${path}/member/logout"><i class="fas fa-sign-out-alt me-2 text-muted"></i> 로그아웃</a></div>
 				</c:if>
             </div>
           </ul>
