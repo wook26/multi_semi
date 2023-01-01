@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.multi.mvc.board.model.service.BoardService;
 import com.multi.mvc.common.util.PageInfo;
+import com.multi.mvc.jejuism.api.VisitJejuApiManager;
 import com.multi.mvc.jejuism.model.service.VisitJejuService;
 import com.multi.mvc.jejuism.model.vo.VisitJeju;
 
@@ -98,6 +99,11 @@ public class HomeController {
 			for (int i = 0; i < tempArr.length; i++) {
 				tempList.add("#"+tempArr[i]);
 			}
+			//평균 평점 가져오기
+			double avgRate = visitJejuService.selectAvgRate(visitJeju.getNo());
+			avgRate = (double) Math.round(avgRate);
+			visitJeju.setAvgRate(avgRate);
+			
 			visitJeju.setTagList(tempList);
 		}
 		

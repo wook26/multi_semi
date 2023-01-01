@@ -9,16 +9,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 import com.multi.mvc.jejuism.model.vo.VisitJeju;
 
@@ -28,7 +21,7 @@ public class VisitJejuApiManager {
 	public static final String VISIT_JEJU_JSON_URL = "https://api.visitjeju.net/vsjApi/contents/searchList";
 
 	public static void main(String[] args) {
-		List<VisitJeju> list = parsingVisitJeju("c1");
+		List<VisitJeju> list = parsingVisitJeju("c3");
 		for (VisitJeju v : list) {
 			System.out.println(v.toString());
 		}
@@ -145,10 +138,14 @@ public class VisitJejuApiManager {
 					String postcode = getStrData(obj, "postcode");
 					String phoneno = getStrData(obj, "phoneno");
 					JSONObject repPhoto = (JSONObject) obj.get("repPhoto");
-					JSONObject photoid = (JSONObject) repPhoto.get("photoid");
-					String imgpath = getStrData(photoid, "imgpath");
-					VisitJeju vj = new VisitJeju(no, alltag, code, title, si, gu, address, roadaddress, tag, introduction, latitude, longitude, postcode, phoneno, imgpath);
-					list.add(vj);
+					try {
+						JSONObject photoid = (JSONObject) repPhoto.get("photoid");
+						String imgpath = getStrData(photoid, "imgpath");
+						VisitJeju vj = new VisitJeju(no, alltag, code, title, si, gu, address, roadaddress, tag, introduction, latitude, longitude, postcode, phoneno, imgpath);
+						list.add(vj);
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
 				}
 			}
 				

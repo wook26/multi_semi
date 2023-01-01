@@ -10,13 +10,13 @@ import com.multi.mvc.jejuism.model.vo.VisitJeju;
 
 @Mapper
 public interface VisitJejuMapper {
-	double selectAvgRate(int no);
 	int selectVCount(Map<String, Object> map);
 	List<VisitJeju> selectVList(Map<String, Object> map);
 	VisitJeju selectVByNo(int no);
 	int insertReview(Review review);
 	List<VisitJeju> selectVListForO(Map<String, Object> map);
 	int selectVCountForO(Map<String, Object> map);
+	double selectAvgRate(int no);
 	
 	int insertV(VisitJeju visitJeju);
 	int updateReview(Review review);

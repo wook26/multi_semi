@@ -27,26 +27,26 @@
 
   <div class="container pt-3">
     <div class="search-bar rounded p-3 p-lg-4 position-relative z-index-20">
-      <form action="#">
+      <form action="${path}/category/category-room">
         <div class="row">
           <div class="col-md-6 col-lg-3 d-flex align-items-center form-group no-divider">
             <select class="selectpicker" title="지역" name="gu" data-style="btn-form-control">
-              <option value="제주시내">제주시내</option>
-              <option value="서귀포시내">서귀포시내</option>
-              <option value="중문">중문</option>
-              <option value="애월">애월</option>
-              <option value="가파도">가파도</option>
-              <option value="구좌">구좌</option>
-              <option value="남원">남원</option>
-              <option value="대정">대정</option>
-              <option value="마라도">마라도</option>
-              <option value="성산">성산</option>
-              <option value="안덕">안덕</option>
-              <option value="조천">조천</option>
-              <option value="추차도">추차도</option>
-              <option value="표선">표선</option>
-              <option value="한경">한경</option>
-              <option value="한림">한림</option>
+              <option value="제주시내" ${param.gu=='제주시내' ? 'selected' : ''}>제주시내</option>
+              <option value="서귀포시내" ${param.gu=='서귀포시내' ? 'selected' : ''}>서귀포시내</option>
+              <option value="중문" ${param.gu=='중문' ? 'selected' : ''}>중문</option>
+              <option value="애월" ${param.gu=='애월' ? 'selected' : ''}>애월</option>
+              <option value="가파도" ${param.gu=='가파도' ? 'selected' : ''}>가파도</option>
+              <option value="구좌" ${param.gu=='구좌' ? 'selected' : ''}>구좌</option>
+              <option value="남원" ${param.gu=='남원' ? 'selected' : ''}>남원</option>
+              <option value="대정" ${param.gu=='대정' ? 'selected' : ''}>대정</option>
+              <option value="마라도" ${param.gu=='마라도' ? 'selected' : ''}>마라도</option>
+              <option value="성산" ${param.gu=='성산' ? 'selected' : ''}>성산</option>
+              <option value="안덕" ${param.gu=='안덕' ? 'selected' : ''}>안덕</option>
+              <option value="조천" ${param.gu=='조천' ? 'selected' : ''}>조천</option>
+              <option value="추차도" ${param.gu=='추차도' ? 'selected' : ''}>추자도</option>
+              <option value="표선" ${param.gu=='표선' ? 'selected' : ''}>표선</option>
+              <option value="한경" ${param.gu=='한경' ? 'selected' : ''}>한경</option>
+              <option value="한림" ${param.gu=='한림' ? 'selected' : ''}>한림</option>
             </select>
           </div>
           <div class="col-lg-7 d-flex align-items-center form-group no-divider">
@@ -104,7 +104,7 @@
             <div class="d-flex align-items-center dark-overlay hover-scale-bg-image" style="min-height: 400px;"><img class="bg-image" src="${item.imgpath}" alt="">
               <div class="p-3 p-sm-5 text-white z-index-20">
                 <h4 class="h2">${item.title}</h4>
-                <p class="mb-4">${item.si} ${item.gu}</p><a class="btn btn-link text-reset ps-0 stretched-link text-decoration-none" href="#">상세정보 확인<i class="fa fa-chevron-right ms-2"></i></a>
+                <p class="mb-4">${item.si} ${item.gu}</p><a class="btn btn-link text-reset ps-0 stretched-link text-decoration-none" href="${path}/detail/detail-olle?no=${item.no}">상세정보 확인<i class="fa fa-chevron-right ms-2"></i></a>
               </div>
             </div>
           </div>

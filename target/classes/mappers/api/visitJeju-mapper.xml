@@ -162,4 +162,9 @@
   		</foreach>
   		ORDER BY TITLE
 	</select>
+	
+	<select id="selectAvgRate" parameterType="int" resultType="double">
+		SELECT COALESCE(AVG(RATE),0) FROM REVIEW
+		WHERE VNO = #{no}
+	</select>
 </mapper>

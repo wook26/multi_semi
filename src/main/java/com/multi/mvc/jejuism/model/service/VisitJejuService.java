@@ -75,5 +75,4 @@ public class VisitJejuService {
 		return mapper.selectVListHome(homeItem);
 	}
 	
-	
 }

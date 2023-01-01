@@ -33,13 +33,16 @@
     <div class="search-bar search-bar-with-tabs p-3 p-lg-4">
       <div class="tab-content">
     
-        <!-- 올레 검색창 -->
         <div class="tab-pane fade show active" id="olle" role="tabpanel">
           <form action="${path}/category/category-olle">
             <div class="row">
-              <div class="col-lg-2 d-flex align-items-center form-group no-divider">
-              </div>
-              <div class="col-lg-6 d-flex align-items-center form-group no-divider">
+              <div class="col-md-6 col-lg-3 d-flex align-items-center form-group no-divider">
+	            <select class="selectpicker" title="지역" name="gu" data-style="btn-form-control">
+	              <option value="제주시내">제주시내</option>
+	              <option value="서귀포시내">서귀포시내</option>
+	            </select>
+	          </div>
+              <div class="col-lg-7 d-flex align-items-center form-group no-divider">
                 <input class="form-control border-0 shadow-0" type="search" name="search" value="${param.search}" placeholder="검색어를 입력하세요.">
               </div>
               <div class="col-lg-2 d-grid form-group mb-0">
@@ -49,13 +52,25 @@
           </form>
           <form action="${path}/category/category-olle">
 			 <ul class="nav nav-pills-tag">
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="박물관" onchange="this.form.submit();"><span>#박물관</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="미술관" onchange="this.form.submit();"><span>#미술관</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="전시관" onchange="this.form.submit();"><span>#전시관</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="제주시" onchange="this.form.submit();"><span>#제주시</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="서귀포시" onchange="this.form.submit();"><span>#서귀포시</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="체험관광" onchange="this.form.submit();"><span>#체험관광</span></label></li>
 			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="문화관광" onchange="this.form.submit();"><span>#문화관광</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="실내관광지" onchange="this.form.submit();"><span>#실내관광지</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="힐링" onchange="this.form.submit();"><span>#휴식/힐링</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="경관/포토" onchange="this.form.submit();"><span>#경관/포토</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="액티비티" onchange="this.form.submit();"><span>#액티비티</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="역사유적" onchange="this.form.submit();"><span>#역사유적</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="반려동물" onchange="this.form.submit();"><span>#반려동물</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="어트랙션" onchange="this.form.submit();"><span>#어트랙션</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="테마공원" onchange="this.form.submit();"><span>#테마공원</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="#마을산책" onchange="this.form.submit();"><span>#마을산책</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="친구" onchange="this.form.submit();"><span>#친구</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="커플" onchange="this.form.submit();"><span>#커플</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="아이" onchange="this.form.submit();"><span>#아이</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="혼자" onchange="this.form.submit();"><span>#혼자</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="산" onchange="this.form.submit();"><span>#산</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="실내" onchange="this.form.submit();"><span>#실내</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="해변" onchange="this.form.submit();"><span>#해변</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="올레" onchange="this.form.submit();"><span>#올레</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="오름" onchange="this.form.submit();"><span>#오름</span></label></li>
 			  <input type="hidden" id="searchValue" value="${param.search}">
 			</ul>
 		  </form>
@@ -143,9 +158,13 @@
 	                <h5 class="card-title"><a class="text-decoration-none text-dark" href="detail-rooms.html">${item.title}</a></h5>
 	                <div class="d-flex card-subtitle mb-3">
 	                  <p class="flex-grow-1 mb-0 text-muted">${item.si} > ${item.gu}</p>
-	                  <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i class="fa fa-star text-warning"></i><i
-	                      class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
-	                      class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i>
+	                  <p class="flex-shrink-1 mb-0 card-stars text-xs text-end">
+	                    <c:forEach var="i" begin="1" end="${item.avgRate}">
+							<i class="fa fa-xs fa-star text-primary"></i>
+						</c:forEach>
+						<c:forEach var="i" begin="${item.avgRate}" end="4">
+							<i class="fa fa-xs fa-star text-gray-300"></i>
+						</c:forEach>
 	                  </p>
 	                </div>
 	                <div style="height: 50px;overflow: hidden;">

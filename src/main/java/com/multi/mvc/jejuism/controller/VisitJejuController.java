@@ -101,6 +101,9 @@ public class VisitJejuController {
 		List<VisitJeju> list = service.selectVListForO(pageInfo, searchMap);
 		for (VisitJeju visitJeju : list) {
 			visitJeju.setTag("#" + String.join(" #",visitJeju.getTag().split(",")));
+			double avgRate = service.selectAvgRate(visitJeju.getNo());
+			avgRate = (double) Math.round(avgRate);
+			visitJeju.setAvgRate(avgRate);
 		}
 		
 		model.addAttribute("recomList", recomList);

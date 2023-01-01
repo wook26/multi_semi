@@ -58,11 +58,11 @@
           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
               <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
-                type="button" role="tab" aria-controls="pills-home" aria-selected="true">제주시</button>
+                type="button" role="tab" aria-controls="pills-home" aria-selected="true" onclick="fn_changeImg(this.id)">제주시</button>
             </li>
             <li class="nav-item" role="presentation">
               <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
-                type="button" role="tab" aria-controls="pills-profile" aria-selected="false">서귀포시</button>
+                type="button" role="tab" aria-controls="pills-profile" aria-selected="false" onclick="fn_changeImg(this.id)">서귀포시</button>
             </li>
           </ul>
           <div class="tab-content" id="pills-tabContent">
@@ -138,7 +138,7 @@
         </div>
         <div class="col-lg-6 d-inline-block align-items-end">
           <div class="text-end">
-            <img class="img-map figure py-5" src="${path}/resources/image/custom/map_jeju.png" />
+            <img class="img-map figure py-5" id="regMap" src="${path}/resources/image/custom/map_1.png" onclick="fn_changeTab()"/>
           </div>
         </div>
       </div>
@@ -206,10 +206,13 @@
                     <h6 class="card-title"><a class="text-decoration-none text-dark" href="${path}/detail/detail-olle?no=${list.no}">${list.title}</a></h6>
                     <div class="d-flex card-subtitle mb-3">
                       <p class="flex-grow-1 mb-0 text-muted text-sm">${list.si} > ${list.gu}</p>
-                      <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i
-                          class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
-                          class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
-                          class="fa fa-star text-warning"></i>
+                      <p class="flex-shrink-1 mb-0 card-stars text-xs text-end">
+                      	<c:forEach var="i" begin="1" end="${list.avgRate}">
+							<i class="fa fa-xs fa-star text-primary"></i>
+						</c:forEach>
+						<c:forEach var="i" begin="${list.avgRate}" end="4">
+							<i class="fa fa-xs fa-star text-gray-300"></i>
+						</c:forEach>
                       </p>
                     </div>
                     <c:forEach var="tag" items="${list.tagList}" end="1">
@@ -298,5 +301,24 @@
       </div>
     </div>
   </section>
-  
+<script type="text/javascript">
+function fn_changeTab() {
+	let imgSrc = document.getElementById("regMap").src;
+	if(imgSrc == "http://localhost/mvc/resources/image/custom/map_1.png") {
+		document.getElementById("pills-profile-tab").click();
+	}else {
+		document.getElementById("pills-home-tab").click();
+	}
+}
+
+function fn_changeImg(id) {
+	console.dir("hoho2 : "+id);
+	if(id == "pills-home-tab") {
+		document.getElementById("regMap").src = "http://localhost/mvc/resources/image/custom/map_1.png"
+	}else if(id == "pills-profile-tab") {
+		document.getElementById("regMap").src = "http://localhost/mvc/resources/image/custom/map_2.png"
+	}
+	
+}
+</script>
   <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
