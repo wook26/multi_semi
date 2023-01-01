@@ -5,14 +5,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
- 
-<!DOCTYPE html>
-<html lang="ko">
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.css">
+	<head> 
+    <link rel="stylesheet" href="${path}/resources/vendor/nouislider/nouislider.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,400i,700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
-    <link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="${path}/resources/vendor/magnific-popup/magnific-popup.css">
     <link rel="stylesheet" href="${path}/resources/css/style.default.css" id="theme-stylesheet">
     <link rel="stylesheet" href="${path}/resources/css/custom.css">
     <link rel="shortcut icon" href="${path}/resources/image/logo_favicon.png">
@@ -34,10 +32,10 @@
               </div>
               <div class="mb-3">
                 <label class="form-label" for="loginUserId"> ID</label>
-                <input class="form-control"   name="id" value="${kakaoMap.id}" type="text" placeholder="아이디(4글자 이상)" autocomplete="off" required data-msg="아이디를 입력해주세요.">
+                <input class="form-control"  id="id"  name="id" value="${kakaoMap.id}" type="text" placeholder="아이디(4글자 이상)" autocomplete="off" required data-msg="아이디를 입력해주세요.">
               </div>
               <div class="d-grid gap-2 mb-4">
-                <button class="btn btn-lg btn-secondary" id="checkDuplicate" value="중복검사" >중복확인</button>
+                <button class="btn btn-lg btn-secondary " id="checkDuplicate" value="중복검사" type="button">중복확인</button>
               </div>
               <div class="mb-4">
                 <label class="form-label" for="loginPassword"> PASSWORD</label>
@@ -53,14 +51,13 @@
               <hr class="my-3 hr-text letter-spacing-2" data-content="OR">
               <div class="d-grid gap-2">
                 <button class="btn btn-social kakao"><img class="btn-social-icon" src="${path}/resources/image/kakao.svg">
-                <a class="kakao" href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=f535aeafadc3e2dee406558334647304&redirect_uri=http://localhost/mvc/user/enroll" name="kakaoToken" value="${kakaoMap.id}">카카오 아이디로 <span class="d-none d-sm-inline">시작하기</span></a></button>
+                <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=f535aeafadc3e2dee406558334647304&redirect_uri=http://localhost/mvc/user/enroll" name="kakaoToken" value="${kakaoMap.id}">카카오 아이디로 <span class="d-none d-sm-inline">시작하기</span></a></button>
                 <button class="btn btn-social naver"><img class="btn-social-icon" src="${path}/resources/image/naver.svg">네이버 아이디로 <span class="d-none d-sm-inline">시작하기</span></button>
               </div>
               <hr class="my-4">
               <p class="text-sm text-muted">회원가입을 선택하시면 제주이즘의 <a class="text-primary" href="#">서비스 이용약관</a> 과 <a class="text-primary" href="#">개인정보취급방침</a>에 동의하게 됩니다.</p>
             </form>
-            
-            <a class="close-absolute me-md-5 me-xl-6 pt-5" href="${path}"> 
+	 				<a class="close-absolute me-md-5 me-xl-6 pt-5" href="${path}" > 
               <svg class="svg-icon w-3rem h-3rem">
                 <use xlink:href="#close-1"> </use>
               </svg>
@@ -74,10 +71,25 @@
       </div>
     </div>
     
-    
     <!-- JavaScript files-->
+    <script>
+      function injectSvgSprite(path) {
+      
+          var ajax = new XMLHttpRequest();
+          ajax.open("GET", path, true);
+          ajax.send();
+          ajax.onload = function(e) {
+          var div = document.createElement("div");
+          div.className = 'd-none';
+          div.innerHTML = ajax.responseText;
+          document.body.insertBefore(div, document.body.childNodes[0]);
+          }
+      }    
+      injectSvgSprite('https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg'); 
+    </script>
 
-    
+
+
     <!-- jQuery-->
     <script src="${path}/resources/vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
@@ -87,7 +99,7 @@
     <!-- Smooth scroll-->
     <script src="${path}/resources/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
     <!-- Bootstrap Select-->
-    <script src="${path}/resources/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
     <script src="${path}/resources/vendor/object-fit-images/ofi.min.js"></script>
     <!-- Swiper Carousel                       -->
@@ -95,9 +107,10 @@
     <script>var basePath = ''</script>
     <!-- Main Theme JS file    -->
     <script src="${path}/resources/js/theme.js"></script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
   </body>
-      
- <script type="text/javascript">
+  
+  <script type="text/javascript">
 	$(function() {
 		$("#pass2").blur((event) => {
 			let pass1 = $("#pass1").val();			
@@ -119,7 +132,7 @@
 	    
 	    // 아이디 중복을 확인하는 AJAX 코드
 	    $("#checkDuplicate").on("click", () => {
-	    	let id = $("#newId").val().trim();
+	    	let id = $("#id").val().trim();
 	    	
 	    	if(id.length < 4){
 	    		alert("아이디는 최소 4글자입니다.")
@@ -147,4 +160,6 @@
 	    });
 	});
 </script>
+  
+  
 </html>

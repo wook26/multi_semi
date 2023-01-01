@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.multi.mvc.member.model.mapper.MemberMapper;
 import com.multi.mvc.member.model.vo.Member;
 
-@Service
+@Service 
 public class MemberService {
 
 	@Autowired
