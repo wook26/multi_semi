@@ -67,7 +67,7 @@
                 제주소개/관광</a>
               <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item"
                   href="${path}/category/category-olle">제주명소<span class="badge badge-info-light ms-1 mt-n1">hot</span></a><a
-                  class="dropdown-item" href="category-weather.html">기상정보</a><a class="dropdown-item"
+                  class="dropdown-item" href="${path}/category/category-weather">기상정보</a><a class="dropdown-item"
                   href="category-festival.html">축제/행사</a><a class="dropdown-item"
                   href="category-museum.html">박물관/미술관/전시관</a></div>
             </li>

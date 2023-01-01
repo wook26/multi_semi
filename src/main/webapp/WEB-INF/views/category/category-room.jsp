@@ -137,7 +137,7 @@
 	                      <div class="d-flex card-subtitle mb-3">
 	                        <p class="flex-grow-1 mb-0 text-muted text-sm">${item.si} > ${item.gu}</p>
 	                      </div>
-	                      <div class="d-flex card-subtitle mb-3">
+	                      <div class="d-flex card-subtitle mb-3" style="height: 50px;overflow: hidden;">
 	                        <p class="flex-grow-1 mb-0 text-primary text-sm">${item.tag}</p>
 	                      </div>
 	                      <p class="flex-shrink-1 mb-0 card-stars text-xs text-end">
