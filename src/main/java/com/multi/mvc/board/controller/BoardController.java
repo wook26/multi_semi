@@ -34,7 +34,7 @@ import com.multi.mvc.member.model.vo.Member;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@RequestMapping("/board") // 요청 url의 상위 url을 모두 처리할때 사용
+@RequestMapping("/board") 
 @Controller
 public class BoardController {
 	
@@ -42,9 +42,8 @@ public class BoardController {
 	private BoardService service;
 	
 	@Autowired
-	private ResourceLoader resourceLoader; // 파일 다운로드 기능시 활용하는 loader
+	private ResourceLoader resourceLoader; 
 	
-//	@GetMapping("/board/list") // class 상단의 @RequestMapping로 인하여 /board 생략해야함
 	@GetMapping("/list")
 	public String list(Model model, @RequestParam Map<String, String> param) {
 		log.info("리스트 요청, param : " + param);
@@ -76,7 +75,6 @@ public class BoardController {
 
 	
 	
-//	@RequestMapping("/board/view")
 	@RequestMapping("/view")
 	public String view(Model model, @RequestParam("no") int no) {
 		Board board = service.findByNo(no);
@@ -96,7 +94,6 @@ public class BoardController {
 	}
 	
 	
-	// http://localhost/mvc/board/write
 	
 	@GetMapping("/write")
 	public String writeView() {
@@ -111,7 +108,6 @@ public class BoardController {
 			) {
 		log.info("게시글 작성 요청");
 		
-		// 보안상의 코드라 프로젝트때는 없어도 된다. 잘못된 접근 체킹하는 예시
 		if(loginMember.getId().equals(board.getWriterId()) == false) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
 			model.addAttribute("location", "/");
@@ -120,7 +116,7 @@ public class BoardController {
 		
 		board.setWriterNo(loginMember.getNo());
 		
-		// 파일 저장 로직
+		
 		if(upfile != null && upfile.isEmpty() == false) {
 			String rootPath = session.getServletContext().getRealPath("resources");
 			String savePath = rootPath +"/upload/board";
@@ -153,14 +149,14 @@ public class BoardController {
 			@ModelAttribute Reply reply
 			) {
 		reply.setWriterNo(loginMember.getNo());
-		log.info("리플 작성 요청 Reply : " + reply);
+		log.info("댓글 작성 요청 Reply : " + reply);
 		
 		int result = service.saveReply(reply);
 		
 		if(result > 0) {
-			model.addAttribute("msg", "리플이 등록되었습니다.");
+			model.addAttribute("msg", "댓글이 등록되었습니다.");
 		}else {
-			model.addAttribute("msg", "리플 등록에 실패하였습니다.");
+			model.addAttribute("msg", "댓글 등록에 실패하였습니다.");
 		}
 		model.addAttribute("location", "/board/view?no="+reply.getBoardNo());
 		return "/common/msg";
@@ -191,13 +187,13 @@ public class BoardController {
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
 			int replyNo, int boardNo
 			){
-		log.info("리플 삭제 요청");
+		log.info("댓글 삭제 요청");
 		int result = service.deleteReply(replyNo);
 		
 		if(result > 0) {
-			model.addAttribute("msg", "리플 삭제가 정상적으로 완료되었습니다.");
+			model.addAttribute("msg", "댓글 삭제가 정상적으로 완료되었습니다.");
 		}else {
-			model.addAttribute("msg", "리플 삭제에 실패하였습니다.");
+			model.addAttribute("msg", "댓글 삭제에 실패하였습니다.");
 		}
 		model.addAttribute("location", "/board/view?no=" + boardNo);
 		return "/common/msg";
