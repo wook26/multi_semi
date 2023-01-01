@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.multi.mvc.member.model.vo.Member;
 
-
+ 
 @Mapper
 public interface MemberMapper {
 	int selectCount();

@@ -28,4 +28,9 @@ public class Flight {
 	private String domesticSun;// VARCHAR(2),
 	private String domesticNum;// VARCHAR(20)
 	
+	
+	
+	
+	
+	
 }

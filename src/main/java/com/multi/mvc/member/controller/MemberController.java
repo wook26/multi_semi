@@ -27,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j // log 용도
 @SessionAttributes("loginMember") // loginMember를 Model에서 취급할때 Session값으로 처리하는 파라메터
-@Controller
+@Controller 
 public class MemberController {
 
 	@Autowired
