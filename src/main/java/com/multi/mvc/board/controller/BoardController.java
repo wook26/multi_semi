@@ -50,6 +50,8 @@ public class BoardController {
 		log.info("리스트 요청, param : " + param);
 		int page = 1;
 		Map<String, String> searchMap = new HashMap<String, String>();
+		String type = param.getOrDefault("type", "type1");
+		searchMap.put("type", type);
 		try {
 			String searchValue = param.get("searchValue");
 			if(searchValue != null && searchValue.length() > 0) {
@@ -57,17 +59,22 @@ public class BoardController {
 				searchMap.put(searchType, searchValue);
 			}
 			page = Integer.parseInt(param.get("page"));
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 		
+		System.out.println(searchMap);
 		int boardCount = service.getBoardCount(searchMap);
 		PageInfo pageInfo = new PageInfo(page, 10, boardCount, 10);
 		List<Board> list = service.getBoardList(pageInfo, searchMap);
 		
 		model.addAttribute("list", list);
+		model.addAttribute("type", type);
 		model.addAttribute("param", param);
 		model.addAttribute("pageInfo", pageInfo);
 		return "/board/list";
 	}
+
+	
 	
 //	@RequestMapping("/board/view")
 	@RequestMapping("/view")

@@ -91,9 +91,9 @@
                 href="${path}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 커뮤니티</a> 
               <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item"
-                  href="category-comunity.html">여행후기/일정공유<span
+                  href="${path}/board/list?type=type1">여행후기/일정공유<span
                     class="badge badge-info-light ms-1 mt-n1">hot</span></a><a class="dropdown-item"
-                  href="category-accompany.html">동행모집</a></div>
+                  href="${path}/board/list?type=type2">동행모집</a></div>
             </li>
             <div class="d-lg-flex justify-content-end">
               <c:if test="${loginMember == null}">
