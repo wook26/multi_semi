@@ -21,8 +21,7 @@
   </section>
   <div class="container py-2">
     <a class="text-custom-gray400" href="index.html"><i class="fa-solid fa-house"></i></a>
-    <a class="text-custom-gray400" href="${path}/board/list">커뮤니티 <i class="fa-solid fa-chevron-right"></i>
-      여행후기/일정공유</a>
+    <a class="text-custom-gray400" href="${path}/board/list">커뮤니티</a>
     <p class="d-inline-block text-custom-gray400"> <i class="fa-solid fa-chevron-right"></i> 게시글 상세보기</p>
   </div>
 
@@ -33,7 +32,7 @@
         <div class="row">
           <div class="w-100 p-3">
             <div style="margin-bottom: 5px;">
-              <span class="text-primary">여행후기/일정공유</span>
+              <span class="text-primary">게시글 상세보기</span>
             </div>
             <table class="table table-borderless text-gray-700">
               <tr>
@@ -42,7 +41,7 @@
                 </th>
               </tr>
               <tr>
-                <td class="p-1 text-custom-gray300"><c:out value="${loginMember.name}"/></td>
+                <td class="p-1 text-custom-gray300"><c:out value="${board.writerId}"/></td>
                 <td class="text-end p-1 text-custom-gray300"><fmt:formatDate type="both" value="${board.createDate}"/></td>
                 <td class="text-end p-1 text-custom-gray300">조회수</td>
                 <td class="text-start p-1 text-custom-gray300"><c:out value="${board.readCount}"/></td>
@@ -82,7 +81,7 @@
       <div class="m-lg-3">
         <h5 class="mb-4">댓글 </h5>
         <!-- comment-->
-        <div class="d-flex mb-4">
+        <div class="mb-4">
           <c:if test="${!empty replyList}">
           <div>
 			<c:forEach var="reply" items="${replyList}">
@@ -92,12 +91,13 @@
 			<c:if test="${ !empty loginMember && (loginMember.id == reply.writerId 	|| loginMember.role == 'ROLE_ADMIN') }">
 						<button class="btn btn-primary btn-delete" onclick="deleteReply('${reply.no}','${board.no}');" >삭제</button>
 						</c:if>
+						<hr>
           	</c:forEach>
           </div>
 		</c:if>
 		<c:if test="${empty replyList}">
 			<div class="d-flex mb-4">
-				<span colspan="3" style="text-align: center;">등록된 리플이 없습니다.</span>>
+				<span colspan="3" style="text-align: center;">등록된 댓글이 없습니다.</span>>
 			</div>
 		</c:if>
         </div>
@@ -106,6 +106,7 @@
         <!-- /comments-->
 
         <div class="py-5">
+        <c:if test="${not empty loginMember}">
           <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#leaveReview"
             aria-expanded="false" aria-controls="leaveReview">댓글 작성하기</button>
           <div class="collapse mt-4" id="leaveReview">
@@ -127,6 +128,7 @@
               <button class="btn btn-primary" type="submit">댓글등록</button>
             </form>
           </div>
+          </c:if>
         </div>
       </div>
     </div>

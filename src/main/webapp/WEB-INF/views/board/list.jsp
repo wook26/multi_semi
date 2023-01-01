@@ -42,7 +42,7 @@
   </div>
   <div class="container">
     <div class="row">
-      <h3 class="text-center border-bottom border-primary pb-4">여행후기/일정공유</h3>
+      <h3 class="text-center border-bottom border-primary pb-4"></h3>
       <table class="table text-center">
         
           <tr class="row-cols-auto">

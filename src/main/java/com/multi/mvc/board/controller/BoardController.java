@@ -199,7 +199,7 @@ public class BoardController {
 		return "/common/msg";
 	}
 	
-	// http://localhost/mvc/board/update?no=27
+	
 	@GetMapping("/update")
 	public String updateView(Model model,
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
@@ -219,7 +219,7 @@ public class BoardController {
 			) {
 		log.info("게시글 수정 요청");
 		
-		// 보안상의 코드라 프로젝트때는 없어도 된다. 잘못된 접근 체킹하는 예시
+		
 		if(loginMember.getId().equals(board.getWriterId()) == false) {
 			model.addAttribute("msg", "잘못된 접근입니다.");
 			model.addAttribute("location", "/");
@@ -228,12 +228,12 @@ public class BoardController {
 		
 		board.setWriterNo(loginMember.getNo());
 		
-		// 파일 저장 로직
+		
 		if(reloadFile != null && reloadFile.isEmpty() == false) {
 			String rootPath = session.getServletContext().getRealPath("resources");
 			String savePath = rootPath +"/upload/board";
 			
-			// 기존 파일이 있는 경우 삭제
+			
 			if(board.getRenamedFileName() != null) {
 				service.deleteFile(savePath + "/" +board.getRenamedFileName());
 			}
@@ -269,13 +269,13 @@ public class BoardController {
 			Resource resource = resourceLoader.getResource("resources/upload/board/" + rename);
 			String downName = null;
 			
-			// 인터넷 익스플로러 인 경우
+			
 			boolean isMSIE = userAgent.indexOf("MSIE") != -1 || userAgent.indexOf("Trident") != -1;
 
-			if (isMSIE) { // 익스플로러 처리하는 방법
+			if (isMSIE) { 
 				downName = URLEncoder.encode(oriname, "UTF-8").replaceAll("\\+", "%20");
 			} else {    		
-				downName = new String(oriname.getBytes("UTF-8"), "ISO-8859-1"); // 크롬
+				downName = new String(oriname.getBytes("UTF-8"), "ISO-8859-1"); 
 			}
 			
 			return ResponseEntity.ok()
@@ -286,7 +286,7 @@ public class BoardController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); // 실패했을 경우
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build(); 
 	}
 
 }
