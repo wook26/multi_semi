@@ -71,7 +71,7 @@ public class VisitJejuController {
 	
 //	@RequestMapping(value = {"/category/category-cafe", "/category/category-food", "/category/category-festival", "/category/category-museum", "/category/category-olle", "/category/category-rooms"})
 	@RequestMapping("/category/category-olle")
-	public String categoryOView(Model model, @RequestParam Map<String, String> param) {
+	public String categoryOlleView(Model model, @RequestParam Map<String, String> param) {
 		List<String> recomItem = new ArrayList<String>();
 		recomItem.add("한라산국립공원");
 		recomItem.add("사려니숲길");
