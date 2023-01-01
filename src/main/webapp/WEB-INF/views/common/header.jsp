@@ -68,15 +68,11 @@
               <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item"
                   href="${path}/category/category-olle">제주명소<span class="badge badge-info-light ms-1 mt-n1">hot</span></a><a
                   class="dropdown-item" href="${path}/category/category-weather">기상정보</a><a class="dropdown-item"
-                  href="category-festival.html">축제/행사</a><a class="dropdown-item"
-                  href="category-museum.html">박물관/미술관/전시관</a></div>
+                  href="${path}/category/category-festival">축제/행사</a><a class="dropdown-item"
+                  href="${path}/category/category-museum">박물관/미술관/전시관</a></div>
             </li>
-            <li class="nav-item dropdown text-center"><a class="nav-link dropdown-toggle" id="homeDropdownMenuLink"
-                href="${path}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                맛집</a>
-              <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item"
-                  href="category-food.html">음식점</a><a class="dropdown-item" href="category-cafe.html">카페<span
-                    class="badge badge-info-light ms-1 mt-n1">hot</span></a></div>
+            <li>
+             <li class="nav-item text-center me-2"><a class="nav-link" href="${path}/category/category-food">맛집</a>
             </li>
             <li class="nav-item text-center me-2"><a class="nav-link" href="${path}/category/category-room">숙소 </a>
             </li>

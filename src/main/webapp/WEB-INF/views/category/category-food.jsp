@@ -44,10 +44,11 @@
                 <form action="${path}/category/category-food">
                   <div class="row">
                     <div class="col-lg-3 d-flex align-items-center form-group no-divider">
-                      <select name="selectBox" id="selectBoxGu" class="selectpicker form-control" title="구분" data-style="btn-form-control" multiple
+                     <!-- 셀렉트, 옵션 -->
+                      <!-- <select name="selectBox" id="selectBoxGu" class="selectpicker form-control" title="구분" data-style="btn-form-control" multiple
                         data-selected-text-format="count &gt; 2">
 						  <option value=""></option>
- 					  </select>
+ 					  </select> -->
                     </div>
                         
 					<div class="col-lg-7 d-flex align-items-center form-group no-divider">

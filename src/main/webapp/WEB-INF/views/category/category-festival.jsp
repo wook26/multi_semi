@@ -96,5 +96,13 @@
      </div>
   </section>
   
+  <script type="text/javascript">
+	function movePage(pageUrl){
+		var search = document.getElementById("searchValue").value; // 갤럭시
+		pageUrl = pageUrl + '&search=' + search; 
+		location.href = encodeURI(pageUrl);	
+	}
+  </script>
+  
   
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
