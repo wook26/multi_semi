@@ -21,8 +21,8 @@
     </div>
   </section>
   <div class="container py-2">
-    <a class="text-custom-gray400" href="index.html"><i class="fa-solid fa-house"></i></a>
-    <a class="text-custom-gray400" href="category-olle.html">제주소개/관광 <i class="fa-solid fa-chevron-right"></i> 제주명소</a>
+    <a class="text-custom-gray400" href="${path}"> <i class="fa-solid fa-house"></i> </a>
+	<a class="text-custom-gray400" href="${path}/resources/category-olle.html"> 제주소개/관광 <i style="color: #404040" class="fa-solid fa-chevron-right"></i> 제주명소 </a>
   </div>
   <h3 class="pt-4 pb-2" style="text-align: center;">제주명소</h3>
 
@@ -37,9 +37,10 @@
           <form action="${path}/category/category-olle">
             <div class="row">
               <div class="col-md-6 col-lg-3 d-flex align-items-center form-group no-divider">
-	            <select class="selectpicker" title="지역" name="gu" data-style="btn-form-control">
-	              <option value="제주시내">제주시내</option>
-	              <option value="서귀포시내">서귀포시내</option>
+	            <select class="selectpicker" title="지역" name="si" data-style="btn-form-control">
+	              <option value="제주시" ${param.si=='제주시' ? 'selected' : ''}>제주시</option>
+	              <option value="서귀포시" ${param.si=='서귀포시' ? 'selected' : ''}>서귀포시</option>
+	              <input type="hidden" id="paramSi" value="${param.si}">
 	            </select>
 	          </div>
               <div class="col-lg-7 d-flex align-items-center form-group no-divider">
@@ -52,26 +53,26 @@
           </form>
           <form action="${path}/category/category-olle">
 			 <ul class="nav nav-pills-tag">
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="체험관광" onchange="this.form.submit();"><span>#체험관광</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="문화관광" onchange="this.form.submit();"><span>#문화관광</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="힐링" onchange="this.form.submit();"><span>#휴식/힐링</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="경관/포토" onchange="this.form.submit();"><span>#경관/포토</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="액티비티" onchange="this.form.submit();"><span>#액티비티</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="역사유적" onchange="this.form.submit();"><span>#역사유적</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="반려동물" onchange="this.form.submit();"><span>#반려동물</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="어트랙션" onchange="this.form.submit();"><span>#어트랙션</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="테마공원" onchange="this.form.submit();"><span>#테마공원</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="#마을산책" onchange="this.form.submit();"><span>#마을산책</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="친구" onchange="this.form.submit();"><span>#친구</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="커플" onchange="this.form.submit();"><span>#커플</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="아이" onchange="this.form.submit();"><span>#아이</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="혼자" onchange="this.form.submit();"><span>#혼자</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="산" onchange="this.form.submit();"><span>#산</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="실내" onchange="this.form.submit();"><span>#실내</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="해변" onchange="this.form.submit();"><span>#해변</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="올레" onchange="this.form.submit();"><span>#올레</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="오름" onchange="this.form.submit();"><span>#오름</span></label></li>
-			  <input type="hidden" id="searchValue" value="${param.search}">
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="체험관광" onchange="this.form.submit();" ${param.search=='체험관광' ? 'checked' : ''}><span>#체험관광</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="문화관광" onchange="this.form.submit();" ${param.search=='문화관광' ? 'checked' : ''}><span>#문화관광</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="휴식/힐링" onchange="this.form.submit();" ${param.search=='휴식/힐링' ? 'checked' : ''}><span>#휴식/힐링</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="경관/포토" onchange="this.form.submit();" ${param.search=='경관/포토' ? 'checked' : ''}><span>#경관/포토</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="액티비티" onchange="this.form.submit();" ${param.search=='액티비티' ? 'checked' : ''}><span>#액티비티</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="역사유적" onchange="this.form.submit();" ${param.search=='역사유적' ? 'checked' : ''}><span>#역사유적</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="반려동물" onchange="this.form.submit();" ${param.search=='반려동물' ? 'checked' : ''}><span>#반려동물</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="어트랙션" onchange="this.form.submit();" ${param.search=='어트랙션' ? 'checked' : ''}><span>#어트랙션</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="테마공원" onchange="this.form.submit();" ${param.search=='테마공원' ? 'checked' : ''}><span>#테마공원</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="#마을산책" onchange="this.form.submit();" ${param.search=='마을산책' ? 'checked' : ''}><span>#마을산책</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="친구" onchange="this.form.submit();" ${param.search=='친구' ? 'checked' : ''}><span>#친구</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="커플" onchange="this.form.submit();" ${param.search=='커플' ? 'checked' : ''}><span>#커플</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="아이" onchange="this.form.submit();" ${param.search=='아이' ? 'checked' : ''}><span>#아이</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="혼자" onchange="this.form.submit();" ${param.search=='혼자' ? 'checked' : ''}><span>#혼자</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="산" onchange="this.form.submit();" ${param.search=='산' ? 'checked' : ''}><span>#산</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="실내" onchange="this.form.submit();" ${param.search=='실내' ? 'checked' : ''}><span>#실내</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="해변" onchange="this.form.submit();" ${param.search=='해변' ? 'checked' : ''}><span>#해변</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="올레" onchange="this.form.submit();" ${param.search=='올레' ? 'checked' : ''}><span>#올레</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="오름" onchange="this.form.submit();" ${param.search=='오름' ? 'checked' : ''}><span>#오름</span></label></li>
+			  <input type="hidden" id="paramSearch" value="${param.search}">
 			</ul>
 		  </form>
         </div>
@@ -147,7 +148,7 @@
 	            <div class="card-img-top overflow-hidden gradient-overlay">
 	            	<div style="height: 200px;">
 		            	<img class="img-fluid" style="object-fit: cover;"
-		                src="${item.imgpath}" alt="Modern, Well-Appointed Room" /><a
+		                src="${item.imgpath}" alt="" /><a
 		                class="tile-link" href="${path}/detail/detail-olle?no=${item.no}"></a>
 	            	</div>
 	              <div class="card-img-overlay-bottom z-index-20">
@@ -199,8 +200,9 @@
   
   <script type="text/javascript">
 	function movePage(pageUrl){
-		var search = document.getElementById("searchValue").value; // 갤럭시
-		pageUrl = pageUrl + '&search=' + search; 
+		var si = document.getElementById("paramSi").value; // 갤럭시
+		var search = document.getElementById("paramSearch").value; // 갤럭시
+		pageUrl = pageUrl + '&si=' + si + '&search=' + search; 
 		location.href = encodeURI(pageUrl);	
 	}
 	</script>

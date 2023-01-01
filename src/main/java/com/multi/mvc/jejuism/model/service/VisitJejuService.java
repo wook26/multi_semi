@@ -56,7 +56,7 @@ public class VisitJejuService {
 	}
 	
 	@Transactional(rollbackFor = Exception.class)
-	public int saveReview(Review review) {
+	public int insertReview(Review review) {
 		int result = 0;
 		if(review.getNo() == 0) {
 			result = mapper.insertReview(review);

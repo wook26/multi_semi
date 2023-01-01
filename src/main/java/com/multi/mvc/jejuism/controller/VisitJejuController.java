@@ -60,9 +60,8 @@ public class VisitJejuController {
 		int vCodeCount = service.selectVCount(searchMap);
 		PageInfo pageInfo = new PageInfo(page, 10, vCodeCount, 12);
 		List<VisitJeju> list = service.selectVList(pageInfo, searchMap);
-		for (VisitJeju visitJeju : list) {
-			visitJeju.setTag("#" + String.join(" #",visitJeju.getTag().split(",")));
-		}
+		
+		model.addAttribute("count", vCodeCount);
 		model.addAttribute("list", list);
 		model.addAttribute("param", param);
 		model.addAttribute("pageInfo", pageInfo);
@@ -100,7 +99,9 @@ public class VisitJejuController {
 		PageInfo pageInfo = new PageInfo(page, 10, vCodeCount, 12);
 		List<VisitJeju> list = service.selectVListForO(pageInfo, searchMap);
 		for (VisitJeju visitJeju : list) {
+			// 태그 변환
 			visitJeju.setTag("#" + String.join(" #",visitJeju.getTag().split(",")));
+			// 평균 평점 계산
 			double avgRate = service.selectAvgRate(visitJeju.getNo());
 			avgRate = (double) Math.round(avgRate);
 			visitJeju.setAvgRate(avgRate);
@@ -144,6 +145,9 @@ public class VisitJejuController {
 		List<VisitJeju> list = service.selectVList(pageInfo, searchMap);
 		for (VisitJeju visitJeju : list) {
 			visitJeju.setTag("#" + String.join(" #",visitJeju.getTag().split(",")));
+			double avgRate = service.selectAvgRate(visitJeju.getNo());
+			avgRate = (double) Math.round(avgRate);
+			visitJeju.setAvgRate(avgRate);
 		}
 		
 		model.addAttribute("recomList", recomList);
@@ -154,12 +158,14 @@ public class VisitJejuController {
 	}
 	
 	@RequestMapping(value = {"/detail/detail-cafe", "/detail/detail-festival", "/detail/detail-museum", "/detail/detail-olle", "/detail/detail-rooms"})
-	public String detailView(Model model, @RequestParam("no") int no) {
+	public String detailView(Model model,
+			@RequestParam("no") int no) {
 		VisitJeju visitJeju = service.selectVByNo(no);
 		if(visitJeju == null) {
 			return "redirect:error";
 		}
 //		visitJeju.setAvgRate(service.selectAvgRate(no));
+		
 		String[] tags = visitJeju.getTag().split(",");
 		model.addAttribute("tags", tags);
 		model.addAttribute("tagsSize", tags.length);
@@ -181,7 +187,7 @@ public class VisitJejuController {
 		reiew.setUno(loginMember.getNo());
 		log.info("리뷰 작성 요청 Review : " + reiew);
 		
-		int result = service.saveReview(reiew);
+		int result = service.insertReview(reiew);
 		
 		if(result > 0) {
 			model.addAttribute("msg", "리뷰가 등록되었습니다.");
@@ -192,7 +198,7 @@ public class VisitJejuController {
 		return "/common/msg";
 	}
 	
-	@RequestMapping("/reviewDel")
+	@RequestMapping("/detail/reviewDel")
 	public String deleteReply(Model model, 
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
 			int reviewNo, int vno
@@ -205,7 +211,7 @@ public class VisitJejuController {
 		}else {
 			model.addAttribute("msg", "리뷰 삭제에 실패하였습니다.");
 		}
-		model.addAttribute("location", "/detail/detail-view?no=" + vno);
+		model.addAttribute("location", "/detail/detail-olle?no=" + vno);
 		return "/common/msg";
 	}	
 	

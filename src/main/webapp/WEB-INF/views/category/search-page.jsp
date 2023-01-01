@@ -29,9 +29,9 @@
               <div class="row">
                 <div class="col-lg-2 d-flex align-items-center form-group no-divider">
                   <select class="selectpicker" title="선택" name="code" data-style="btn-form-control">
-                    <option value="관광지">관광</option>
-                    <option value="음식점">맛집</option>
-                    <option value="숙박">숙소</option>
+                    <option value="관광지" ${param.code=='관광지' ? 'selected' : ''}>관광</option>
+                    <option value="음식점" ${param.code=='음식점' ? 'selected' : ''}>맛집</option>
+                    <option value="숙박" ${param.code=='숙박' ? 'selected' : ''}>숙소</option>
                   </select>
                 </div>
                 <div class="col-lg-8 d-flex align-items-center form-group no-divider">
@@ -57,34 +57,70 @@
           <!-- About Listing-->
           <div class="text-block">
             <h5 class="text-primary text-center">검색 결과</h5>
-            <h3 class="mb-5 text-center">검색어 <em style="color:#ffaC34;">${searchValue}</em>&nbsp;에 대한 전체 <em style="color:#868686;">23</em>&nbsp;개의 결과를 찾았습니다.</h3>
+            <h3 class="mb-5 text-center">검색어 <em style="color:#ffaC34;">${param.search}</em>&nbsp;에 대한 전체 <em style="color:#868686;">${count}</em>&nbsp;개의 결과를 찾았습니다.</h3>
             
             <br><br>
             
             <div class="text-block">
               <ul class="result_list">
               	<c:forEach var="item" items="${list}">
-                <li><p class="text-muted"><a href="${path}/category/category-olle?no=${item.no}">${item.title}/ ${item.introduction}</a></li>
+                <li><p class="text-muted mt-5">
+                	<a style="font-size: 1.3rem" href="${path}/detail/detail-olle?no=${item.no}"><span style="font-weight: 700" class="hl">${item.title}</span><span class="hl">/ ${item.introduction}</span> 
+                		<span class="hl" style="font-size: 1rem; line-height: 1rem; opacity: 80%">${item.tag}</span>
+                	</a>
+                </li>
                 </c:forEach>
               </ul>
             </div>
 
           <nav aria-label="Page navigation pt-3">
 		      <ul class="pagination pagination-template d-flex justify-content-center">
-		        <li class="page-item"><a class="page-link" onclick="movePage('${path}/category/category-olle?page=${pageInfo.prevPage}');"> <i class="fa fa-angle-left"></i></a></li>
+		        <li class="page-item"><a class="page-link" onclick="movePage('${path}/category/search-page?page=${pageInfo.prevPage}');"> <i class="fa fa-angle-left"></i></a></li>
 		        
 		        <c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}" step="1" varStatus="status">
 					<c:if test="${status.current == pageInfo.currentPage}">
 						<li class="page-item active"><a class="page-link">${status.current}</a></li>
 					</c:if>
 					<c:if test="${status.current != pageInfo.currentPage}">
-						<li class="page-item"><a class="page-link" onclick="movePage('${path}/category/category-olle?page=${status.current}');">${status.current}</a></li>
+						<li class="page-item"><a class="page-link" onclick="movePage('${path}/category/search-page?page=${status.current}');">${status.current}</a></li>
 					</c:if>
 				</c:forEach>
-		        <li class="page-item"><a class="page-link" onclick="movePage('${path}/category/category-olle?page=${pageInfo.nextPage}');"> <i class="fa fa-angle-right"></i></a></li>
+		        <li class="page-item"><a class="page-link" onclick="movePage('${path}/category/search-page?page=${pageInfo.nextPage}');"> <i class="fa fa-angle-right"></i></a></li>
 		      </ul>
 		    </nav>
+		   </div>
+		  </div>
+		 </div>
         </div>
+        <input type="hidden" id="paramSearch" value="${param.search}">
+        <input type="hidden" id="paramCode" value="${param.code}">
     </section>
     
+<script type="text/javascript">
+	function movePage(pageUrl){
+		var search = document.getElementById("paramSearch").value;
+		var code = document.getElementById("paramCode").value;
+		pageUrl = pageUrl + '&code=' + code + '&search=' + search; 
+		location.href = encodeURI(pageUrl);	
+	}
+</script>
+
+<script type="text/javascript">
+	window.onload = function () {
+		let search = document.getElementById("paramSearch").value;
+		let hlList = document.querySelectorAll(".hl");
+		for (var i = 0; i < hlList.length; i++) {
+			let text =  hlList[i].innerHTML;
+			console.dir("text : "+text);
+			text = text.replaceAll(search,"<span style='color:#ffaC34; font-weight: 900;'>"+search+"</span>");
+			document.querySelectorAll(".hl")[i].innerHTML = text;
+		}
+		//for (var i = 0; i < hlList.length; i++) {
+			
+		//  }
+	}
+
+
+</script>
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

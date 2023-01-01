@@ -47,6 +47,9 @@
 			OR TAG LIKE '%${search}%'
 			OR INTRODUCTION LIKE '%${search}%')
 		</if>
+		<if test="si != null">
+			AND SI = #{si}
+		</if>
 		<if test="gu != null">
 			AND GU = #{gu}
 		</if>
@@ -127,7 +130,8 @@
 		SELECT  
 			V.NO, V.ALLTAG, V.CODE, V.TITLE, V.ADDRESS, V.ROADADDRESS, V.TAG, V.INTRODUCTION, V.PHONENO, V.LATITUDE, V.LONGITUDE, V.IMGPATH, V.AVG_RATE,
 			R.NO AS R_NO, 
-		    R.VNO AS R_VNO, 
+		    R.VNO AS R_VNO,
+		    R.UNO AS R_UNO,
 		    R.CONTENT  AS R_CONTENT,
 		    R.RATE AS R_RATE,
 		    U.NAME AS R_NAME, 
@@ -152,6 +156,10 @@
 		INSERT INTO REVIEW(NO, VNO, UNO, RATE, CONTENT, CREATE_DATE, MODIFY_DATE)
 		VALUES(0, #{vno}, #{uno}, #{rate}, #{content}, DEFAULT, DEFAULT)
 	</insert>
+
+	<delete id="deleteReview" parameterType="int">
+		DELETE FROM REVIEW WHERE NO=#{no}
+	</delete>
 
 	<select id="selectVListHome" resultMap="visitJejuResultMap" parameterType="map">
 		SELECT NO, ALLTAG, CODE, TITLE, SI, GU, ADDRESS, ROADADDRESS, TAG, INTRODUCTION, LATITUDE, LONGITUDE, POSTCODE, PHONENO, IMGPATH, AVG_RATE

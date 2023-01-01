@@ -50,8 +50,8 @@
               </div>
               <hr class="my-3 hr-text letter-spacing-2" data-content="OR">
               <div class="d-grid gap-2">
-                <button class="btn btn-social kakao"><img class="btn-social-icon" src="${path}/resources/image/kakao.svg">
-                <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=f535aeafadc3e2dee406558334647304&redirect_uri=http://localhost/mvc/user/enroll" name="kakaoToken" value="${kakaoMap.id}">카카오 아이디로 <span class="d-none d-sm-inline">시작하기</span></a></button>
+                <button class="btn btn-social kakao" onMouseOver="this.style.background='#f9e000'"><img class="btn-social-icon" src="${path}/resources/image/kakao.svg">
+                	<a class="kakao" href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=f535aeafadc3e2dee406558334647304&redirect_uri=http://localhost/mvc/user/enroll" name="kakaoToken" value="${kakaoMap.id}">카카오 아이디로 <span class="d-none d-sm-inline">시작하기</span></a></button>
                 <button class="btn btn-social naver"><img class="btn-social-icon" src="${path}/resources/image/naver.svg">네이버 아이디로 <span class="d-none d-sm-inline">시작하기</span></button>
               </div>
               <hr class="my-4">
@@ -99,7 +99,7 @@
     <!-- Smooth scroll-->
     <script src="${path}/resources/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
     <!-- Bootstrap Select-->
-    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="${path}/resources/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
     <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
     <script src="${path}/resources/vendor/object-fit-images/ofi.min.js"></script>
     <!-- Swiper Carousel                       -->

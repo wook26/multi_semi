@@ -62,7 +62,7 @@ public class HomeController {
 		
 		//서귀포 지역추천
 		List<String> homeItem2 = new ArrayList<String>();
-		homeItem2.add("성산일출봉");
+		homeItem2.add("성산일출봉(UNESCO 세계자연유산)");
 		homeItem2.add("섭지코지");
 		homeItem2.add("천지연폭포");
 		homeItem2.add("카멜리아힐");

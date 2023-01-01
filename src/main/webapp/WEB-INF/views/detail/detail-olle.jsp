@@ -10,29 +10,70 @@
 </jsp:include>
 
 <!-- Hero Section-->
-<section class="pt-7 pb-7 d-flex align-items-end dark-overlay bg-cover"
-	style="background-image: url('${path}/resources/image/img/Jeju7.jpg');">
-	<div class="container overlay-content">
-		<div
-			class="d-flex justify-content-center flex-column flex-lg-row align-items-lg-end">
-			<div class="text-white mb-lg-0 text-center">
-				<h1 class="text-shadow verified">제주소개/관광</h1>
-				<p>자연과 문화, 사람의 가치를 키우는 제주도</p>
+<c:choose>
+  <c:when test="${visitJeju.code == '관광지'}">
+	<section class="pt-7 pb-7 d-flex align-items-end dark-overlay bg-cover"
+		style="background-image: url('${path}/resources/image/img/Jeju7.jpg');">
+		<div class="container overlay-content">
+			<div
+				class="d-flex justify-content-center flex-column flex-lg-row align-items-lg-end">
+				<div class="text-white mb-lg-0 text-center">
+					<h1 class="text-shadow verified">제주소개/관광</h1>
+					<p>자연과 문화, 사람의 가치를 키우는 제주도</p>
+				</div>
 			</div>
 		</div>
+	</section>
+	<div class="container py-2">
+		<a class="text-custom-gray400" href="${path}"> <i class="fa-solid fa-house"></i> </a>
+		<a class="text-custom-gray400" href="${path}/resources/category-olle.html"> 제주소개/관광 <i style="color: #404040" class="fa-solid fa-chevron-right"></i> 제주명소 </a>
+		<p class="d-inline-block text-custom-gray400"><i class="fa-solid fa-chevron-right"></i></p>
+		<p class="d-inline-block text-custom-gray400"> ${visitJeju.title} </p>
 	</div>
-</section>
-<div class="container py-2">
-	<a class="text-custom-gray400" href="${path}"><i
-		class="fa-solid fa-house"></i></a> <a class="text-custom-gray400"
-		href="${path}/resources/category-olle.html">제주소개/관광 <i
-		class="fa-solid fa-chevron-right"></i> 제주명소
-	</a>
-	<p class="d-inline-block text-custom-gray400">
-		<i class="fa-solid fa-chevron-right"></i>
-	</p>
-	<p class="d-inline-block text-custom-gray400">${visitJeju.title}</p>
-</div>
+  </c:when>
+  
+  <c:when test="${visitJeju.code == '숙박'}">
+	<section class="pt-7 pb-7 d-flex align-items-end dark-overlay bg-cover"
+		style="background-image: url('${path}/resources/image/img/jeju14.jpg');">
+		<div class="container overlay-content">
+			<div
+				class="d-flex justify-content-center flex-column flex-lg-row align-items-lg-end">
+				<div class="text-white mb-lg-0 text-center">
+					<h1 class="text-shadow verified">숙소</h1>
+					<p>감성충만 캠핑장과 가성비 민박까지</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="container py-2">
+		<a class="text-custom-gray400" href="${path}"> <i class="fa-solid fa-house"></i> </a>
+		<a class="text-custom-gray400" href="${path}/resources/category-room.html"> 숙소 </a>
+		<p class="d-inline-block text-custom-gray400"><i class="fa-solid fa-chevron-right"></i></p>
+		<p class="d-inline-block text-custom-gray400"> ${visitJeju.title} </p>
+	</div>
+  </c:when>
+  
+  <c:when test="${visitJeju.code == '음식점'}">
+	<section class="pt-7 pb-7 d-flex align-items-end dark-overlay bg-cover"
+		style="background-image: url('${path}/resources/image/img/sunset.JPG');">
+		<div class="container overlay-content">
+			<div
+				class="d-flex justify-content-center flex-column flex-lg-row align-items-lg-end">
+				<div class="text-white mb-lg-0 text-center">
+					<h1 class="text-shadow verified">맛집</h1>
+					<p>제주에서만 찾을 수 있는 특별한 맛을 느껴보세요</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="container py-2">
+		<a class="text-custom-gray400" href="${path}"> <i class="fa-solid fa-house"></i> </a>
+		<a class="text-custom-gray400" href="${path}/resources/category-food.html"> 맛집 </a>
+		<p class="d-inline-block text-custom-gray400"><i class="fa-solid fa-chevron-right"></i></p>
+		<p class="d-inline-block text-custom-gray400"> ${visitJeju.title} </p>
+	</div>
+  </c:when>
+</c:choose>
 
 <section class="py-2">
 	<div class="container">
@@ -165,9 +206,10 @@
 					<h5 class="mb-4">후기 리스트</h5>
 					<c:if test="${!empty reviewList}">
 						<c:forEach var="review" items="${reviewList}">
-							<div class="d-flex d-block d-sm-flex review">
-								<div class="text-md-center flex-shrink-0 me-4 me-xl-5">
-									<img class="d-block avatar avatar-xl p-2 mb-2"
+							<div class="d-flex d-block d-sm-flex review justify-content-between">
+							  <div class="d-flex">
+								<div class="text-md-center flex-shrink-0 me-4 me-xl-5 align-content-center">
+									<img class="d-block avatar avatar-xl p-2 mb-2 ms-2"
 										src="${path}/resources/image/icon/user.png" alt="user">
 									<span class="text-uppercase text-muted text-sm"> <fmt:formatDate
 											type="date" dateStyle="short" timeStyle="short"
@@ -177,7 +219,11 @@
 									</span>
 								</div>
 								<div>
-									<h6 class="mt-2 mb-1">${review.userName}</h6>
+									<c:set var="name" value="${review.userName}" />
+									<c:set var="totalLength" value="${fn:length(name) }" />
+									<c:set var="first" value="${fn:substring(name, 0, 1) }" />
+									<c:set var="last" value="${fn:substring(name, 2, totalLength) }" />
+									<h6 class="mt-2 mb-1"><c:out value="${first}*${last}"/></h6>
 									<div class="mb-2">
 										<c:forEach var="i" begin="1" end="${review.rate}">
 											<i class="fa fa-xs fa-star text-primary"></i>
@@ -188,6 +234,10 @@
 									</div>
 									<p class="text-muted text-sm">${review.content}</p>
 								</div>
+						      </div>
+							<c:if test="${ !empty loginMember && (loginMember.no == review.uno 	|| loginMember.role == 'ROLE_ADMIN') }">
+								<button class="btn btn-primary d-flex my-auto" style="height: 2.5rem;" onclick="deleteReview('${review.no}','${visitJeju.no}');" >삭제</button>
+							</c:if>
 							</div>
 						</c:forEach>
 					</c:if>
@@ -249,9 +299,18 @@
 				</div>
 			</div>
 		</div>
+	</div>
 </section>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+
+<script type="text/javascript">
+	function deleteReview(reviewNo, vno){
+		var url = "${path}/detail/reviewDel?reviewNo=";
+		var requestURL = url + reviewNo +"&vno=" + vno;
+		location.replace(requestURL);
+	}
+</script>
 
 <!-- =========================카카오 맵========================== -->
 <script type="text/javascript"
@@ -280,7 +339,7 @@
     for (var i = 0; i < positions.length; i++) {
 
       // 마커 이미지의 이미지 크기 입니다
-      var imageSize = new kakao.maps.Size(51, 57);
+      var imageSize = new kakao.maps.Size(51, 58);
 
       // 마커 이미지를 생성합니다    
       var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);

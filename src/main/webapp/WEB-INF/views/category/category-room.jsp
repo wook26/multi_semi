@@ -15,14 +15,14 @@
       <div class="d-flex justify-content-center flex-column flex-lg-row align-items-lg-end">
         <div class="text-white mb-lg-0 text-center">
           <h1 class="text-shadow verified">숙소</h1>
-          <p>호캉스를 위한 호텔부터 가성비 민박까지</p>
+          <p>감성충만 캠핑장과 가성비 민박까지</p>
         </div>
       </div>
     </div>
   </section>
   <div class="container py-2">
-    <a class="text-custom-gray400" href="index.html"><i class="fa-solid fa-house"></i></a>
-    <a class="text-custom-gray400" href="category-room.html">숙소</a>
+    <a class="text-custom-gray400" href="${path}"> <i class="fa-solid fa-house"></i> </a>
+	<a class="text-custom-gray400" href="${path}/resources/category-room.html"> 숙소 </a>
   </div>
 
   <div class="container pt-3">
@@ -140,10 +140,13 @@
 	                      <div class="d-flex card-subtitle mb-3">
 	                        <p class="flex-grow-1 mb-0 text-primary text-sm">${item.tag}</p>
 	                      </div>
-	                      <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i
-	                          class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
-	                          class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
-	                          class="fa fa-star text-warning"></i>
+	                      <p class="flex-shrink-1 mb-0 card-stars text-xs text-end">
+		                    <c:forEach var="i" begin="1" end="${item.avgRate}">
+								<i class="fa fa-xs fa-star text-primary"></i>
+							</c:forEach>
+							<c:forEach var="i" begin="${item.avgRate}" end="4">
+								<i class="fa fa-xs fa-star text-gray-300"></i>
+							</c:forEach>
 	                      </p>
 	                    </div>
 	                  </div>
