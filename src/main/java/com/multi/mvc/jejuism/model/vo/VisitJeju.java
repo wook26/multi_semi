@@ -28,6 +28,7 @@ public class VisitJeju {
 	private String 	imgpath;		// VARCHAR(100),
 	private double 	avgRate;		// DOUBLE
 	private List<Review> reviews;	//
+	private List<String> tagList;   //
 	
 	public VisitJeju(int no, String alltag, String code, String title, String si, String gu, String address,
 			String roadaddress, String tag, String introduction, double latitude, double longitude, String postcode,

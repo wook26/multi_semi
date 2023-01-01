@@ -32,12 +32,14 @@ public class VisitJejuService {
 		return mapper.selectVCount(param);
 	}
 	
-	public List<VisitJeju> selectVListForO(){
-		return mapper.selectVListForO();
+	public List<VisitJeju> selectVListForO(PageInfo pageInfo, Map<String, Object> param){
+		param.put("limit", "" + pageInfo.getListLimit());
+		param.put("offset", "" + (pageInfo.getStartList() - 1));
+		return mapper.selectVListForO(param);
 	}
 	
-	public int selectVCountForO() {
-		return mapper.selectVCountForO();
+	public int selectVCountForO(Map<String, Object> param) {
+		return mapper.selectVCountForO(param);
 	}
 	
 	@Transactional(rollbackFor = Exception.class)
@@ -67,6 +69,10 @@ public class VisitJejuService {
 	@Transactional(rollbackFor = Exception.class)
 	public int deleteReview(int reviewNo) {
 		return mapper.deleteReview(reviewNo);
+	}
+
+	public List<VisitJeju> selectVListHome(List<String> homeItem) {
+		return mapper.selectVListHome(homeItem);
 	}
 	
 	

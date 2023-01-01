@@ -44,7 +44,11 @@
 		<if test="search != null">
 			AND (ALLTAG LIKE '%${search}%'
 			OR TITLE LIKE '%${search}%'
-			OR TAG LIKE '%${search}%')
+			OR TAG LIKE '%${search}%'
+			OR INTRODUCTION LIKE '%${search}%')
+		</if>
+		<if test="gu != null">
+			AND GU = #{gu}
 		</if>
 		<if test="code != null">
 			AND CODE = #{code}
@@ -53,21 +57,28 @@
 		ORDER BY NO ASC LIMIT ${limit} OFFSET ${offset}
 	</select>
 	
-	<select id="selectVListForO" resultMap="visitJejuResultMap">
-		SELECT * FROM VISIT_JEJU
-		WHERE CODE = '관광지'
-			AND TITLE NOT LIKE '%박물관%'
-			AND TITLE NOT LIKE '%미술관%'
-			AND TITLE NOT LIKE '%전시관%'
-			AND ALLTAG NOT LIKE '%박물관%'
-			AND ALLTAG NOT LIKE '%미술관%'
-			AND ALLTAG NOT LIKE '%전시관%'
-			AND TAG NOT LIKE '%박물관%'
-			AND TAG NOT LIKE '%미술관%'
-			AND TAG NOT LIKE '%전시관%'
-			AND INTRODUCTION NOT LIKE '%박물관%'
-			AND INTRODUCTION NOT LIKE '%미술관%'
-			AND INTRODUCTION NOT LIKE '%전시관%';
+	<select id="selectVListForO" resultMap="visitJejuResultMap" parameterType="map">
+		SELECT NO, ALLTAG, CODE, TITLE, SI, GU, ADDRESS, ROADADDRESS, TAG, INTRODUCTION, LATITUDE, LONGITUDE, POSTCODE, PHONENO, IMGPATH, AVG_RATE
+		FROM VISIT_JEJU
+		WHERE CODE = #{code}
+		<if test="search != null">
+		AND (ALLTAG LIKE '%${search}%'
+			OR TITLE LIKE '%${search}%'
+			OR TAG LIKE '%${search}%')
+		</if>
+		AND TITLE NOT LIKE '%${excl1}%'
+		AND TITLE NOT LIKE '%${excl2}%'
+		AND TITLE NOT LIKE '%${excl3}%'
+		AND ALLTAG NOT LIKE '%${excl1}%'
+		AND ALLTAG NOT LIKE '%{excl2}%'
+		AND ALLTAG NOT LIKE '%{excl3}%'
+		AND TAG NOT LIKE '%${excl1}%'
+		AND TAG NOT LIKE '%{excl2}%'
+		AND TAG NOT LIKE '%{excl3}%'
+		AND INTRODUCTION NOT LIKE '%{excl1}%'
+		AND INTRODUCTION NOT LIKE '%{excl2}%'
+		AND INTRODUCTION NOT LIKE '%{excl3}%'
+		ORDER BY NO ASC LIMIT ${limit} OFFSET ${offset}
 	</select>
 	
 	<select id="selectVCount" resultType="int" parameterType="map">
@@ -78,28 +89,38 @@
 		<if test="search != null">
 			AND (ALLTAG LIKE '%${search}%'
 			OR TITLE LIKE '%${search}%'
-			OR TAG LIKE '%${search}%')
+			OR TAG LIKE '%${search}%'
+			OR INTRODUCTION LIKE '%${search}%')
+		</if>
+		<if test="gu != null">
+			AND GU = #{gu}
 		</if>
 		<if test="code != null">
 			AND CODE = #{code}
 		</if>
 	</select>
 	
-	<select id="selectVCountForO" resultType="int">
-		SELECT COUNT(*) FROM VISIT_JEJU
-		WHERE CODE = '관광지'
-			AND TITLE NOT LIKE '%박물관%'
-			AND TITLE NOT LIKE '%미술관%'
-			AND TITLE NOT LIKE '%전시관%'
-			AND ALLTAG NOT LIKE '%박물관%'
-			AND ALLTAG NOT LIKE '%미술관%'
-			AND ALLTAG NOT LIKE '%전시관%'
-			AND TAG NOT LIKE '%박물관%'
-			AND TAG NOT LIKE '%미술관%'
-			AND TAG NOT LIKE '%전시관%'
-			AND INTRODUCTION NOT LIKE '%박물관%'
-			AND INTRODUCTION NOT LIKE '%미술관%'
-			AND INTRODUCTION NOT LIKE '%전시관%';
+	<select id="selectVCountForO" resultType="int" parameterType="map">
+		SELECT COUNT(*)
+		FROM VISIT_JEJU
+		WHERE CODE = #{code}
+		<if test="search != null">
+		AND (ALLTAG LIKE '%${search}%'
+			OR TITLE LIKE '%${search}%'
+			OR TAG LIKE '%${search}%')
+		</if>
+		AND TITLE NOT LIKE '%${excl1}%'
+		AND TITLE NOT LIKE '%${excl2}%'
+		AND TITLE NOT LIKE '%${excl3}%'
+		AND ALLTAG NOT LIKE '%${excl1}%'
+		AND ALLTAG NOT LIKE '%{excl2}%'
+		AND ALLTAG NOT LIKE '%{excl3}%'
+		AND TAG NOT LIKE '%${excl1}%'
+		AND TAG NOT LIKE '%{excl2}%'
+		AND TAG NOT LIKE '%{excl3}%'
+		AND INTRODUCTION NOT LIKE '%{excl1}%'
+		AND INTRODUCTION NOT LIKE '%{excl2}%'
+		AND INTRODUCTION NOT LIKE '%{excl3}%'
 	</select>
 	
 	<select id="selectVByNo" parameterType="int" resultMap="visitJejuDetailResultMap">
@@ -131,6 +152,14 @@
 		INSERT INTO REVIEW(NO, VNO, UNO, RATE, CONTENT, CREATE_DATE, MODIFY_DATE)
 		VALUES(0, #{vno}, #{uno}, #{rate}, #{content}, DEFAULT, DEFAULT)
 	</insert>
-	
-	
+
+	<select id="selectVListHome" resultMap="visitJejuResultMap" parameterType="map">
+		SELECT NO, ALLTAG, CODE, TITLE, SI, GU, ADDRESS, ROADADDRESS, TAG, INTRODUCTION, LATITUDE, LONGITUDE, POSTCODE, PHONENO, IMGPATH, AVG_RATE
+		FROM VISIT_JEJU
+		WHERE TITLE IN 
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+        #{item}
+  		</foreach>
+  		ORDER BY TITLE
+	</select>
 </mapper>

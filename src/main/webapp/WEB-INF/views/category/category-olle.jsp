@@ -80,51 +80,36 @@
 	      <div class="row">
 	        <div class="d-flex align-items-lg-stretch mb-4 col-lg-8">
 	          <div class="card shadow-lg border-0 w-100 border-0 hover-animate"
-	            style="background: center center url(${path}/resources/image/img/recom1.jpg) no-repeat; background-size: cover;">
-	            <a class="tile-link" href="detail-olle.html"> </a>
+	            style="background: center center url('${recomList[0].imgpath}') no-repeat; background-size: cover;">
+	            <a class="tile-link" href="${path}/detail/detail-olle?no=${recomList[0].no}"> </a>
 	            <div class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
-	              <h3 class="text-shadow text-uppercase mb-0">한라산국립공원</h3>
+	              <h3 class="text-shadow text-uppercase mb-0">${recomList[0].title}</h3>
 	            </div>
 	          </div>
 	        </div>
 	        <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
 	          <div class="card shadow-lg border-0 w-100 border-0 hover-animate"
-	            style="background: center center url(${path}/resources/image/img/recom2.jpg) no-repeat; background-size: cover;">
-	            <a class="tile-link" href="detail-olle.html"> </a>
+	            style="background: center center url('${recomList[1].imgpath}') no-repeat; background-size: cover;">
+	            <a class="tile-link" href="${path}/detail/detail-olle?no=${recomList[1].no}"> </a>
 	            <div class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
-	              <h3 class="text-shadow text-uppercase mb-0">사려니숲길</h3>
+	              <h3 class="text-shadow text-uppercase mb-0">${recomList[1].title}</h3>
 	            </div>
 	          </div>
 	        </div>
 	      </div>
 	      <div class="row">
+	      
+	       <c:forEach var="item" items="${recomList}" begin="2">
 	        <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
 	          <div class="card shadow-lg border-0 w-100 border-0 hover-animate"
-	            style="background: center center url(${path}/resources/image/img/recom3.jpg) no-repeat; background-size: cover;">
-	            <a class="tile-link" href="detail-olle.html"> </a>
+	            style="background: center center url('${item.imgpath}') no-repeat; background-size: cover;">
+	            <a class="tile-link" href="${path}/detail/detail-olle?no=${item.no}"> </a>
 	            <div class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
-	              <h3 class="text-shadow text-uppercase mb-0">협재해수욕장</h3>
+	              <h3 class="text-shadow text-uppercase mb-0">${item.title}</h3>
 	            </div>
 	          </div>
 	        </div>
-	        <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
-	          <div class="card shadow-lg border-0 w-100 border-0 hover-animate"
-	            style="background: center center url(${path}/resources/image/img/recom4.png) no-repeat; background-size: cover;">
-	            <a class="tile-link" href="detail-olle.html"> </a>
-	            <div class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
-	              <h3 class="text-shadow text-uppercase mb-0">에코랜드 테마파크</h3>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
-	          <div class="card shadow-lg border-0 w-100 border-0 hover-animate"
-	            style="background: center center url(${path}/resources/image/img/recom5.jpg) no-repeat; background-size: cover;">
-	            <a class="tile-link" href="detail-olle.html"> </a>
-	            <div class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
-	              <h3 class="text-shadow text-uppercase mb-0">성산일출봉</h3>
-	            </div>
-	          </div>
-	        </div>
+	       </c:forEach>
 	      </div>
 	    </div>
 	  </section>
@@ -199,6 +184,6 @@
 		pageUrl = pageUrl + '&search=' + search; 
 		location.href = encodeURI(pageUrl);	
 	}
-</script>
+	</script>
   
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

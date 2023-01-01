@@ -78,7 +78,7 @@
                   href="category-food.html">음식점</a><a class="dropdown-item" href="category-cafe.html">카페<span
                     class="badge badge-info-light ms-1 mt-n1">hot</span></a></div>
             </li>
-            <li class="nav-item text-center me-2"><a class="nav-link" href="category-room.html">숙소 </a>
+            <li class="nav-item text-center me-2"><a class="nav-link" href="${path}/category/category-room">숙소 </a>
             </li>
             <li class="nav-item dropdown text-center"><a class="nav-link dropdown-toggle" id="docsDropdownMenuLink"
                 href="${path}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

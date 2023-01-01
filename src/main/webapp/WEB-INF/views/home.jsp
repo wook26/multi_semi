@@ -75,112 +75,26 @@
                   <!-- Additional required wrapper-->
                   <div class="swiper-wrapper pt-2 pb-2">
                     <!-- Slides-->
+                    <c:forEach var="list" items="${list1}">
                     <div class="swiper-slide p-4">
                       <div class="testimonial card rounded-3 shadow border-0">
-                        <div class="testimonial-avatar"><img class="recomend-img" src="${path}/resources/image/img/recom1.jpg"
+                        <div class="testimonial-avatar"><img class="recomend-img" src="${list.imgpath}"
                             alt="..."></div>
                         <div class="text">
                           <div class="testimonial-quote">
                             <i class="fas fa-quote-left"></i>
-                            <p class="fs-4 d-inline text-custom-gray400"> 한라산국립공원</p>
+                            <p class="fs-4 d-inline text-custom-gray400">${list.title}</p>
                           </div>
-                          <div class="main-tag box-shadow">#산</div>
-                          <div class="main-tag box-shadow">#걷기/등산</div>
-                          <div class="main-tag box-shadow">#경관/포토</div>
-                          <div class="main-tag box-shadow">#친구</div>
-                          <div class="main-tag box-shadow">#사계절</div>
-                          <div class="main-tag box-shadow">#자연경관</div>
-                          <div class="main-tag box-shadow">#포토스팟</div>
-                          <div class="main-tag box-shadow">#한라산</div>
-                          <div class="main-tag box-shadow">#언택트</div>
-                          <div class="main-tag box-shadow">#단풍</div>
-                          <div class="main-tag box-shadow">#유네스코</div>
-                          <p class="main-address mt-2 mb-4">주소 제주특별자치도 제주시 1100로 2070-61</p>
+                          <c:forEach var="tag" items="${list.tagList}" end="7">
+                            <div class="main-tag box-shadow">${tag}</div>
+                          </c:forEach>
+                          <p class="main-address mt-2 mb-4">주소 ${list.roadaddress}</p>
                         </div>
-                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=1053" target="_blank">상세보기 <i
+                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=${list.no}" target="_blank">상세보기 <i
                             class="fa-solid fa-arrow-up-right-from-square"></i></a>
                       </div>
                     </div>
-                    <div class="swiper-slide p-4">
-                      <div class="testimonial card rounded-3 shadow border-0">
-                        <div class="testimonial-avatar"><img class="recomend-img" src="${path}/resources/image/img/recom2.jpg"
-                            alt="..."></div>
-                        <div class="text">
-                          <div class="testimonial-quote">
-                            <i class="fas fa-quote-left"></i>
-                            <p class="fs-4 d-inline text-custom-gray400"> 사려니숲길</p>
-                          </div>
-                          <div class="main-tag box-shadow">#숲길</div>
-                          <div class="main-tag box-shadow">#걷기/등산</div>
-                          <div class="main-tag box-shadow">#친구</div>
-                          <div class="main-tag box-shadow">#커플</div>
-                          <div class="main-tag box-shadow">#흐림</div>
-                          <div class="main-tag box-shadow">#봄</div>
-                          <div class="main-tag box-shadow">#자연경관</div>
-                          <div class="main-tag box-shadow">#도보여행</div>
-                          <div class="main-tag box-shadow">#도보</div>
-                          <div class="main-tag box-shadow">#숲</div>
-                          <div class="main-tag box-shadow">#단풍</div>
-                          <p class="main-address mt-2 mb-4">주소 제주특별자치도 제주시 조천읍 교래리 산 137-1</p>
-                        </div>
-                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=1109" target="_blank">상세보기 <i
-                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                      </div>
-                    </div>
-                    <div class="swiper-slide p-4">
-                      <div class="testimonial card rounded-3 shadow border-0">
-                        <div class="testimonial-avatar"><img class="recomend-img" src="${path}/resources/image/img/recom3.jpg"
-                            alt="..."></div>
-                        <div class="text">
-                          <div class="testimonial-quote">
-                            <i class="fas fa-quote-left"></i>
-                            <p class="fs-4 d-inline text-custom-gray400"> 협재해수욕장</p>
-                          </div>
-                          <div class="main-tag box-shadow">#일몰</div>
-                          <div class="main-tag box-shadow">#해수욕장</div>
-                          <div class="main-tag box-shadow">#액티비티</div>
-                          <div class="main-tag box-shadow">#아이</div>
-                          <div class="main-tag box-shadow">#맑음</div>
-                          <div class="main-tag box-shadow">#여름</div>
-                          <div class="main-tag box-shadow">#자연경관</div>
-                          <div class="main-tag box-shadow">#체험</div>
-                          <div class="main-tag box-shadow">#레저/체험</div>
-                          <div class="main-tag box-shadow">#해변</div>
-                          <div class="main-tag box-shadow">#물놀이</div>
-                          <div class="main-tag box-shadow">#어린이</div>
-                          <div class="main-tag box-shadow">#수상레저</div>
-                          <div class="main-tag box-shadow">#반려동물</div>
-                          <div class="main-tag box-shadow">#혼저옵서개</div>
-                          <p class="main-address mt-2 mb-4">주소 제주특별자치도 제주시 한림읍 한림로 329-10</p>
-                        </div>
-                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=986" target="_blank">상세보기 <i
-                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                      </div>
-                    </div>
-                    <div class="swiper-slide p-4">
-                      <div class="testimonial card rounded-3 shadow border-0">
-                        <div class="testimonial-avatar"><img class="recomend-img" src="${path}/resources/image/img/recom4.png"
-                            alt="..."></div>
-                        <div class="text">
-                          <div class="testimonial-quote">
-                            <i class="fas fa-quote-left"></i>
-                            <p class="fs-4 d-inline text-custom-gray400"> 에코랜드 테마파크</p>
-                          </div>
-                          <div class="main-tag box-shadow">#테마공원</div>
-                          <div class="main-tag box-shadow">#아이</div>
-                          <div class="main-tag box-shadow">#맑음</div>
-                          <div class="main-tag box-shadow">#봄</div>
-                          <div class="main-tag box-shadow">#가을</div>
-                          <div class="main-tag box-shadow">#겨울</div>
-                          <div class="main-tag box-shadow">#실내관광지</div>
-                          <div class="main-tag box-shadow">#어린이</div>
-                          <div class="main-tag box-shadow">#어트랙션</div>
-                          <p class="main-address mt-2 mb-4">주소 제주특별자치도 제주시 조천읍 번영로 1278-169</p>
-                        </div>
-                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=1124" target="_blank">상세보기 <i
-                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                      </div>
-                    </div>
+                    </c:forEach>
                   </div>
                   <div class="swiper-pagination"> </div>
                 </div>
@@ -195,105 +109,26 @@
                   <!-- Additional required wrapper-->
                   <div class="swiper-wrapper pt-2" style="padding-bottom: 2.5rem">
                     <!-- Slides-->
+                    <c:forEach var="list" items="${list2}">
                     <div class="swiper-slide p-4">
                       <div class="testimonial card rounded-3 shadow border-0">
-                        <div class="testimonial-avatar"><img class="recomend-img" src="${path}/resources/image/img/recom5.jpg"
+                        <div class="testimonial-avatar"><img class="recomend-img" src="${list.imgpath}"
                             alt="..."></div>
                         <div class="text">
                           <div class="testimonial-quote">
                             <i class="fas fa-quote-left"></i>
-                            <p class="fs-4 d-inline text-custom-gray400"> 성산일출봉</p>
+                            <p class="fs-4 d-inline text-custom-gray400">${list.title}</p>
                           </div>
-                          <div class="main-tag box-shadow">#일출</div>
-                          <div class="main-tag box-shadow">#오름</div>
-                          <div class="main-tag box-shadow">#경관/포토</div>
-                          <div class="main-tag box-shadow">#부모</div>
-                          <div class="main-tag box-shadow">#자연경관</div>
-                          <div class="main-tag box-shadow">#포토스팟</div>
-                          <div class="main-tag box-shadow">#유네스코</div>
-                          <p class="main-address mt-2 mb-4">주소 제주특별자치도 서귀포시 성산읍 일출로 284-12</p>
+                          <c:forEach var="tag" items="${list.tagList}" end="7">
+                            <div class="main-tag box-shadow">${tag}</div>
+                          </c:forEach>
+                          <p class="main-address mt-2 mb-4">주소 ${list.roadaddress}</p>
                         </div>
-                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=1055" target="_blank">상세보기 <i
+                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=${list.no}" target="_blank">상세보기 <i
                             class="fa-solid fa-arrow-up-right-from-square"></i></a>
                       </div>
                     </div>
-                    <div class="swiper-slide p-4">
-                      <div class="testimonial card rounded-3 shadow border-0">
-                        <div class="testimonial-avatar"><img class="recomend-img" src="${path}/resources/image/img/recom6.jpg"
-                            alt="..."></div>
-                        <div class="text">
-                          <div class="testimonial-quote">
-                            <i class="fas fa-quote-left"></i>
-                            <p class="fs-4 d-inline text-custom-gray400"> 섭지코지</p>
-                          </div>
-                          <div class="main-tag box-shadow">#일출</div>
-                          <div class="main-tag box-shadow">#해변</div>
-                          <div class="main-tag box-shadow">#경관/포토</div>
-                          <div class="main-tag box-shadow">#커플</div>
-                          <div class="main-tag box-shadow">#맑음</div>
-                          <div class="main-tag box-shadow">#가을</div>
-                          <div class="main-tag box-shadow">#자연경관</div>
-                          <div class="main-tag box-shadow">#포토스팟</div>
-                          <div class="main-tag box-shadow">#봄꽃</div>
-                          <div class="main-tag box-shadow">#유채꽃</div>
-                          <div class="main-tag box-shadow">#반려동물</div>
-                          <p class="main-address mt-2 mb-4">주소 제주특별자치도 서귀포시 성산읍 섭지코지로 107</p>
-                        </div>
-                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=965" target="_blank">상세보기 <i
-                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                      </div>
-                    </div>
-                    <div class="swiper-slide p-4">
-                      <div class="testimonial card rounded-3 shadow border-0">
-                        <div class="testimonial-avatar"><img class="recomend-img" src="${path}/resources/image/img/recom7.jpg"
-                            alt="..."></div>
-                        <div class="text">
-                          <div class="testimonial-quote">
-                            <i class="fas fa-quote-left"></i>
-                            <p class="fs-4 d-inline text-custom-gray400"> 천지연폭포</p>
-                          </div>
-                          <div class="main-tag box-shadow">#폭포</div>
-                          <div class="main-tag box-shadow">#밤</div>
-                          <div class="main-tag box-shadow">#경관/포토</div>
-                          <div class="main-tag box-shadow">#부모</div>
-                          <div class="main-tag box-shadow">#맑음</div>
-                          <div class="main-tag box-shadow">#여름</div>
-                          <div class="main-tag box-shadow">#자연경관</div>
-                          <div class="main-tag box-shadow">#포토스팟</div>
-                          <div class="main-tag box-shadow">#유네스코</div>
-                          <p class="main-address mt-2 mb-4">주소 제주특별자치도 서귀포시 남성중로 2-15</p>
-                        </div>
-                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=1051" target="_blank">상세보기 <i
-                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                      </div>
-                    </div>
-                    <div class="swiper-slide p-4">
-                      <div class="testimonial card rounded-3 shadow border-0">
-                        <div class="testimonial-avatar"><img class="recomend-img" src="${path}/resources/image/img/recom8.jpg"
-                            alt="..."></div>
-                        <div class="text">
-                          <div class="testimonial-quote">
-                            <i class="fas fa-quote-left"></i>
-                            <p class="fs-4 d-inline text-custom-gray400"> 카멜리아힐</p>
-                          </div>
-                          <div class="main-tag box-shadow">#경관/포토</div>
-                          <div class="main-tag box-shadow">#커플</div>
-                          <div class="main-tag box-shadow">#아이</div>
-                          <div class="main-tag box-shadow">#맑음</div>
-                          <div class="main-tag box-shadow">#겨울</div>
-                          <div class="main-tag box-shadow">#힐링</div>
-                          <div class="main-tag box-shadow">#자연경관</div>
-                          <div class="main-tag box-shadow">#포토스팟</div>
-                          <div class="main-tag box-shadow">#어린이</div>
-                          <div class="main-tag box-shadow">#어트랙션</div>
-                          <div class="main-tag box-shadow">#동백</div>
-                          <div class="main-tag box-shadow">#수국</div>
-                          <p class="main-address mt-2 mb-4">주소 제주 서귀포시 안덕면 병악로 166</p>
-                        </div>
-                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=1132" target="_blank">상세보기 <i
-                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                      </div>
-                    </div>
+                    </c:forEach>
                   </div>
                   <div class="swiper-pagination"> </div>
                 </div>
@@ -307,6 +142,7 @@
           </div>
         </div>
       </div>
+    </div>
   </section>
   <section class="py-4">
     <div class="container">
@@ -316,40 +152,24 @@
           <h2 class="font-Tenada">음식/카페</h2>
         </div>
         <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a class="text-muted text-sm"
-            href="category-food.html">
+            href="${path}/category/category-room">
             더 둘러보기<i class="fas fa-angle-double-right ms-2"></i></a></div>
       </div>
       <div class="swiper-container guides-slider mx-n2 pt-3">
         <!-- Additional required wrapper-->
         <div class="swiper-wrapper pb-5">
+        
           <!-- Slides-->
+          <c:forEach var="list" items="${list3}" varStatus="status">
           <div class="swiper-slide h-auto px-2">
             <div class="card card-poster hover-animate mb-4 mb-lg-0 shadow"><a class="tile-link"
-                href="${path}/detail/detail-olle?no=3603"></a><img class="bg-image" src="${path}/resources/image/custom/foodrecom1.png" alt="제주김만복">
+                href="${path}/detail/detail-olle?no=${list.no}"></a><img class="bg-image" src="${path}/resources/image/custom/foodrecom${status.count}.png">
               <div class="card-body overlay-content">
               </div>
             </div>
           </div>
-          <div class="swiper-slide h-auto px-2">
-            <div class="card card-poster hover-animate mb-4 mb-lg-0 shadow"><a class="tile-link"
-                href="${path}/detail/detail-olle?no=3135"></a><img class="bg-image" src="${path}/resources/image/custom/foodrecom2.png" alt="올래국수">
-            </div>
-          </div>
-          <div class="swiper-slide h-auto px-2">
-            <div class="card card-poster hover-animate mb-4 mb-lg-0 shadow"><a class="tile-link"
-                href="${path}/detail/detail-olle?no=3598"></a><img class="bg-image" src="${path}/resources/image/custom/foodrecom3.png" alt="제주선">
-            </div>
-          </div>
-          <div class="swiper-slide h-auto px-2">
-            <div class="card card-poster hover-animate mb-4 mb-lg-0 shadow"><a class="tile-link"
-                href="${path}/detail/detail-olle?no=3657"></a><img class="bg-image" src="${path}/resources/image/custom/foodrecom4.png" alt="돈사돈">
-            </div>
-          </div>
-          <div class="swiper-slide h-auto px-2">
-            <div class="card card-poster hover-animate mb-4 mb-lg-0 shadow"><a class="tile-link"
-                href="${path}/detail/detail-olle?no=3238"></a><img class="bg-image" src="${path}/resources/image/custom/foodrecom5.png" alt="카페공작소">
-            </div>
-          </div>
+          </c:forEach>
+          
         </div>
         <div class="swiper-pagination d-md-none"> </div>
       </div>
@@ -363,7 +183,7 @@
           <h2 class="font-Tenada">인기숙소 </h2>
         </div>
         <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a class="text-muted text-sm"
-            href="category-room.html">
+            href="${path}/category/category-room">
             더 둘러보기<i class="fas fa-angle-double-right ms-2"></i></a></div>
       </div>
       <!-- Slider main container-->
@@ -372,234 +192,35 @@
         <!-- Additional required wrapper-->
         <div class="swiper-wrapper pb-5">
           <!-- Slides-->
+          <c:forEach var="list" items="${list4}">
           <div class="swiper-slide h-auto px-2">
             <!-- place item-->
             <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
               <div class="card h-100 border-0 shadow">
-                <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid"
-                    src="${path}/resources/img/photo/photo-1484154218962-a197022b5858.jpg" alt="Modern, Well-Appointed Room" /><a
-                    class="tile-link" href="detail-rooms.html"></a>
-                  <div class="card-img-overlay-bottom z-index-20">
-                    <div class="d-flex text-white text-sm align-items-center"><img
-                        class="avatar avatar-border-white flex-shrink-0 me-2" src="${path}/resources/img/avatar/avatar-0.jpg"
-                        alt="Pamela" />
-                      <div>Pamela</div>
-                    </div>
-                  </div>
-                  <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40"
-                      href="javascript: void();">
-                      <svg class="svg-icon text-white">
-                        <use xlink:href="#heart-1"> </use>
-                      </svg></a></div>
+                <div class="card-img-top overflow-hidden gradient-overlay" style="height: 200px;"> <img class="img-fluid"
+                    src="${list.imgpath}" style="object-fit: cover;" /><a
+                    class="tile-link" href="${path}/detail/detail-olle?no=${list.no}"></a>
                 </div>
                 <div class="card-body d-flex align-items-center">
                   <div class="w-100">
-                    <h6 class="card-title"><a class="text-decoration-none text-dark" href="detail-rooms.html">Modern,
-                        Well-Appointed Room</a></h6>
+                    <h6 class="card-title"><a class="text-decoration-none text-dark" href="${path}/detail/detail-olle?no=${list.no}">${list.title}</a></h6>
                     <div class="d-flex card-subtitle mb-3">
-                      <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
+                      <p class="flex-grow-1 mb-0 text-muted text-sm">${list.si} > ${list.gu}</p>
                       <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i
                           class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
                           class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
                           class="fa fa-star text-warning"></i>
                       </p>
                     </div>
-                    <p class="card-text text-muted"><span class="h4 text-primary">$80</span> per night</p>
+                    <c:forEach var="tag" items="${list.tagList}" end="1">
+                      <p class="card-text text-muted d-inline-block"><span class="h4 text-primary">${tag}&nbsp;</span></p> 
+                    </c:forEach>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="swiper-slide h-auto px-2">
-            <!-- place item-->
-            <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e322f3375db4d89128">
-              <div class="card h-100 border-0 shadow">
-                <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid"
-                    src="${path}/resources/img/photo/photo-1426122402199-be02db90eb90.jpg" alt="Cute Quirky Garden apt, NYC adjacent" /><a
-                    class="tile-link" href="detail-rooms.html"></a>
-                  <div class="card-img-overlay-bottom z-index-20">
-                    <div class="d-flex text-white text-sm align-items-center"><img
-                        class="avatar avatar-border-white flex-shrink-0 me-2" src="${path}/resources/img/avatar/avatar-7.jpg"
-                        alt="John" />
-                      <div>John</div>
-                    </div>
-                  </div>
-                  <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40"
-                      href="javascript: void();">
-                      <svg class="svg-icon text-white">
-                        <use xlink:href="#heart-1"> </use>
-                      </svg></a></div>
-                </div>
-                <div class="card-body d-flex align-items-center">
-                  <div class="w-100">
-                    <h6 class="card-title"><a class="text-decoration-none text-dark" href="detail-rooms.html">Cute
-                        Quirky Garden apt, NYC adjacent</a></h6>
-                    <div class="d-flex card-subtitle mb-3">
-                      <p class="flex-grow-1 mb-0 text-muted text-sm">Entire apartment</p>
-                      <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i
-                          class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
-                          class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
-                          class="fa fa-star text-gray-300"></i>
-                      </p>
-                    </div>
-                    <p class="card-text text-muted"><span class="h4 text-primary">$121</span> per night</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide h-auto px-2">
-            <!-- place item-->
-            <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e3a31e62979bf147c9">
-              <div class="card h-100 border-0 shadow">
-                <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid"
-                    src="${path}/resources/img/photo/photo-1512917774080-9991f1c4c750.jpg" alt="Modern Apt - Vibrant Neighborhood!" /><a
-                    class="tile-link" href="detail-rooms.html"></a>
-                  <div class="card-img-overlay-bottom z-index-20">
-                    <div class="d-flex text-white text-sm align-items-center"><img
-                        class="avatar avatar-border-white flex-shrink-0 me-2" src="${path}/resources/img/avatar/avatar-8.jpg"
-                        alt="Julie" />
-                      <div>Julie</div>
-                    </div>
-                  </div>
-                  <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40"
-                      href="javascript: void();">
-                      <svg class="svg-icon text-white">
-                        <use xlink:href="#heart-1"> </use>
-                      </svg></a></div>
-                </div>
-                <div class="card-body d-flex align-items-center">
-                  <div class="w-100">
-                    <h6 class="card-title"><a class="text-decoration-none text-dark" href="detail-rooms.html">Modern Apt
-                        - Vibrant Neighborhood!</a></h6>
-                    <div class="d-flex card-subtitle mb-3">
-                      <p class="flex-grow-1 mb-0 text-muted text-sm">Entire apartment</p>
-                      <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i
-                          class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
-                          class="fa fa-star text-warning"></i><i class="fa fa-star text-gray-300"> </i><i
-                          class="fa fa-star text-gray-300"> </i>
-                      </p>
-                    </div>
-                    <p class="card-text text-muted"><span class="h4 text-primary">$75</span> per night</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide h-auto px-2">
-            <!-- place item-->
-            <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e3503eb77d487e8082">
-              <div class="card h-100 border-0 shadow">
-                <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid"
-                    src="${path}/resources/img/photo/photo-1494526585095-c41746248156.jpg" alt="Sunny Private Studio-Apartment" /><a
-                    class="tile-link" href="detail-rooms.html"></a>
-                  <div class="card-img-overlay-bottom z-index-20">
-                    <div class="d-flex text-white text-sm align-items-center"><img
-                        class="avatar avatar-border-white flex-shrink-0 me-2" src="${path}/resources/img/avatar/avatar-9.jpg"
-                        alt="Barbora" />
-                      <div>Barbora</div>
-                    </div>
-                  </div>
-                  <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40"
-                      href="javascript: void();">
-                      <svg class="svg-icon text-white">
-                        <use xlink:href="#heart-1"> </use>
-                      </svg></a></div>
-                </div>
-                <div class="card-body d-flex align-items-center">
-                  <div class="w-100">
-                    <h6 class="card-title"><a class="text-decoration-none text-dark" href="detail-rooms.html">Sunny
-                        Private Studio-Apartment</a></h6>
-                    <div class="d-flex card-subtitle mb-3">
-                      <p class="flex-grow-1 mb-0 text-muted text-sm">Shared room</p>
-                      <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i
-                          class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
-                          class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
-                          class="fa fa-star text-gray-300"> </i>
-                      </p>
-                    </div>
-                    <p class="card-text text-muted"><span class="h4 text-primary">$93</span> per night</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide h-auto px-2">
-            <!-- place item-->
-            <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e39aa2eed0626e485d">
-              <div class="card h-100 border-0 shadow">
-                <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid"
-                    src="${path}/resources/img/photo/photo-1522771739844-6a9f6d5f14af.jpg" alt="Mid-Century Modern Garden Paradise" /><a
-                    class="tile-link" href="detail-rooms.html"></a>
-                  <div class="card-img-overlay-bottom z-index-20">
-                    <div class="d-flex text-white text-sm align-items-center"><img
-                        class="avatar avatar-border-white flex-shrink-0 me-2" src="${path}/resources/img/avatar/avatar-10.jpg"
-                        alt="Jack" />
-                      <div>Jack</div>
-                    </div>
-                  </div>
-                  <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40"
-                      href="javascript: void();">
-                      <svg class="svg-icon text-white">
-                        <use xlink:href="#heart-1"> </use>
-                      </svg></a></div>
-                </div>
-                <div class="card-body d-flex align-items-center">
-                  <div class="w-100">
-                    <h6 class="card-title"><a class="text-decoration-none text-dark"
-                        href="detail-rooms.html">Mid-Century Modern Garden Paradise</a></h6>
-                    <div class="d-flex card-subtitle mb-3">
-                      <p class="flex-grow-1 mb-0 text-muted text-sm">Entire house</p>
-                      <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i
-                          class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
-                          class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
-                          class="fa fa-star text-warning"></i>
-                      </p>
-                    </div>
-                    <p class="card-text text-muted"><span class="h4 text-primary">$115</span> per night</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide h-auto px-2">
-            <!-- place item-->
-            <div class="w-100 h-100 hover-animate" data-marker-id="59c0c8e39aa2edasd626e485d">
-              <div class="card h-100 border-0 shadow">
-                <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid"
-                    src="${path}/resources/img/photo/photo-1488805990569-3c9e1d76d51c.jpg" alt="Brooklyn Life, Easy to Manhattan" /><a
-                    class="tile-link" href="detail-rooms.html"></a>
-                  <div class="card-img-overlay-bottom z-index-20">
-                    <div class="d-flex text-white text-sm align-items-center"><img
-                        class="avatar avatar-border-white flex-shrink-0 me-2" src="${path}/resources/img/avatar/avatar-11.jpg"
-                        alt="Stuart" />
-                      <div>Stuart</div>
-                    </div>
-                  </div>
-                  <div class="card-img-overlay-top text-end"><a class="card-fav-icon position-relative z-index-40"
-                      href="javascript: void();">
-                      <svg class="svg-icon text-white">
-                        <use xlink:href="#heart-1"> </use>
-                      </svg></a></div>
-                </div>
-                <div class="card-body d-flex align-items-center">
-                  <div class="w-100">
-                    <h6 class="card-title"><a class="text-decoration-none text-dark" href="detail-rooms.html">Brooklyn
-                        Life, Easy to Manhattan</a></h6>
-                    <div class="d-flex card-subtitle mb-3">
-                      <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
-                      <p class="flex-shrink-1 mb-0 card-stars text-xs text-end"><i
-                          class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
-                          class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
-                          class="fa fa-star text-gray-300"> </i>
-                      </p>
-                    </div>
-                    <p class="card-text text-muted"><span class="h4 text-primary">$123</span> per night</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+           </c:forEach> 
         </div>
         <!-- If we need pagination-->
         <div class="swiper-pagination"></div>

@@ -1,5 +1,6 @@
 package com.multi.mvc.jejuism.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,19 +71,83 @@ public class VisitJejuController {
 	
 //	@RequestMapping(value = {"/category/category-cafe", "/category/category-food", "/category/category-festival", "/category/category-museum", "/category/category-olle", "/category/category-rooms"})
 	@RequestMapping("/category/category-olle")
-	public String categoryView(Model model, @RequestParam Map<String, String> param) {
+	public String categoryOView(Model model, @RequestParam Map<String, String> param) {
+		List<String> recomItem = new ArrayList<String>();
+		recomItem.add("한라산국립공원");
+		recomItem.add("사려니숲길");
+		recomItem.add("협재해수욕장");
+		recomItem.add("섭지코지");
+		recomItem.add("천지연폭포");
+		List<VisitJeju> recomList = service.selectVListHome(recomItem);
+		
 		int page = 1;
-		int vCodeCount = service.selectVCountForO();
+		Map<String, Object> searchMap = new HashMap<>();
+		try {
+			String code = "관광지";
+			searchMap.put("code", code);
+			String excl1 = "박물관";
+			searchMap.put("excl1", excl1);
+			String excl2 = "미술관";
+			searchMap.put("excl2", excl2);
+			String excl3 = "전시관";
+			searchMap.put("excl3", excl3);
+			String search = param.get("search");
+			searchMap.put("search", search);
+			page = Integer.parseInt(param.get("page"));
+		} catch (Exception e) {
+		}
+		int vCodeCount = service.selectVCountForO(searchMap);
 		PageInfo pageInfo = new PageInfo(page, 10, vCodeCount, 12);
-		List<VisitJeju> list = service.selectVListForO();
+		List<VisitJeju> list = service.selectVListForO(pageInfo, searchMap);
 		for (VisitJeju visitJeju : list) {
 			visitJeju.setTag("#" + String.join(" #",visitJeju.getTag().split(",")));
 		}
+		
+		model.addAttribute("recomList", recomList);
 		model.addAttribute("list", list);
 		model.addAttribute("param", param);
 		model.addAttribute("pageInfo", pageInfo);
 		
 		return "/category/category-olle";
+	}
+	
+	@RequestMapping("/category/category-room")
+	public String categoryRoomView(Model model, @RequestParam Map<String, String> param) {
+		List<String> recomItem = new ArrayList<String>();
+		recomItem.add("제주잔잔");
+		recomItem.add("올레해오름펜션");
+		recomItem.add("다노이커플펜션");
+		recomItem.add("사면초가펜션");
+		recomItem.add("시월애");
+		recomItem.add("저스트슬립제주");
+		recomItem.add("킹스통나무");
+		recomItem.add("제주리시온관광호텔");
+		List<VisitJeju> recomList = service.selectVListHome(recomItem);
+		
+		int page = 1;
+		Map<String, Object> searchMap = new HashMap<>();
+		try {
+			String category = "숙박";
+			searchMap.put("code", category);
+			String search = param.get("search");
+			searchMap.put("search", search);
+			String gu = param.get("gu");
+			searchMap.put("gu", gu);
+			page = Integer.parseInt(param.get("page"));
+		} catch (Exception e) {
+		}
+		int vCodeCount = service.selectVCount(searchMap);
+		PageInfo pageInfo = new PageInfo(page, 10, vCodeCount, 8);
+		List<VisitJeju> list = service.selectVList(pageInfo, searchMap);
+		for (VisitJeju visitJeju : list) {
+			visitJeju.setTag("#" + String.join(" #",visitJeju.getTag().split(",")));
+		}
+		
+		model.addAttribute("recomList", recomList);
+		model.addAttribute("list", list);
+		model.addAttribute("param", param);
+		model.addAttribute("pageInfo", pageInfo);
+		return "/category/category-room";
 	}
 	
 	@RequestMapping(value = {"/detail/detail-cafe", "/detail/detail-festival", "/detail/detail-museum", "/detail/detail-olle", "/detail/detail-rooms"})
