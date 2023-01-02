@@ -292,7 +292,6 @@ function fn_changeTab() {
 }
 
 function fn_changeImg(id) {
-	console.dir("hoho2 : "+id);
 	if(id == "pills-home-tab") {
 		document.getElementById("regMap").src = "http://localhost/mvc/resources/image/custom/map_1.png"
 	}else if(id == "pills-profile-tab") {

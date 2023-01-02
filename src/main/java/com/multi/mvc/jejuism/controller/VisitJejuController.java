@@ -55,8 +55,8 @@ public class VisitJejuController {
 		try {
 			String search = param.get("search");
 			searchMap.put("search", search);
-			String category = param.get("code");
-			searchMap.put("code", category);
+			String code = param.get("code");
+			if(!code.equals("")) searchMap.put("code", code);
 			page = Integer.parseInt(param.get("page"));
 		} catch (Exception e) {
 		}
