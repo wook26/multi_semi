@@ -81,6 +81,9 @@ public class VisitJejuController {
 		recomItem.add("섭지코지");
 		recomItem.add("천지연폭포");
 		List<VisitJeju> recomList = service.selectVListHome(recomItem);
+		for (VisitJeju visitJeju : recomList) {
+			visitJeju.setCategory("명소");
+		}
 		
 		int page = 1;
 		Map<String, Object> searchMap = new HashMap<>();
@@ -131,6 +134,9 @@ public class VisitJejuController {
 		recomItem.add("킹스통나무");
 		recomItem.add("제주리시온관광호텔");
 		List<VisitJeju> recomList = service.selectVListHome(recomItem);
+		for (VisitJeju visitJeju : recomList) {
+			visitJeju.setCategory("숙소");
+		}
 		
 		int page = 1;
 		Map<String, Object> searchMap = new HashMap<>();

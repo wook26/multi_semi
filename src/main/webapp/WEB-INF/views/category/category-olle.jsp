@@ -97,7 +97,7 @@
 	        <div class="d-flex align-items-lg-stretch mb-4 col-lg-8">
 	          <div class="card shadow-lg border-0 w-100 border-0 hover-animate"
 	            style="background: center center url('${recomList[0].imgpath}') no-repeat; background-size: cover;">
-	            <a class="tile-link" href="${path}/detail/detail-olle?no=${recomList[0].no}&category=${item.category}"> </a>
+	            <a class="tile-link" href="${path}/detail/detail-olle?no=${recomList[0].no}&category=${recomList[0].category}"> </a>
 	            <div class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
 	              <h3 class="text-shadow text-uppercase mb-0">${recomList[0].title}</h3>
 	            </div>
@@ -106,7 +106,7 @@
 	        <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
 	          <div class="card shadow-lg border-0 w-100 border-0 hover-animate"
 	            style="background: center center url('${recomList[1].imgpath}') no-repeat; background-size: cover;">
-	            <a class="tile-link" href="${path}/detail/detail-olle?no=${recomList[1].no}&category=${item.category}"> </a>
+	            <a class="tile-link" href="${path}/detail/detail-olle?no=${recomList[1].no}&category=${recomList[1].category}"> </a>
 	            <div class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
 	              <h3 class="text-shadow text-uppercase mb-0">${recomList[1].title}</h3>
 	            </div>
