@@ -94,7 +94,7 @@
         <li class="page-item"><a class="page-link" onclick="movePage('${path}/board/list?page=${pageInfo.nextPage}');"> <i class="fa fa-angle-right"></i></a></li>
       </ul>
     </nav>
-
+	<input type="hidden" value="${param.type}" id="paramType">
  
 
 
@@ -102,8 +102,9 @@
 
 <script type="text/javascript">
 	function movePage(pageUrl){
-		var type = ${param.type};
+		var type = document.getElementById("paramType").value;
 		pageUrl = pageUrl + '&type=' + type;
+		console.dir(pageUrl);
 		location.href = encodeURI(pageUrl);	
 	}
 </script>

@@ -63,7 +63,7 @@ public class BoardController {
 		
 		System.out.println(searchMap);
 		int boardCount = service.getBoardCount(searchMap);
-		PageInfo pageInfo = new PageInfo(page, 10, boardCount, 2);
+		PageInfo pageInfo = new PageInfo(page, 10, boardCount, 10);
 		List<Board> list = service.getBoardList(pageInfo, searchMap);
 		
 		model.addAttribute("boardCount",boardCount);
