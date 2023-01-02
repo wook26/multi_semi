@@ -49,8 +49,7 @@
 			              <option value="서귀포시" ${param.si=='서귀포시' ? 'selected' : ''}>서귀포시</option>
 			              <input type="hidden" id="paramSi" value="${param.si}">
 			            </select>
-                    </div>
-                        
+                    </div>                      
 					<div class="col-lg-7 d-flex align-items-center form-group no-divider">
                       <input class="form-control border-0 shadow-0" type="search" name="search"
                          value="${param.search}" placeholder="검색어를 입력하세요.">

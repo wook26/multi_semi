@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+    pageEncoding="UTF-8"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
     
-<jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/common/header.jsp">
+	<jsp:param value="박물관/미술관/전시관" name="title"/>
+</jsp:include>
 
   <!-- Hero Section-->
   <section class="pt-7 pb-7 d-flex align-items-end dark-overlay bg-cover"
@@ -87,11 +88,9 @@
             </div>
           </div>
         </div>
-        </c:forEach>
-        
+        </c:forEach>      
        </div>
       </div>
-
 
         <!-- Pagination -->
     <nav aria-label="Page navigation pt-3">

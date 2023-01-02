@@ -76,7 +76,6 @@
       </div>
      </div>
   </section>
-  
 <script type="text/javascript">
 	function movePage(pageUrl){
 		var si = document.getElementById("paramSi").value;
@@ -85,5 +84,4 @@
 		location.href = encodeURI(pageUrl);	
 	}
 </script>
-
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
