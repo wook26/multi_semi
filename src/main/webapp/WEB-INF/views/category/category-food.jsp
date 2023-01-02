@@ -24,8 +24,8 @@
     </div>
   </section>
   <div class="container py-2">
-    <a class="text-custom-gray400" href="index.html"><i class="fa-solid fa-house"></i></a>
-    <a class="text-custom-gray400" href="category-food.html">맛집</a>
+    <a class="text-custom-gray400" href="${path}"> <i class="fa-solid fa-house"></i> </a>
+	<a class="text-custom-gray400" href="${path}/resources/category-food.html"> 맛집 </a>
   </div>
 
   <!-- 본문 시작  -->
@@ -44,10 +44,11 @@
                 <form action="${path}/category/category-food">
                   <div class="row">
                     <div class="col-lg-3 d-flex align-items-center form-group no-divider">
-                      <select name="selectBox" id="selectBoxGu" class="selectpicker form-control" title="구분" data-style="btn-form-control" multiple
-                        data-selected-text-format="count &gt; 2">
-						  <option value=""></option>
- 					  </select>
+                      <select class="selectpicker" title="지역" name="si" data-style="btn-form-control">
+			              <option value="제주시" ${param.si=='제주시' ? 'selected' : ''}>제주시</option>
+			              <option value="서귀포시" ${param.si=='서귀포시' ? 'selected' : ''}>서귀포시</option>
+			              <input type="hidden" id="paramSi" value="${param.si}">
+			            </select>
                     </div>
                         
 					<div class="col-lg-7 d-flex align-items-center form-group no-divider">
@@ -64,22 +65,11 @@
           </div>
         
 
-        <form action="#">
+        <form action="${path}/category/category-food">
           <div class="row">
             <div class="col-xl-auto col-md-auto mb-5">
               <h3 class="text-primary mt-4">추천 맛 태그 TOP 15</h3>
               <ul class="nav nav-pills-tag">
-                <!-- 비짓제주 코드 예시 : <input id="hashTagTypeA_안전여행스탬프" type="radio" name="tag" value="안전여행스탬프" data-v-689c0e04><label for="hashTagTypeA_안전여행스탬프" data-v-689c0e04>#안전여행스탬프</label> -->
-                <!-- <li class="nav-item"><a class="nav-link active" href="#">#브런치</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">#청귤차</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">#땅콩아이스크림</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">#애월카페</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">#핸드드립커피</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">#북카페</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">#스튜디오카페</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">#에그타르트</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">#케이크</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">#애플망고</a></li> -->
                 <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="돔베고기" onchange="this.form.submit();"><span>#돔베고기</span></label></li>
                 <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="흑돼지구이" onchange="this.form.submit();"><span>#흑돼지구이</span></label></li>
                 <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="갈치조림" onchange="this.form.submit();"><span>#갈치조림</span></label></li>
@@ -95,6 +85,7 @@
                 <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="스튜디오카페" onchange="this.form.submit();"><span>#스튜디오카페</span></label></li>
                 <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="케이크" onchange="this.form.submit();"><span>#케이크</span></label></li>
                 <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="애플망고" onchange="this.form.submit();"><span>#애플망고</span></label></li>
+                <input type="hidden" id="paramSearch" value="${param.search}">
               </ul>
             </div>
           </div>
@@ -109,15 +100,21 @@
             <div class="card h-100 border-0 shadow">
               <div class="card-img-top overflow-hidden bg-cover"
                 style="background-image: url(${item.imgpath}); min-height: 230px;"><a class="tile-link"
-                  href="${path}/detail/detail-food?no=${item.no}"></a>
+                  href="${path}/detail/detail-olle?no=${item.no}&category=${item.category}" ></a>
               </div>
               <div class="card-body">
                 <h4 class="text-black text-shadow">${item.title}</h4>
-                <p class="mb-2 text-xs"><i class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
-                    class="fa fa-star text-warning"></i><i class="fa fa-star text-warning"></i><i
-                    class="fa fa-star text-gray-300"></i>
+                <p class="mb-2 text-xs">
+                <c:forEach var="i" begin="1" end="${review.rate}">
+					<i class="fa fa-xs fa-star text-primary"></i>
+				</c:forEach>
+				<c:forEach var="i" begin="${review.rate}" end="4">
+					<i class="fa fa-xs fa-star text-gray-300"></i>
+				</c:forEach>
                 </p>
                 <p class="text-sm text-muted mb-3">${item.introduction}</p>
+                <input type="hidden" id="lat" value="${item.latitude}">
+                <input type="hidden" id="lng" value="${item.longitude}">
               </div>
             </div>
           </div>
@@ -148,7 +145,8 @@
 	
         <!-- 사이드 카카오  지도  -->
         <div class="col-lg-6 map-side-lg pe-lg-0">
-          <div class="map-full shadow-left" id="kakaoMap"></div>
+          <div class="map-full shadow-left" id="kakaoMap"
+          ></div>
         </div>
 
       </div>
@@ -156,83 +154,74 @@
    </div> 
   </div>
     
-    <script type="text/javascript">
+    
+<script type="text/javascript">
 	function movePage(pageUrl){
-		var search = document.getElementById("searchValue").value; // 갤럭시
-		pageUrl = pageUrl + '&search=' + search; 
-		location.href = encodeURI(pageUrl);	
+		var si = document.getElementById("paramSi").value;
+		var search = document.getElementById("paramSearch").value;
+		pageUrl = pageUrl + '&si=' + si + '&search=' + search; 
+		location.href = encodeURI(pageUrl);
 	}
-	</script>
+</script>
 	
-	
-    <script type="text/javascript"
-      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e0216acf240302af61958af813b83190"></script>
+<!-- =========================카카오 맵========================== -->
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e0216acf240302af61958af813b83190"></script>
 
-    <script>
-      var mapContainer = document.getElementById('kakaoMap'), // 지도를 표시할 div  
-        mapOption = {
-          center: new kakao.maps.LatLng(33.4996213, 126.5311884), // 지도의 중심좌표
-          level: 10 // 지도의 확대 레벨
-        };
 
-      var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+//			mapList.add(new MapInfo(visitJeju.getTitle(), visitJeju.getRoadaddress(), visitJeju.getLatitude(), visitJeju.getLongitude()));
 
-      
-      //마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
-	var positions = [
-		<c:forEach var="map" items="${mapList}}" >
-			{
-			    content: '<div>${map.title}</div>', 
-			    latlng: new kakao.maps.LatLng(${map.latitude}, ${map.longitude})
-			},
-		</c:forEach>
-	];
 
-      // 마커 이미지의 이미지 주소입니다
-      var imageSrc = "${path}/resources/image/icon/location.png";
 
-      for (var i = 0; i < positions.length; i++) {
+<script>
+    var mapContainer = document.getElementById('kakaoMap'), // 지도를 표시할 div 
+        mapOption = { 
+    	        center: new kakao.maps.LatLng(${x}, ${y}), // 지도의 중심좌표
+    	        level: 9 // 지도의 확대 레벨
+    	    };
+    	
+    	var map = new kakao.maps.Map(mapContainer, mapOption);
+    	
+    	<c:forEach var="map" items="${list}" >
+    		var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; // 마커이미지의 주소입니다    
+    		    imageSize = new kakao.maps.Size(24, 35), // 마커이미지의 크기입니다
+    		    imageOption = {offset: new kakao.maps.Point(25, 60)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+    		
+    		// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+    		var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
+    		    markerPosition = new kakao.maps.LatLng(${map.latitude}, ${map.longitude}); // 마커가 표시될 위치입니다
+    		
+    		// 마커를 생성합니다
+    		var marker = new kakao.maps.Marker({
+    		  position: markerPosition,
+    		  image: markerImage // 마커이미지 설정 
+    		});
+    		
+    		// 마커가 지도 위에 표시되도록 설정합니다
+    		marker.setMap(map);  
+    		
+    		// 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+    		var content = '<div class="customoverlay">' +
+    		    '  <a href="${path}/detail/detail-olle?no=${map.no}&category=${item.category}" >' +
+    		    '    <span class="text-custom-gray400">${map.title}</span>' +
+    		    '  </a>' +
+    		    '</div>';
+    		
+    		// 커스텀 오버레이가 표시될 위치입니다 
+    		var position = new kakao.maps.LatLng(${map.latitude}, ${map.longitude});  
+    		
+    		// 커스텀 오버레이를 생성합니다
+    		var customOverlay = new kakao.maps.CustomOverlay({
+    		    map: map,
+    		    position: position,
+    		    content: content,
+    		    yAnchor: 1 
+    		});
+    	</c:forEach>
+  </script>
 
-        // 마커 이미지의 이미지 크기 입니다
-        var imageSize = new kakao.maps.Size(24, 35);
 
-        // 마커 이미지를 생성합니다    
-        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 
-        // 마커를 생성합니다
-        var marker = new kakao.maps.Marker({
-          map: map, // 마커를 표시할 지도
-          position: positions[i].latlng, // 마커를 표시할 위치
-          title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-          image: markerImage // 마커 이미지 
-        }); 
-        
-    	// 마커에 표시할 인포윈도우를 생성합니다 
-    	var infowindow = new kakao.maps.InfoWindow({
-    	    content: positions[i].title // 인포윈도우에 표시할 내용
-    	});
 
-        
-    	// 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
-      	// 이벤트 리스너로는 클로저를 만들어 등록합니다 
-      	// for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-      	kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
-      	kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
-      	}
-      	
-      	//인포윈도우를 표시하는 클로저를 만드는 함수입니다 
-      	function makeOverListener(map, marker, infowindow) {
-      		return function() {
-      	    	infowindow.open(map, marker);
-      		};
-      	}
-      	
-      	//인포윈도우를 닫는 클로저를 만드는 함수입니다 
-      	function makeOutListener(infowindow) {
-      		return function() {
-      	    	infowindow.close();
-      		};
-      }  
-    </script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

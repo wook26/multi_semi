@@ -48,26 +48,12 @@
 		<if test="content != null">
 			AND B.CONTENT LIKE '%${content}%' 
 		</if>		
+		<if test="type != null">
+			AND B.type = #{type}
+		</if>		
 		ORDER BY B.NO DESC LIMIT ${limit} OFFSET ${offset}
 	</select>
 	
-	<!-- Mybatis의 페이징 기능을 활용할 코드, 추천하지 않음. -->
-	<select id="selectBoardList2" resultMap="boardListResultMap" parameterType="map">
-		SELECT  
-			B.NO, B.TITLE, M.ID, B.CREATE_DATE, B.ORIGINAL_FILENAME, B.READCOUNT, B.STATUS
-		FROM BOARD B JOIN MEMBER M ON(B.WRITER_NO = M.NO) 
-		WHERE B.STATUS = 'Y'
-		<if test="writer != null">
-			AND M.ID LIKE '%${writer}%' 
-		</if>		
-		<if test="title != null">
-			AND B.TITLE LIKE '%${title}%' 
-		</if>		
-		<if test="content != null">
-			AND B.CONTENT LIKE '%${content}%' 
-		</if>		
-		ORDER BY B.NO DESC 
-	</select>
 	
 	<select id="selectBoardCount" resultType="int" parameterType="map">
 		SELECT  
@@ -83,6 +69,9 @@
 		<if test="content != null">
 			AND B.CONTENT LIKE '%${content}%' 
 		</if>		
+		<if test="type != null">
+			AND B.type = #{type} 
+		</if>	
 	</select>
 	
 	<select id="selectBoardByNo" parameterType="int" resultMap="boardDetailResultMap">
@@ -111,7 +100,7 @@
 			0, #{writerNo}, #{title}, 
 			#{content}, #{originalFileName}, 
 			#{renamedFileName}, DEFAULT, DEFAULT, 
-			DEFAULT, DEFAULT, DEFAULT			
+			DEFAULT, DEFAULT, #{type}			
 		)
 	</insert>
 

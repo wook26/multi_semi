@@ -62,7 +62,7 @@
 			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="반려동물" onchange="this.form.submit();" ${param.search=='반려동물' ? 'checked' : ''}><span>#반려동물</span></label></li>
 			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="어트랙션" onchange="this.form.submit();" ${param.search=='어트랙션' ? 'checked' : ''}><span>#어트랙션</span></label></li>
 			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="테마공원" onchange="this.form.submit();" ${param.search=='테마공원' ? 'checked' : ''}><span>#테마공원</span></label></li>
-			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="#마을산책" onchange="this.form.submit();" ${param.search=='마을산책' ? 'checked' : ''}><span>#마을산책</span></label></li>
+			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="마을산책" onchange="this.form.submit();" ${param.search=='마을산책' ? 'checked' : ''}><span>#마을산책</span></label></li>
 			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="친구" onchange="this.form.submit();" ${param.search=='친구' ? 'checked' : ''}><span>#친구</span></label></li>
 			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="커플" onchange="this.form.submit();" ${param.search=='커플' ? 'checked' : ''}><span>#커플</span></label></li>
 			  <li class ="nav-item"><label class="box-radio-input"><input type="radio" name="search" value="아이" onchange="this.form.submit();" ${param.search=='아이' ? 'checked' : ''}><span>#아이</span></label></li>
@@ -97,7 +97,7 @@
 	        <div class="d-flex align-items-lg-stretch mb-4 col-lg-8">
 	          <div class="card shadow-lg border-0 w-100 border-0 hover-animate"
 	            style="background: center center url('${recomList[0].imgpath}') no-repeat; background-size: cover;">
-	            <a class="tile-link" href="${path}/detail/detail-olle?no=${recomList[0].no}"> </a>
+	            <a class="tile-link" href="${path}/detail/detail-olle?no=${recomList[0].no}&category=${item.category}"> </a>
 	            <div class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
 	              <h3 class="text-shadow text-uppercase mb-0">${recomList[0].title}</h3>
 	            </div>
@@ -106,7 +106,7 @@
 	        <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
 	          <div class="card shadow-lg border-0 w-100 border-0 hover-animate"
 	            style="background: center center url('${recomList[1].imgpath}') no-repeat; background-size: cover;">
-	            <a class="tile-link" href="${path}/detail/detail-olle?no=${recomList[1].no}"> </a>
+	            <a class="tile-link" href="${path}/detail/detail-olle?no=${recomList[1].no}&category=${item.category}"> </a>
 	            <div class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
 	              <h3 class="text-shadow text-uppercase mb-0">${recomList[1].title}</h3>
 	            </div>
@@ -119,7 +119,7 @@
 	        <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
 	          <div class="card shadow-lg border-0 w-100 border-0 hover-animate"
 	            style="background: center center url('${item.imgpath}') no-repeat; background-size: cover;">
-	            <a class="tile-link" href="${path}/detail/detail-olle?no=${item.no}"> </a>
+	            <a class="tile-link" href="${path}/detail/detail-olle?no=${item.no}&category=${item.category}"> </a>
 	            <div class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7">
 	              <h3 class="text-shadow text-uppercase mb-0">${item.title}</h3>
 	            </div>
@@ -146,11 +146,9 @@
 	        <div class="col-3 hover-animate mb-4" data-marker-id="59c0c8e33b1527bfe2abaf92">
 	          <div class="card h-100 border-0 shadow">
 	            <div class="card-img-top overflow-hidden gradient-overlay">
-	            	<div style="height: 200px;">
-		            	<img class="img-fluid" style="object-fit: cover;"
-		                src="${item.imgpath}" alt="" /><a
-		                class="tile-link" href="${path}/detail/detail-olle?no=${item.no}"></a>
-	            	</div>
+	            	<img class="img-fluid" style="height: 200px; width: 100%; object-fit: cover;"
+	                src="${item.imgpath}" alt="" /><a
+	                class="tile-link" href="${path}/detail/detail-olle?no=${item.no}&category=${item.category}"></a>
 	              <div class="card-img-overlay-bottom z-index-20">
 	              </div>
 	            </div>
@@ -168,7 +166,7 @@
 						</c:forEach>
 	                  </p>
 	                </div>
-	                <div style="height: 50px;overflow: hidden;">
+	                <div style="height: 50px; overflow: hidden;">
 	                  <p class="card-text text-muted">${item.tag}</p>
 	                </div>
 	              </div>
@@ -200,8 +198,8 @@
   
   <script type="text/javascript">
 	function movePage(pageUrl){
-		var si = document.getElementById("paramSi").value; // 갤럭시
-		var search = document.getElementById("paramSearch").value; // 갤럭시
+		var si = document.getElementById("paramSi").value;
+		var search = document.getElementById("paramSearch").value;
 		pageUrl = pageUrl + '&si=' + si + '&search=' + search; 
 		location.href = encodeURI(pageUrl);	
 	}

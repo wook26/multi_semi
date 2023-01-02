@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.multi.mvc.board.model.service.BoardService;
+import com.multi.mvc.board.model.vo.Board;
 import com.multi.mvc.common.util.PageInfo;
 import com.multi.mvc.jejuism.api.VisitJejuApiManager;
 import com.multi.mvc.jejuism.model.service.VisitJejuService;
@@ -107,12 +108,23 @@ public class HomeController {
 			visitJeju.setTagList(tempList);
 		}
 		
+		//여행후기/일정공유
+		Map<String, String> searchMap1 = new HashMap<String, String>();
+		searchMap1.put("type", "type1");
+		PageInfo pageInfo = new PageInfo(1, 10, 5, 10);
+		List<Board> bList1 = service.getBoardList(pageInfo, searchMap1);
 		
+		//동행모집
+		Map<String, String> searchMap2 = new HashMap<String, String>();
+		searchMap2.put("type", "type2");
+		List<Board> bList2 = service.getBoardList(pageInfo, searchMap2);
 		
 		model.addAttribute("list1", list1);
 		model.addAttribute("list2", list2);
 		model.addAttribute("list3", list3);
 		model.addAttribute("list4", list4);
+		model.addAttribute("bList1", bList1);
+		model.addAttribute("bList2", bList2);
 		return "home";
 	}
 	

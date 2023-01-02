@@ -14,7 +14,7 @@
 
   <!-- Hero Section-->
   <section class="pt-7 pb-7 d-flex align-items-end dark-overlay bg-cover"
-    style="background-image: url(${path}/resources/image/img/Jeju8.jpg);">
+    style="background-image: url(${path}/resources/image/img/expo1.jpeg);">
     <div class="container overlay-content">
       <div class="d-flex justify-content-center flex-column flex-lg-row align-items-lg-end">
         <div class="text-white mb-lg-0 text-center">
@@ -25,28 +25,10 @@
     </div>
   </section>
   <div class="container py-2">
-    <a class="text-custom-gray400" href="index.html"><i class="fa-solid fa-house"></i></a>
-    <a class="text-custom-gray400" href="category-olle.html">제주소개/관광 <i class="fa-solid fa-chevron-right"></i> 축제/행사</a>
+    <a class="text-custom-gray400" href="${path}"><i class="fa-solid fa-house"></i></a>
+    <a class="text-custom-gray400" href="${path}/category/category-weather">제주소개/관광 <i class="fa-solid fa-chevron-right"></i> 축제/행사</a>
   </div>
   <h3 class="pt-4 pb-2" style="text-align: center;">축제/행사</h3>
-  <div class="container position-relative py-3">
-    <nav class="nav nav-pills-menu justify-content-center text-center mb-3">
-      <a class="nav-link py-3 mb-2 col active" href="#">전체 </a>
-      <a class="nav-link py-3 mb-2 col" href="#">1월 </a>
-      <a class="nav-link py-3 mb-2 col" href="#">2월 </a>
-      <a class="nav-link py-3 mb-2 col" href="#">3월 </a>
-      <a class="nav-link py-3 mb-2 col" href="#">4월 </a>
-      <a class="nav-link py-3 mb-2 col" href="#">5월 </a>
-      <a class="nav-link py-3 mb-2 col" href="#">6월 </a>
-      <a class="nav-link py-3 mb-2 col" href="#">7월 </a>
-      <a class="nav-link py-3 mb-2 col" href="#">8월 </a>
-      <a class="nav-link py-3 mb-2 col" href="#">9월 </a>
-      <a class="nav-link py-3 mb-2 col" href="#">10월 </a>
-      <a class="nav-link py-3 mb-2 col" href="#">11월 </a>
-      <a class="nav-link py-3 mb-2 col" href="#">12월 </a>
-    </nav>
-  </div>
-
   <!-- overflow: hidden; text-overflow: ellipsis; white-space: nowrap; -->
 
   <section class="py-5">
@@ -61,13 +43,12 @@
         <c:forEach var="item" items="${list}">
         
         <div class="col-lg-4 col-sm-6 mb-4 hover-animate">
-          <div class="card shadow border-0 h-100"><a href="${path}/detail/detail-festival?no=${item.no}">
-          <img class="img-fluid card-img-top" src="${item.imgpath}" alt="#" /></a>
+          <div class="card shadow border-0 h-100"><a href="${path}/detail/detail-olle?no=${item.no}&category=${item.category}">
+          <img class="img-fluid card-img-top" style="height: 300px; object-fit: cover;" src="${item.imgpath}" alt="#" /></a>
             <div class="card-body">
               <!-- <a class="text-uppercase text-muted text-sm letter-spacing-2" href="#">Travel </a> -->
               <h5 class="my-2"><a class="text-dark" href="detail-festival.html">${item.title} </a></h5>
-              <p class="text-gray-500 text-sm my-3"><i class="far fa-clock me-2"></i>2022.11.06 ~ 2023.10.23</p>
-              <p class="my-2 text-muted text-sm" style="line-height: 1.2em; height: 3.6em;">${item.introdution }</p>
+              <p class="my-2 text-muted text-sm" style="line-height: 1.2em; height: 3.6em; overflow: hidden; over-wrap:white;">${item.introduction}</p>
               <a class="btn btn-link ps-0" href="detail-festival.html">더보기<i class="fa fa-arrow-right ms-2"></i></a>
             </div>
           </div>
@@ -96,5 +77,13 @@
      </div>
   </section>
   
-  
+<script type="text/javascript">
+	function movePage(pageUrl){
+		var si = document.getElementById("paramSi").value;
+		var search = document.getElementById("paramSearch").value;
+		pageUrl = pageUrl + '&si=' + si + '&search=' + search; 
+		location.href = encodeURI(pageUrl);	
+	}
+</script>
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

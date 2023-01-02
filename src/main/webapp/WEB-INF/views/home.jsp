@@ -90,7 +90,7 @@
                           </c:forEach>
                           <p class="main-address mt-2 mb-4">주소 ${list.roadaddress}</p>
                         </div>
-                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=${list.no}" target="_blank">상세보기 <i
+                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=${list.no}&category=명소" target="_blank">상세보기 <i
                             class="fa-solid fa-arrow-up-right-from-square"></i></a>
                       </div>
                     </div>
@@ -124,7 +124,7 @@
                           </c:forEach>
                           <p class="main-address mt-2 mb-4">주소 ${list.roadaddress}</p>
                         </div>
-                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=${list.no}" target="_blank">상세보기 <i
+                        <a class="text-center d-inline-block pe-5" href="${path}/detail/detail-olle?no=${list.no}&category=명소" target="_blank">상세보기 <i
                             class="fa-solid fa-arrow-up-right-from-square"></i></a>
                       </div>
                     </div>
@@ -163,7 +163,7 @@
           <c:forEach var="list" items="${list3}" varStatus="status">
           <div class="swiper-slide h-auto px-2">
             <div class="card card-poster hover-animate mb-4 mb-lg-0 shadow"><a class="tile-link"
-                href="${path}/detail/detail-olle?no=${list.no}"></a><img class="bg-image" src="${path}/resources/image/custom/foodrecom${status.count}.png">
+                href="${path}/detail/detail-olle?no=${list.no}&category=맛집"></a><img class="bg-image" src="${path}/resources/image/custom/foodrecom${status.count}.png">
               <div class="card-body overlay-content">
               </div>
             </div>
@@ -199,7 +199,7 @@
               <div class="card h-100 border-0 shadow">
                 <div class="card-img-top overflow-hidden gradient-overlay" style="height: 200px;"> <img class="img-fluid"
                     src="${list.imgpath}" style="object-fit: cover;" /><a
-                    class="tile-link" href="${path}/detail/detail-olle?no=${list.no}"></a>
+                    class="tile-link" href="${path}/detail/detail-olle?no=${list.no}&category=숙소"></a>
                 </div>
                 <div class="card-body d-flex align-items-center">
                   <div class="w-100">
@@ -244,21 +244,11 @@
 	            더 둘러보기<i class="fas fa-angle-double-right ms-2"></i></a></div>
 	      </div>
 	      <table class="table text-start">
+	      	<c:forEach var="board" items="${bList1}">
 	        <tr>
-	          <td><a href="#">후기 1</a></td>
+	          <td><a href="${path}/board/view?no=${board.no}">${board.title}</a></td>
 	        </tr>
-	        <tr>
-	          <td><a href="#">후기 1</a></td>
-	        </tr>
-	        <tr>
-	          <td><a href="#">후기 1</a></td>
-	        </tr>
-	        <tr>
-	          <td><a href="#">후기 1</a></td>
-	        </tr>
-	        <tr>
-	          <td class="border-0"><a href="#">후기 1</a></td>
-	        </tr>
+	        </c:forEach>
 	      </table>
 	    </div>
 	    <div class="col-5 container my-6">
@@ -272,21 +262,11 @@
 	            더 둘러보기<i class="fas fa-angle-double-right ms-2"></i></a></div>
 	      </div>
 	      <table class="table text-start">
+	      	<c:forEach var="board" items="${bList2}">
 	        <tr>
-	          <td><a href="#">후기 1</a></td>
+	          <td><a href="${path}/board/view?no=${board.no}">${board.title}</a></td>
 	        </tr>
-	        <tr>
-	          <td><a href="#">후기 1</a></td>
-	        </tr>
-	        <tr>
-	          <td><a href="#">후기 1</a></td>
-	        </tr>
-	        <tr>
-	          <td><a href="#">후기 1</a></td>
-	        </tr>
-	        <tr>
-	          <td class="border-0"><a href="#">후기 1</a></td>
-	        </tr>
+	        </c:forEach>
 	      </table>
 	    </div>
 	</div>

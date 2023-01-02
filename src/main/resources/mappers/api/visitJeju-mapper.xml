@@ -56,31 +56,6 @@
 		<if test="code != null">
 			AND CODE = #{code}
 		</if>
-		
-		ORDER BY NO ASC LIMIT ${limit} OFFSET ${offset}
-	</select>
-	
-	<select id="selectVListForO" resultMap="visitJejuResultMap" parameterType="map">
-		SELECT NO, ALLTAG, CODE, TITLE, SI, GU, ADDRESS, ROADADDRESS, TAG, INTRODUCTION, LATITUDE, LONGITUDE, POSTCODE, PHONENO, IMGPATH, AVG_RATE
-		FROM VISIT_JEJU
-		WHERE CODE = #{code}
-		<if test="search != null">
-		AND (ALLTAG LIKE '%${search}%'
-			OR TITLE LIKE '%${search}%'
-			OR TAG LIKE '%${search}%')
-		</if>
-		AND TITLE NOT LIKE '%${excl1}%'
-		AND TITLE NOT LIKE '%${excl2}%'
-		AND TITLE NOT LIKE '%${excl3}%'
-		AND ALLTAG NOT LIKE '%${excl1}%'
-		AND ALLTAG NOT LIKE '%{excl2}%'
-		AND ALLTAG NOT LIKE '%{excl3}%'
-		AND TAG NOT LIKE '%${excl1}%'
-		AND TAG NOT LIKE '%{excl2}%'
-		AND TAG NOT LIKE '%{excl3}%'
-		AND INTRODUCTION NOT LIKE '%{excl1}%'
-		AND INTRODUCTION NOT LIKE '%{excl2}%'
-		AND INTRODUCTION NOT LIKE '%{excl3}%'
 		ORDER BY NO ASC LIMIT ${limit} OFFSET ${offset}
 	</select>
 	
@@ -103,6 +78,30 @@
 		</if>
 	</select>
 	
+	<select id="selectVListForO" resultMap="visitJejuResultMap" parameterType="map">
+		SELECT NO, ALLTAG, CODE, TITLE, SI, GU, ADDRESS, ROADADDRESS, TAG, INTRODUCTION, LATITUDE, LONGITUDE, POSTCODE, PHONENO, IMGPATH, AVG_RATE
+		FROM VISIT_JEJU
+		WHERE CODE = #{code}
+		<if test="search != null">
+		AND (ALLTAG LIKE '%${search}%'
+			OR TITLE LIKE '%${search}%'
+			OR TAG LIKE '%${search}%')
+		</if>
+		AND TITLE NOT LIKE '%${excl1}%'
+		AND TITLE NOT LIKE '%${excl2}%'
+		AND TITLE NOT LIKE '%${excl3}%'
+		AND ALLTAG NOT LIKE '%${excl1}%'
+		AND ALLTAG NOT LIKE '%${excl2}%'
+		AND ALLTAG NOT LIKE '%${excl3}%'
+		AND TAG NOT LIKE '%${excl1}%'
+		AND TAG NOT LIKE '%${excl2}%'
+		AND TAG NOT LIKE '%${excl3}%'
+		AND INTRODUCTION NOT LIKE '%${excl1}%'
+		AND INTRODUCTION NOT LIKE '%${excl2}%'
+		AND INTRODUCTION NOT LIKE '%${excl3}%'
+		ORDER BY NO ASC LIMIT ${limit} OFFSET ${offset}
+	</select>
+	
 	<select id="selectVCountForO" resultType="int" parameterType="map">
 		SELECT COUNT(*)
 		FROM VISIT_JEJU
@@ -116,14 +115,45 @@
 		AND TITLE NOT LIKE '%${excl2}%'
 		AND TITLE NOT LIKE '%${excl3}%'
 		AND ALLTAG NOT LIKE '%${excl1}%'
-		AND ALLTAG NOT LIKE '%{excl2}%'
-		AND ALLTAG NOT LIKE '%{excl3}%'
+		AND ALLTAG NOT LIKE '%${excl2}%'
+		AND ALLTAG NOT LIKE '%${excl3}%'
 		AND TAG NOT LIKE '%${excl1}%'
-		AND TAG NOT LIKE '%{excl2}%'
-		AND TAG NOT LIKE '%{excl3}%'
-		AND INTRODUCTION NOT LIKE '%{excl1}%'
-		AND INTRODUCTION NOT LIKE '%{excl2}%'
-		AND INTRODUCTION NOT LIKE '%{excl3}%'
+		AND TAG NOT LIKE '%${excl2}%'
+		AND TAG NOT LIKE '%${excl3}%'
+		AND INTRODUCTION NOT LIKE '%${excl1}%'
+		AND INTRODUCTION NOT LIKE '%${excl2}%'
+		AND INTRODUCTION NOT LIKE '%${excl3}%'
+	</select>
+	
+	<select id="selectVListForM" resultMap="visitJejuResultMap" parameterType="map">
+		SELECT NO, ALLTAG, CODE, TITLE, SI, GU, ADDRESS, ROADADDRESS, TAG, INTRODUCTION, LATITUDE, LONGITUDE, POSTCODE, PHONENO, IMGPATH, AVG_RATE
+		FROM VISIT_JEJU
+		WHERE CODE = #{code}
+		<if test="search != null">
+		AND (ALLTAG LIKE '%${search}%'
+			OR TITLE LIKE '%${search}%'
+			OR TAG LIKE '%${search}%')
+		</if>
+		AND ((TITLE LIKE '%${incl1}%' OR TITLE LIKE '%${incl2}%' OR TITLE LIKE '%${incl3}%')
+		OR (ALLTAG LIKE '%${incl1}%' OR TITLE LIKE '%${incl2}%' OR TITLE LIKE '%${incl3}%')
+        OR (TAG LIKE '%${incl1}%' OR TITLE LIKE '%${incl2}%' OR TITLE LIKE '%${incl3}%')
+ 		OR (INTRODUCTION LIKE '%${incl1}%' OR TITLE LIKE '%${incl2}%' OR TITLE LIKE '%${incl3}%'))
+		ORDER BY NO ASC LIMIT ${limit} OFFSET ${offset}
+	</select>
+	
+	<select id="selectVCountForM" resultType="int" parameterType="map">
+		SELECT COUNT(*)
+		FROM VISIT_JEJU
+		WHERE CODE = #{code}
+		<if test="search != null">
+		AND (ALLTAG LIKE '%${search}%'
+			OR TITLE LIKE '%${search}%'
+			OR TAG LIKE '%${search}%')
+		</if>
+		AND ((TITLE LIKE '%${incl1}%' OR TITLE LIKE '%${incl2}%' OR TITLE LIKE '%${incl3}%')
+		OR (ALLTAG LIKE '%${incl1}%' OR TITLE LIKE '%${incl2}%' OR TITLE LIKE '%${incl3}%')
+        OR (TAG LIKE '%${incl1}%' OR TITLE LIKE '%${incl2}%' OR TITLE LIKE '%${incl3}%')
+ 		OR (INTRODUCTION LIKE '%${incl1}%' OR TITLE LIKE '%${incl2}%' OR TITLE LIKE '%${incl3}%'))
 	</select>
 	
 	<select id="selectVByNo" parameterType="int" resultMap="visitJejuDetailResultMap">

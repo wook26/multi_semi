@@ -33,14 +33,14 @@
     <!-- 새로운  게시판-->
     <div class="container rounded shadow"> 
       <form action="${path}/board/update" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="no"  value="${board.no}">
         <table class="table">
           <tr>
             <th class=" p-1 align-middle text-center" style="width: 12%;">카테고리</th>
             <th>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>카테고리 선택</option>
-                <option value="1">여행 일정/후기</option>
-                <option value="2">여행 동행 모집</option>
+              <select class="form-select" name="type" aria-label="Default select example">
+                <option value="type1" ${board.type == 'type1' ? 'selected':'' } >여행 일정/후기</option>
+                <option value="type2" ${board.type == 'type2' ? 'selected':'' } >여행 동행 모집</option>
               </select>
             </th>
           </tr>

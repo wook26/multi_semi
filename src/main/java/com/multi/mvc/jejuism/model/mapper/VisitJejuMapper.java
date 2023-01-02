@@ -17,6 +17,8 @@ public interface VisitJejuMapper {
 	int deleteReview(int no);
 	List<VisitJeju> selectVListForO(Map<String, Object> map);
 	int selectVCountForO(Map<String, Object> map);
+	List<VisitJeju> selectVListForM(Map<String, Object> map);
+	int selectVCountForM(Map<String, Object> map);
 	double selectAvgRate(int no);
 	
 	int insertV(VisitJeju visitJeju);

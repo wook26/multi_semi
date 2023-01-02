@@ -11,7 +11,7 @@
 
 <!-- Hero Section-->
 <c:choose>
-  <c:when test="${visitJeju.code == '관광지'}">
+  <c:when test="${category == '명소'}">
 	<section class="pt-7 pb-7 d-flex align-items-end dark-overlay bg-cover"
 		style="background-image: url('${path}/resources/image/img/Jeju7.jpg');">
 		<div class="container overlay-content">
@@ -26,15 +26,57 @@
 	</section>
 	<div class="container py-2">
 		<a class="text-custom-gray400" href="${path}"> <i class="fa-solid fa-house"></i> </a>
-		<a class="text-custom-gray400" href="${path}/resources/category-olle.html"> 제주소개/관광 <i style="color: #404040" class="fa-solid fa-chevron-right"></i> 제주명소 </a>
+		<a class="text-custom-gray400" href="${path}/resources/category-olle"> 제주소개/관광 <i style="color: #404040" class="fa-solid fa-chevron-right"></i> 제주명소 </a>
 		<p class="d-inline-block text-custom-gray400"><i class="fa-solid fa-chevron-right"></i></p>
 		<p class="d-inline-block text-custom-gray400"> ${visitJeju.title} </p>
 	</div>
   </c:when>
   
-  <c:when test="${visitJeju.code == '숙박'}">
+  <c:when test="${category == '축제'}">
 	<section class="pt-7 pb-7 d-flex align-items-end dark-overlay bg-cover"
-		style="background-image: url('${path}/resources/image/img/jeju14.jpg');">
+		style="background-image: url('${path}/resources/image/img/expo1.jpeg');">
+		<div class="container overlay-content">
+			<div
+				class="d-flex justify-content-center flex-column flex-lg-row align-items-lg-end">
+				<div class="text-white mb-lg-0 text-center">
+					<h1 class="text-shadow verified">제주소개/관광</h1>
+					<p>자연과 문화, 사람의 가치를 키우는 제주도</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="container py-2">
+		<a class="text-custom-gray400" href="${path}"> <i class="fa-solid fa-house"></i> </a>
+		<a class="text-custom-gray400" href="${path}/resources/category-festival"> 제주소개/관광 <i style="color: #404040" class="fa-solid fa-chevron-right"></i> 축제/행사 </a>
+		<p class="d-inline-block text-custom-gray400"><i class="fa-solid fa-chevron-right"></i></p>
+		<p class="d-inline-block text-custom-gray400"> ${visitJeju.title} </p>
+	</div>
+  </c:when>
+  
+  <c:when test="${category == '박물관'}">
+	<section class="pt-7 pb-7 d-flex align-items-end dark-overlay bg-cover"
+		style="background-image: url('${path}/resources/image/img/jeju13.jpg');">
+		<div class="container overlay-content">
+			<div
+				class="d-flex justify-content-center flex-column flex-lg-row align-items-lg-end">
+				<div class="text-white mb-lg-0 text-center">
+					<h1 class="text-shadow verified">제주소개/관광</h1>
+					<p>자연과 문화, 사람의 가치를 키우는 제주도</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="container py-2">
+		<a class="text-custom-gray400" href="${path}"> <i class="fa-solid fa-house"></i> </a>
+		<a class="text-custom-gray400" href="${path}/resources/category-museum"> 제주소개/관광 <i style="color: #404040" class="fa-solid fa-chevron-right"></i> 박물관/미술관/전시관 </a>
+		<p class="d-inline-block text-custom-gray400"><i class="fa-solid fa-chevron-right"></i></p>
+		<p class="d-inline-block text-custom-gray400"> ${visitJeju.title} </p>
+	</div>
+  </c:when>
+  
+  <c:when test="${category == '숙소'}">
+	<section class="pt-7 pb-7 d-flex align-items-end dark-overlay bg-cover"
+		style="background-image: url('${path}/resources/image/img/Jeju6.png');">
 		<div class="container overlay-content">
 			<div
 				class="d-flex justify-content-center flex-column flex-lg-row align-items-lg-end">
@@ -47,13 +89,13 @@
 	</section>
 	<div class="container py-2">
 		<a class="text-custom-gray400" href="${path}"> <i class="fa-solid fa-house"></i> </a>
-		<a class="text-custom-gray400" href="${path}/resources/category-room.html"> 숙소 </a>
+		<a class="text-custom-gray400" href="${path}/resources/category-room"> 숙소 </a>
 		<p class="d-inline-block text-custom-gray400"><i class="fa-solid fa-chevron-right"></i></p>
 		<p class="d-inline-block text-custom-gray400"> ${visitJeju.title} </p>
 	</div>
   </c:when>
   
-  <c:when test="${visitJeju.code == '음식점'}">
+  <c:when test="${category == '맛집'}">
 	<section class="pt-7 pb-7 d-flex align-items-end dark-overlay bg-cover"
 		style="background-image: url('${path}/resources/image/img/sunset.JPG');">
 		<div class="container overlay-content">
@@ -253,7 +295,7 @@
 							작성하기</button>
 						<div class="collapse mt-4" id="leaveReview">
 							<h5 class="mb-4">리뷰 작성</h5>
-							<form class="form" id="contact-form" method="post" action="${path}/category/category-olle/review">
+							<form class="form" id="contact-form" method="post" action="${path}/category/detail/review">
 								<div class="row">
 									<div class="col-sm-6">
 										<div class="mb-4">
@@ -334,12 +376,12 @@
     ];
 
     // 마커 이미지의 이미지 주소입니다
-    var imageSrc = "${path}/resources/image/icon/location.png";
+    var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 
     for (var i = 0; i < positions.length; i++) {
 
       // 마커 이미지의 이미지 크기 입니다
-      var imageSize = new kakao.maps.Size(51, 58);
+      var imageSize = new kakao.maps.Size(24, 35);
 
       // 마커 이미지를 생성합니다    
       var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
@@ -354,7 +396,7 @@
       
       var infowindow = new kakao.maps.InfoWindow({
   	    content: '<div style="width:150px;text-align:center;line-height:1rem;">${visitJeju.title}</div>' // 인포윈도우에 표시할 내용
-  	});
+  	  });
   	
   	// 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
   	// 이벤트 리스너로는 클로저를 만들어 등록합니다 

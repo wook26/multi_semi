@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.multi.mvc.jejuism.model.mapper.FestivalMapper">
+
+	<resultMap type="Festival" id="festivalResultMap">
+		<id 	property="no" 				column="NO"					/>
+		<result property="fstvlNm" 			column="FSTVL_NM"			/>
+		<result property="opar" 			column="OPAR"				/>
+		<result property="fstvlStartDate" 	column="FSTVL_START_DATE"	/>
+		<result property="fstvlEndDate" 	column="FSTVL_END_DATE"		/>
+		<result property="festvlCo" 		column="FESTVL_CO"			/>
+		<result property="mnnst" 			column="MNNST"				/>
+		<result property="auspcInstt" 		column="AUSPC_INSTT"		/>
+		<result property="suprtInstt" 		column="SUPRT_INSTT"		/>
+		<result property="phoneNumber" 		column="PHONE_NUMBER"		/>
+		<result property="homepageUrl" 		column="HOMEPAGE_URL"		/>
+		<result property="rdnmadr" 			column="RDNMADR"			/>
+		<result property="lnmadr" 			column="LNMADR"				/>
+		<result property="latitude" 		column="LATITUDE"			/>
+		<result property="longitude" 		column="LONGITUDE"			/>
+	</resultMap>
+
+	<select id="selectFList" resultMap="festivalResultMap" parameterType="map">
+		SELECT  
+			NO, FSTVL_NM, OPAR, FSTVL_START_DATE, FSTVL_END_DATE, FESTVL_CO,
+			MNNST, AUSPC_INSTT, SUPRT_INSTT, PHONE_NUMBER, HOMEPAGE_URL,
+			RDNMADR, LNMADR, LATITUDE, LONGITUDE
+		FROM FESTIVAL
+		WHERE RDNMADR LIKE '%제주%'
+		<if test="si != null">
+			AND SI = #{si}
+		</if>
+		<if test="gu != null">
+			AND GU = #{gu}
+		</if>
+		<if test="code != null">
+			AND CODE = #{code}
+		</if>
+		ORDER BY NO ASC LIMIT ${limit} OFFSET ${offset}
+	</select>
+	
+	<insert id="insertF" parameterType="Festival">
+		INSERT INTO FESTIVAL(NO, FSTVL_NM, OPAR, FSTVL_START_DATE, FSTVL_END_DATE, FESTVL_CO,
+			MNNST, AUSPC_INSTT, SUPRT_INSTT, PHONE_NUMBER, HOMEPAGE_URL,
+			RDNMADR, LNMADR, LATITUDE, LONGITUDE)
+		VALUES(0, #{fstvlNm}, #{opar}, #{fstvlStartDate}, #{fstvlEndDate}, #{festvlCo},
+			#{mnnst}, #{auspcInstt}, #{suprtInstt}, #{phoneNumber}, #{homepageUrl},
+			#{rdnmadr}, #{lnmadr}, #{latitude}, #{longitude})
+	</insert>
+	
+</mapper>

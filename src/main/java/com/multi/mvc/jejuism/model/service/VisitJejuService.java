@@ -42,6 +42,16 @@ public class VisitJejuService {
 		return mapper.selectVCountForO(param);
 	}
 	
+	public List<VisitJeju> selectVListForM(PageInfo pageInfo, Map<String, Object> param){
+		param.put("limit", "" + pageInfo.getListLimit());
+		param.put("offset", "" + (pageInfo.getStartList() - 1));
+		return mapper.selectVListForM(param);
+	}
+	
+	public int selectVCountForM(Map<String, Object> param) {
+		return mapper.selectVCountForM(param);
+	}
+	
 	@Transactional(rollbackFor = Exception.class)
 	public VisitJeju selectVByNo(int visitJejuNo) {
 		VisitJeju visitJeju = mapper.selectVByNo(visitJejuNo); 

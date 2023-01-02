@@ -10,7 +10,7 @@
 
 <!-- Hero Section-->
   <section class="pt-7 pb-7 d-flex align-items-end dark-overlay bg-cover"
-    style="background-image: url('${path}/resources/image/img/jeju14.jpg');">
+    style="background-image: url('${path}/resources/image/img/Jeju6.png');">
     <div class="container overlay-content">
       <div class="d-flex justify-content-center flex-column flex-lg-row align-items-lg-end">
         <div class="text-white mb-lg-0 text-center">
@@ -104,7 +104,7 @@
             <div class="d-flex align-items-center dark-overlay hover-scale-bg-image" style="min-height: 400px;"><img class="bg-image" src="${item.imgpath}" alt="">
               <div class="p-3 p-sm-5 text-white z-index-20">
                 <h4 class="h2">${item.title}</h4>
-                <p class="mb-4">${item.si} ${item.gu}</p><a class="btn btn-link text-reset ps-0 stretched-link text-decoration-none" href="${path}/detail/detail-olle?no=${item.no}">상세정보 확인<i class="fa fa-chevron-right ms-2"></i></a>
+                <p class="mb-4">${item.si} ${item.gu}</p><a class="btn btn-link text-reset ps-0 stretched-link text-decoration-none" href="${path}/detail/detail-olle?no=${item.no}&category=${item.category}">상세정보 확인<i class="fa fa-chevron-right ms-2"></i></a>
               </div>
             </div>
           </div>
@@ -126,9 +126,9 @@
 	              <!-- place item 1 -->
 	              <div class="col-sm-3 col-lg-3 mb-5 hover-animate" data-marker-id="59c0c8e33b1527bfe2abaf92">
 	                <div class="card h-100 border-0 shadow">
-	                  <div class="card-img-top overflow-hidden gradient-overlay" style="height: 200px;"> <img class="img-fluid"
-	                      src="${item.imgpath}" alt="" style="object-fit: cover;" /><a class="tile-link"
-	                      href="${path}/detail/detail-olle?no=${item.no}"></a>
+	                  <div class="card-img-top overflow-hidden gradient-overlay"> <img class="img-fluid"
+	                      src="${item.imgpath}" alt="" style="height: 200px; width: 100%; object-fit: cover;" /><a class="tile-link"
+	                      href="${path}/detail/detail-olle?no=${item.no}&category=${item.category}"></a>
 	                  </div>
 	                  <div class="card-body d-flex align-items-center">
 	                    <div class="w-100">
@@ -137,7 +137,7 @@
 	                      <div class="d-flex card-subtitle mb-3">
 	                        <p class="flex-grow-1 mb-0 text-muted text-sm">${item.si} > ${item.gu}</p>
 	                      </div>
-	                      <div class="d-flex card-subtitle mb-3" style="height: 50px;overflow: hidden;">
+	                      <div class="d-flex card-subtitle mb-3" style="height: 50px; overflow: hidden;">
 	                        <p class="flex-grow-1 mb-0 text-primary text-sm">${item.tag}</p>
 	                      </div>
 	                      <p class="flex-shrink-1 mb-0 card-stars text-xs text-end">

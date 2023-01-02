@@ -49,6 +49,17 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/dd4a6a23ab.js" crossorigin="anonymous"></script>
+  <!--date picker-->
+<!-- Popperjs -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js"
+  crossorigin="anonymous"></script>
+<!-- <!— Tempus Dominus JavaScript —> -->
+<script src="https://cdn.jsdelivr.net/gh/Eonasdan/tempus-dominus@master/dist/js/tempus-dominus.js"
+  crossorigin="anonymous"></script>
+
+<!-- <!— Tempus Dominus Styles —> -->
+<link href="https://cdn.jsdelivr.net/gh/Eonasdan/tempus-dominus@master/dist/css/tempus-dominus.css" rel="stylesheet"
+  crossorigin="anonymous">
 
 </head>
 
@@ -68,15 +79,10 @@
               <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item"
                   href="${path}/category/category-olle">제주명소<span class="badge badge-info-light ms-1 mt-n1">hot</span></a><a
                   class="dropdown-item" href="${path}/category/category-weather">기상정보</a><a class="dropdown-item"
-                  href="category-festival.html">축제/행사</a><a class="dropdown-item"
-                  href="category-museum.html">박물관/미술관/전시관</a></div>
+                  href="${path}/category/category-festival">축제/행사</a><a class="dropdown-item"
+                  href="${path}/category/category-museum">박물관/미술관/전시관</a></div>
             </li>
-            <li class="nav-item dropdown text-center"><a class="nav-link dropdown-toggle" id="homeDropdownMenuLink"
-                href="${path}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                맛집</a>
-              <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item"
-                  href="category-food.html">음식점</a><a class="dropdown-item" href="category-cafe.html">카페<span
-                    class="badge badge-info-light ms-1 mt-n1">hot</span></a></div>
+            <li class="nav-item text-center me-2"><a class="nav-link" href="${path}/category/category-food">맛집 </a>
             </li>
             <li class="nav-item text-center me-2"><a class="nav-link" href="${path}/category/category-room">숙소 </a>
             </li>
@@ -84,8 +90,8 @@
                 href="${path}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 교통</a>
               <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink"><a class="dropdown-item"
-                  href="category-rent.html">렌트<span class="badge badge-info-light ms-1 mt-n1">hot</span></a><a
-                  class="dropdown-item" href="category-flight.html">항공</a></div>
+                  href="${path}/category/category-rent">렌트<span class="badge badge-info-light ms-1 mt-n1">hot</span></a><a
+                  class="dropdown-item" href="${path}/category/category-flight">항공</a></div>
             </li>
             <li class="nav-item dropdown text-center"><a class="nav-link dropdown-toggle" id="docsDropdownMenuLink"
                 href="${path}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

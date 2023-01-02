@@ -19,6 +19,7 @@ import com.multi.mvc.jejuism.api.VisitJejuApiManager;
 import com.multi.mvc.jejuism.model.service.VisitJejuService;
 import com.multi.mvc.jejuism.model.vo.Review;
 import com.multi.mvc.jejuism.model.vo.VisitJeju;
+import com.multi.mvc.kakao.MapInfo;
 import com.multi.mvc.member.model.vo.Member;
 
 import lombok.extern.slf4j.Slf4j;
@@ -105,6 +106,7 @@ public class VisitJejuController {
 			double avgRate = service.selectAvgRate(visitJeju.getNo());
 			avgRate = (double) Math.round(avgRate);
 			visitJeju.setAvgRate(avgRate);
+			visitJeju.setCategory("명소");
 		}
 		
 		model.addAttribute("recomList", recomList);
@@ -131,8 +133,8 @@ public class VisitJejuController {
 		int page = 1;
 		Map<String, Object> searchMap = new HashMap<>();
 		try {
-			String category = "숙박";
-			searchMap.put("code", category);
+			String code = "숙박";
+			searchMap.put("code", code);
 			String search = param.get("search");
 			searchMap.put("search", search);
 			String gu = param.get("gu");
@@ -148,6 +150,7 @@ public class VisitJejuController {
 			double avgRate = service.selectAvgRate(visitJeju.getNo());
 			avgRate = (double) Math.round(avgRate);
 			visitJeju.setAvgRate(avgRate);
+			visitJeju.setCategory("숙소");
 		}
 		
 		model.addAttribute("recomList", recomList);
@@ -159,7 +162,7 @@ public class VisitJejuController {
 	
 	@RequestMapping(value = {"/detail/detail-cafe", "/detail/detail-festival", "/detail/detail-museum", "/detail/detail-olle", "/detail/detail-rooms"})
 	public String detailView(Model model,
-			@RequestParam("no") int no) {
+			@RequestParam("no") int no, @RequestParam("category") String category) {
 		VisitJeju visitJeju = service.selectVByNo(no);
 		if(visitJeju == null) {
 			return "redirect:error";
@@ -167,6 +170,7 @@ public class VisitJejuController {
 //		visitJeju.setAvgRate(service.selectAvgRate(no));
 		
 		String[] tags = visitJeju.getTag().split(",");
+		model.addAttribute("category", category);
 		model.addAttribute("tags", tags);
 		model.addAttribute("tagsSize", tags.length);
 		model.addAttribute("visitJeju", visitJeju);
@@ -179,7 +183,7 @@ public class VisitJejuController {
 		return "/common/error";
 	}
 	
-	@RequestMapping("/category/category-olle/review")
+	@RequestMapping("/category/detail/review")
 	public String writeReply(Model model, 
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
 			@ModelAttribute Review reiew
@@ -215,46 +219,112 @@ public class VisitJejuController {
 		return "/common/msg";
 	}	
 	
+	@RequestMapping("/category/category-food")
+	public String categoryFoodView(Model model, @RequestParam Map<String, String> param) {
+		int page = 1;
+		Map<String, Object> searchMap = new HashMap<>();
+		try {
+			String code = "음식점";
+			searchMap.put("code", code);
+			String search = param.get("search");
+			searchMap.put("search", search);
+			page = Integer.parseInt(param.get("page"));
+		} catch (Exception e) {
+		}
+		
+		int vCodeCount = service.selectVCount(searchMap);
+		PageInfo pageInfo = new PageInfo(page, 10, vCodeCount, 6);
+		List<VisitJeju> list = service.selectVList(pageInfo, searchMap);
+
+		for (VisitJeju visitJeju : list) {
+			visitJeju.setTag("#" + String.join(" #",visitJeju.getTag().split(",")));
+			double avgRate = service.selectAvgRate(visitJeju.getNo());
+			avgRate = (double) Math.round(avgRate);
+			visitJeju.setAvgRate(avgRate);
+			visitJeju.setCategory("맛집");
+		}
+		double x = 0.0;
+		double y = 0.0;
+		for (VisitJeju mapInfo : list) {
+			x += mapInfo.getLatitude();
+			y += mapInfo.getLongitude();
+		}
+		
+		x = x / list.size();
+		y = y / list.size();
+		
+		model.addAttribute("x",x);
+		model.addAttribute("y",y);
+		model.addAttribute("list", list);
+		model.addAttribute("param", param);
+		model.addAttribute("pageInfo", pageInfo);
+		
+		return "/category/category-food";
+	}
 	
-//	public void initVisitJeju() {
-//		
-//		for (int i = 1; i < 6; i++) {
-//			if (i == 2) {
-//				continue;
-//			}
-//			List<VisitJeju> list = VisitJejuApiManager.parsingVisitJeju("c" + i);
-//			for(VisitJeju v : list) {
-//				System.out.println(v);
-//				visitJejuService.insert(v);
-//			}
-//		}
-//		
-//	}
-////		List<VisitJeju> list = VisitJejuApiManager.parsingVisitJeju("c1");// 관광지
-////		List<VisitJeju> list = VisitJejuApiManager.parsingVisitJeju("c3");// 숙박
-////		List<VisitJeju> list = VisitJejuApiManager.parsingVisitJeju("c4");// 음식점
-////		List<VisitJeju> list = VisitJejuApiManager.parsingVisitJeju("c5");// 축제/행사
-//	
-//	public List<VisitJeju> getAllList(){
-//		return visitJejuService.selectAll();
-//	}
-//	
-////	public List<VisitJeju> getMvListByYearweekTime(String yearweekTime){
-////		return boxOfficeService.selectByYearweekTime(yearweekTime);
-////	}
-//	
-////	public VisitJeju searchByBoxofficeNo(int boxofficeNo){
-////		return boxOfficeService.selectOne(boxofficeNo);
-////	}
-//	
-//	public List<VisitJeju> searchCategory(String Category){
-//		return visitJejuService.selectByCategory(Category);
-//	}
-//	
-//	public static void main(String[] args) {
-//		VisitJejuController vc = new VisitJejuController();
-//		vc.initVisitJeju();
-//		
-//	}
+	@RequestMapping("/category/category-museum")
+	public String categoryMuseView(Model model, @RequestParam Map<String, String> param) {
+		int page = 1;
+		Map<String, Object> searchMap = new HashMap<>();
+		try {
+			String code = "관광지";
+			searchMap.put("code", code);
+			String incl1 = "박물관";
+			searchMap.put("incl1", incl1);
+			String incl2 = "미술관";
+			searchMap.put("incl2", incl2);
+			String incl3 = "전시관";
+			searchMap.put("incl3", incl3);
+			String search = param.get("search");
+			searchMap.put("search", search);
+			page = Integer.parseInt(param.get("page"));
+		} catch (Exception e) {
+		}
+		int vCodeCount = service.selectVCountForM(searchMap);
+		PageInfo pageInfo = new PageInfo(page, 10, vCodeCount, 12);
+		List<VisitJeju> list = service.selectVListForM(pageInfo, searchMap);
+		for (VisitJeju visitJeju : list) {
+			// 태그 변환
+			visitJeju.setTag("#" + String.join(" #",visitJeju.getTag().split(",")));
+			// 평균 평점 계산
+			double avgRate = service.selectAvgRate(visitJeju.getNo());
+			avgRate = (double) Math.round(avgRate);
+			visitJeju.setAvgRate(avgRate);
+			visitJeju.setCategory("박물관");
+		}
+		
+		model.addAttribute("list", list);
+		model.addAttribute("param", param);
+		model.addAttribute("pageInfo", pageInfo);
+		
+		return "/category/category-museum";
+	}
+	
+	@RequestMapping("/category/category-festival")
+	public String categoryFesView(Model model, @RequestParam Map<String, String> param) {
+		int page = 1;
+		Map<String, Object> searchMap = new HashMap<>();
+		try {
+			String code = "축제/행사";
+			searchMap.put("code", code);
+			String search = param.get("search");
+			searchMap.put("search", search);
+			page = Integer.parseInt(param.get("page"));
+		} catch (Exception e) {
+		}
+		int vCodeCount = service.selectVCount(searchMap);
+		PageInfo pageInfo = new PageInfo(page, 10, vCodeCount, 12);
+		List<VisitJeju> list = service.selectVList(pageInfo, searchMap);
+		for (VisitJeju visitJeju : list) {
+			visitJeju.setCategory("축제");
+		}
+		
+		model.addAttribute("count", vCodeCount);
+		model.addAttribute("list", list);
+		model.addAttribute("param", param);
+		model.addAttribute("pageInfo", pageInfo);
+		
+		return "/category/category-festival";
+	}
 	
 }

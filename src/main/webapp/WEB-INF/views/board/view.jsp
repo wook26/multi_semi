@@ -5,7 +5,7 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
-	<jsp:param value="제주소개/관광 > 제주명소 > 올레" name="title"/>
+	<jsp:param value="커뮤니티" name="title"/>
 </jsp:include>
 
 <section class="pt-7 pb-7 d-flex align-items-end dark-overlay bg-cover"
@@ -32,7 +32,14 @@
         <div class="row">
           <div class="w-100 p-3">
             <div style="margin-bottom: 5px;">
-              <span class="text-primary">게시글 상세보기</span>
+             <c:choose>
+	             <c:when test="${board.type == 'type1'}">
+	              <span class="text-primary">여행후기/일정공유</span>
+	             </c:when>
+	             <c:when test="${board.type == 'type2'}">
+	              <span class="text-primary">동행모집</span>
+	             </c:when>
+             </c:choose>
             </div>
             <table class="table table-borderless text-gray-700">
               <tr>
@@ -85,7 +92,7 @@
           <c:if test="${!empty replyList}">
           <div>
 			<c:forEach var="reply" items="${replyList}">
-            <h6>${loginMember.name}</h6>
+            <h6>${reply.writerId}</h6>
             <p class="text-uppercase text-sm text-custom-gray300"><i class="far fa-clock"></i><fmt:formatDate type="both" value="${reply.createDate}"/></p>
             <p class="text-custom-gray300"><c:out value="${reply.content}"/></p>
 			<c:if test="${ !empty loginMember && (loginMember.id == reply.writerId 	|| loginMember.role == 'ROLE_ADMIN') }">
@@ -96,9 +103,9 @@
           </div>
 		</c:if>
 		<c:if test="${empty replyList}">
-			<div class="d-flex mb-4">
-				<span colspan="3" style="text-align: center;">등록된 댓글이 없습니다.</span>>
-			</div>
+			<tr>
+				<td colspan="3" style="text-align: center;">등록된 댓글이 없습니다.</td>
+			</tr>
 		</c:if>
         </div>
         <!-- /comment-->
