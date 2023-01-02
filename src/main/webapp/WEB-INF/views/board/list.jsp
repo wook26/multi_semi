@@ -103,7 +103,7 @@
 <script type="text/javascript">
 	function movePage(pageUrl){
 		var type = ${param.type};
-		pageUrl += '&type=' + type;
+		pageUrl = pageUrl + '&type=' + type;
 		location.href = encodeURI(pageUrl);	
 	}
 </script>

@@ -97,7 +97,7 @@
   
   <c:when test="${category == '맛집'}">
 	<section class="pt-7 pb-7 d-flex align-items-end dark-overlay bg-cover"
-		style="background-image: url('${path}/resources/image/img/sunset.JPG');">
+		style="background-image: url('${path}/resources/image/img/Jeju8.jpg');">
 		<div class="container overlay-content">
 			<div
 				class="d-flex justify-content-center flex-column flex-lg-row align-items-lg-end">
