@@ -32,18 +32,18 @@
               </div>
               <div class="mb-3">
                 <label class="form-label" for="loginUserId"> ID</label>
-                <input class="form-control"  id="id"  name="id" value="${kakaoMap.id}" type="text" placeholder="아이디(4글자 이상)" autocomplete="off" required data-msg="아이디를 입력해주세요.">
+                <input class="form-control"  id="id"  name="id" value="${kakaoMap.id}" type="text" placeholder="아이디(4자 이상)" autocomplete="off" required data-msg="아이디를 입력해주세요.">
               </div>
               <div class="d-grid gap-2 mb-4">
                 <button class="btn btn-lg btn-secondary " id="checkDuplicate" value="중복검사" type="button">중복확인</button>
               </div>
               <div class="mb-4">
                 <label class="form-label" for="loginPassword"> PASSWORD</label>
-                <input class="form-control" name="password" id="pass1" placeholder="비밀번호" type="password" required data-msg="비밀번호를 입력해주세요.">
+                <input class="form-control" name="password" id="pass1" placeholder="비밀번호(특수문자, 영문, 숫자를 포함한 8자 이상)" type="password" required data-msg="비밀번호를 입력해주세요.">
               </div>
               <div class="mb-4">
-                <input class="form-control"  id="pass2" placeholder="비밀번호 확인" type="password" required data-msg="비밀번호를 확인해주세요.">
  			    <label class="form-label" for="loginPassword2"> CONFIRM YOUR PASSWORD</label> 
+                <input class="form-control"  id="pass2" placeholder="비밀번호 확인" type="password" required data-msg="비밀번호를 확인 해주세요.">
               </div>
               <div class="d-grid gap-2">
                 <button class="btn btn-lg btn-primary" type="submit" id="enrollSubmit" value="가입">회원가입</button>
@@ -126,7 +126,14 @@
 		});
     	
 	    $("#enrollSubmit").on("click", () => {
-	    	// TODO 전송하기 전에 각 영역에 유효성 검사로직을 추가하는 부분!
+	    	let regExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+	    	if(!regExp.test($("#pass1").val().trim())) {
+	    		alert("비밀번호는 특수문자, 영문, 숫자를 포함하여 8자 이상입니다.");
+	    		$("#pass1").val("");
+				$("#pass2").val("");
+				$("#pass1").focus();
+	    		return false;
+	    	};
 	    	//return false;
 	    });
 	    
@@ -135,7 +142,7 @@
 	    	let id = $("#id").val().trim();
 	    	
 	    	if(id.length < 4){
-	    		alert("아이디는 최소 4글자입니다.")
+	    		alert("아이디는 최소 4자입니다.")
 	    		return;
 	    	}
 	    	

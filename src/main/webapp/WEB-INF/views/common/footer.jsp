@@ -20,7 +20,7 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md-6 text-center text-md-start">
-            <p class="text-sm mb-md-0">&copy; 2021, 제브리띵. All rights reserved.</p>
+            <p class="text-sm mb-md-0">&copy; 2021, 제주이즘. All rights reserved.</p>
           </div>
           <div class="col-md-6">
             <ul class="list-inline mb-0 mt-2 mt-md-0 text-center text-md-end">
@@ -78,7 +78,11 @@
   <!-- Main Theme JS file    -->
   <script src="${path}/resources/js/theme.js"></script>
   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script> 
-  
+  <!-- Date Picker-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"> </script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.19.0/jquery.daterangepicker.min.js"> </script>
+  <script src="${path}/resources/js/datepicker-detail.js">   </script>
   <!-- Map-->
   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
     integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="

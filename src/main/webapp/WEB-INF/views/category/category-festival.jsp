@@ -26,7 +26,7 @@
   </section>
   <div class="container py-2">
     <a class="text-custom-gray400" href="${path}"><i class="fa-solid fa-house"></i></a>
-    <a class="text-custom-gray400" href="${path}/category/category-weather">제주소개/관광 <i class="fa-solid fa-chevron-right"></i> 축제/행사</a>
+    <a class="text-custom-gray400" href="${path}/category/category-festival">제주소개/관광 <i class="fa-solid fa-chevron-right"></i> 축제/행사</a>
   </div>
   <h3 class="pt-4 pb-2" style="text-align: center;">축제/행사</h3>
   <!-- overflow: hidden; text-overflow: ellipsis; white-space: nowrap; -->
@@ -78,9 +78,6 @@
   </section>
 <script type="text/javascript">
 	function movePage(pageUrl){
-		var si = document.getElementById("paramSi").value;
-		var search = document.getElementById("paramSearch").value;
-		pageUrl = pageUrl + '&si=' + si + '&search=' + search; 
 		location.href = encodeURI(pageUrl);	
 	}
 </script>

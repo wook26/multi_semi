@@ -334,6 +334,7 @@
 										placeholder="자세하고 꼼꼼한 리뷰를 작성해주시면 다른 여행자에게 큰 도움이 됩니다."
 										required="required"></textarea>
 								</div>
+								<input type="hidden" name="category" value="${category}"/>
 								<button class="btn btn-primary" type="submit">리뷰등록</button>
 							</form>
 						</div>

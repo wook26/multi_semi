@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -186,19 +188,20 @@ public class VisitJejuController {
 	@RequestMapping("/category/detail/review")
 	public String writeReply(Model model, 
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
-			@ModelAttribute Review reiew
+			@ModelAttribute Review reiew,
+			HttpServletRequest request
 			) {
 		reiew.setUno(loginMember.getNo());
 		log.info("리뷰 작성 요청 Review : " + reiew);
 		
 		int result = service.insertReview(reiew);
-		
+		String category = request.getParameter("category");
 		if(result > 0) {
 			model.addAttribute("msg", "리뷰가 등록되었습니다.");
 		}else {
 			model.addAttribute("msg", "리뷰 등록에 실패하였습니다.");
 		}
-		model.addAttribute("location", "/detail/detail-olle?no=" + reiew.getVno());
+		model.addAttribute("location", "/detail/detail-olle?no=" + reiew.getVno() + "&category=" + category);
 		return "/common/msg";
 	}
 	

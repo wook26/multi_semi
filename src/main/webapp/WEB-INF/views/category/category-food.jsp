@@ -167,11 +167,6 @@
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e0216acf240302af61958af813b83190"></script>
 
-
-//			mapList.add(new MapInfo(visitJeju.getTitle(), visitJeju.getRoadaddress(), visitJeju.getLatitude(), visitJeju.getLongitude()));
-
-
-
 <script>
     var mapContainer = document.getElementById('kakaoMap'), // 지도를 표시할 div 
         mapOption = { 
