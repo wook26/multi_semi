@@ -240,11 +240,11 @@
 	          <h2 class="font-Tenada">여행후기/일정공유 </h2>
 	        </div>
 	        <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a class="text-muted text-sm"
-	            href="${path}/category/">
+	            href="${path}/board/list?type=type1">
 	            더 둘러보기<i class="fas fa-angle-double-right ms-2"></i></a></div>
 	      </div>
 	      <table class="table text-start">
-	      	<c:forEach var="board" items="${bList1}">
+	      	<c:forEach var="board" items="${bList1}" end="4">
 	        <tr>
 	          <td><a href="${path}/board/view?no=${board.no}">${board.title}</a></td>
 	        </tr>
@@ -258,11 +258,11 @@
 	          <h2 class="font-Tenada">동행모집 </h2>
 	        </div>
 	        <div class="col-md-4 d-lg-flex align-items-center justify-content-end"><a class="text-muted text-sm"
-	            href="category-room.html">
+	            href="${path}/board/list?type=type2">
 	            더 둘러보기<i class="fas fa-angle-double-right ms-2"></i></a></div>
 	      </div>
 	      <table class="table text-start">
-	      	<c:forEach var="board" items="${bList2}">
+	      	<c:forEach var="board" items="${bList2}" end="4">
 	        <tr>
 	          <td><a href="${path}/board/view?no=${board.no}">${board.title}</a></td>
 	        </tr>

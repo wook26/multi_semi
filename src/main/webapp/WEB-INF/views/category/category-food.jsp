@@ -104,10 +104,10 @@
               <div class="card-body">
                 <h4 class="text-black text-shadow">${item.title}</h4>
                 <p class="mb-2 text-xs">
-                <c:forEach var="i" begin="1" end="${review.rate}">
+                <c:forEach var="i" begin="1" end="${item.avgRate}">
 					<i class="fa fa-xs fa-star text-primary"></i>
 				</c:forEach>
-				<c:forEach var="i" begin="${review.rate}" end="4">
+				<c:forEach var="i" begin="${item.avgRate}" end="4">
 					<i class="fa fa-xs fa-star text-gray-300"></i>
 				</c:forEach>
                 </p>

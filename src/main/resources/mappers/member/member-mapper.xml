@@ -71,12 +71,12 @@
 		UPDATE MEMBER
 		SET PASSWORD = #{newPwd}
 		WHERE NO = #{no}
-	</update>
+	</update> -->
 
 	<update id="deleteMember" parameterType="int">
 		UPDATE MEMBER
 		SET STATUS = 'N'
 		WHERE NO = #{no}
-	</update> -->
+	</update>
 
 </mapper>

@@ -47,7 +47,7 @@
           <img class="img-fluid card-img-top" style="height: 300px; object-fit: cover;" src="${item.imgpath}" alt="#" /></a>
             <div class="card-body">
               <!-- <a class="text-uppercase text-muted text-sm letter-spacing-2" href="#">Travel </a> -->
-              <h5 class="my-2"><a class="text-dark" href="detail-festival.html">${item.title} </a></h5>
+              <h5 class="my-2"><a class="text-dark" href="${path}/detail/detail-olle?no=${item.no}&category=${item.category}">${item.title} </a></h5>
               <p class="my-2 text-muted text-sm" style="line-height: 1.2em; height: 3.6em; overflow: hidden; over-wrap:white;">${item.introduction}</p>
               <a class="btn btn-link ps-0" href="detail-festival.html">더보기<i class="fa fa-arrow-right ms-2"></i></a>
             </div>

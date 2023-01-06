@@ -73,7 +73,7 @@
         </table>
         <div class="text-center pb-5">
           <input type="submit" class="btn btn-primary" value="수정">
-          <input type="reset" class="btn btn-primary ms-3" value="목록으로">
+          <input type="reset" class="btn btn-primary ms-3" value="초기화">
         </div>
       </form>
     </div><!--폼 둘러싸는 용도-->

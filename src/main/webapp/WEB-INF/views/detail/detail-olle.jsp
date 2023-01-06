@@ -26,7 +26,7 @@
 	</section>
 	<div class="container py-2">
 		<a class="text-custom-gray400" href="${path}"> <i class="fa-solid fa-house"></i> </a>
-		<a class="text-custom-gray400" href="${path}/resources/category-olle"> 제주소개/관광 <i style="color: #404040" class="fa-solid fa-chevron-right"></i> 제주명소 </a>
+		<a class="text-custom-gray400" href="${path}/category/category-olle"> 제주소개/관광 <i style="color: #404040" class="fa-solid fa-chevron-right"></i> 제주명소 </a>
 		<p class="d-inline-block text-custom-gray400"><i class="fa-solid fa-chevron-right"></i></p>
 		<p class="d-inline-block text-custom-gray400"> ${visitJeju.title} </p>
 	</div>
@@ -47,7 +47,7 @@
 	</section>
 	<div class="container py-2">
 		<a class="text-custom-gray400" href="${path}"> <i class="fa-solid fa-house"></i> </a>
-		<a class="text-custom-gray400" href="${path}/resources/category-festival"> 제주소개/관광 <i style="color: #404040" class="fa-solid fa-chevron-right"></i> 축제/행사 </a>
+		<a class="text-custom-gray400" href="${path}/category/category-festival"> 제주소개/관광 <i style="color: #404040" class="fa-solid fa-chevron-right"></i> 축제/행사 </a>
 		<p class="d-inline-block text-custom-gray400"><i class="fa-solid fa-chevron-right"></i></p>
 		<p class="d-inline-block text-custom-gray400"> ${visitJeju.title} </p>
 	</div>
@@ -68,7 +68,7 @@
 	</section>
 	<div class="container py-2">
 		<a class="text-custom-gray400" href="${path}"> <i class="fa-solid fa-house"></i> </a>
-		<a class="text-custom-gray400" href="${path}/resources/category-museum"> 제주소개/관광 <i style="color: #404040" class="fa-solid fa-chevron-right"></i> 박물관/미술관/전시관 </a>
+		<a class="text-custom-gray400" href="${path}/category/category-museum"> 제주소개/관광 <i style="color: #404040" class="fa-solid fa-chevron-right"></i> 박물관/미술관/전시관 </a>
 		<p class="d-inline-block text-custom-gray400"><i class="fa-solid fa-chevron-right"></i></p>
 		<p class="d-inline-block text-custom-gray400"> ${visitJeju.title} </p>
 	</div>
@@ -89,7 +89,7 @@
 	</section>
 	<div class="container py-2">
 		<a class="text-custom-gray400" href="${path}"> <i class="fa-solid fa-house"></i> </a>
-		<a class="text-custom-gray400" href="${path}/resources/category-room"> 숙소 </a>
+		<a class="text-custom-gray400" href="${path}/category/category-room"> 숙소 </a>
 		<p class="d-inline-block text-custom-gray400"><i class="fa-solid fa-chevron-right"></i></p>
 		<p class="d-inline-block text-custom-gray400"> ${visitJeju.title} </p>
 	</div>
@@ -110,7 +110,7 @@
 	</section>
 	<div class="container py-2">
 		<a class="text-custom-gray400" href="${path}"> <i class="fa-solid fa-house"></i> </a>
-		<a class="text-custom-gray400" href="${path}/resources/category-food.html"> 맛집 </a>
+		<a class="text-custom-gray400" href="${path}/resources/category/category-food.html"> 맛집 </a>
 		<p class="d-inline-block text-custom-gray400"><i class="fa-solid fa-chevron-right"></i></p>
 		<p class="d-inline-block text-custom-gray400"> ${visitJeju.title} </p>
 	</div>
@@ -278,7 +278,7 @@
 								</div>
 						      </div>
 							<c:if test="${ !empty loginMember && (loginMember.no == review.uno 	|| loginMember.role == 'ROLE_ADMIN') }">
-								<button class="btn btn-primary d-flex my-auto" style="height: 2.5rem;" onclick="deleteReview('${review.no}','${visitJeju.no}');" >삭제</button>
+								<button class="btn btn-primary d-flex my-auto" style="height: 2.5rem;" onclick="deleteReview('${review.no}','${visitJeju.no}', '${category}');" >삭제</button>
 							</c:if>
 							</div>
 						</c:forEach>
@@ -348,9 +348,9 @@
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 
 <script type="text/javascript">
-	function deleteReview(reviewNo, vno){
+	function deleteReview(reviewNo, vno, category){
 		var url = "${path}/detail/reviewDel?reviewNo=";
-		var requestURL = url + reviewNo +"&vno=" + vno;
+		var requestURL = url + reviewNo +"&vno=" + vno + "&category=" + category;
 		location.replace(requestURL);
 	}
 </script>

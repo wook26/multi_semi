@@ -214,17 +214,18 @@ public class VisitJejuController {
 	@RequestMapping("/detail/reviewDel")
 	public String deleteReply(Model model, 
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
-			int reviewNo, int vno
+			int reviewNo, int vno, HttpServletRequest request
 			){
 		log.info("리뷰 삭제 요청");
 		int result = service.deleteReview(reviewNo);
+		String category = request.getParameter("category");
 		
 		if(result > 0) {
 			model.addAttribute("msg", "리뷰 삭제가 정상적으로 완료되었습니다.");
 		}else {
 			model.addAttribute("msg", "리뷰 삭제에 실패하였습니다.");
 		}
-		model.addAttribute("location", "/detail/detail-olle?no=" + vno);
+		model.addAttribute("location", "/detail/detail-olle?no=" + vno + "&category=" + category);
 		return "/common/msg";
 	}	
 	
@@ -235,6 +236,8 @@ public class VisitJejuController {
 		try {
 			String code = "음식점";
 			searchMap.put("code", code);
+			String si = param.get("si");
+			searchMap.put("si", si);
 			String search = param.get("search");
 			searchMap.put("search", search);
 			page = Integer.parseInt(param.get("page"));

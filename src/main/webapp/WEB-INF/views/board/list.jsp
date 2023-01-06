@@ -61,7 +61,7 @@
 			<c:forEach var="board" items="${list}" varStatus="status">
 	        
 	          <tr class="text-custom-gray300">
-	            <td class="col-1"><c:out value="${!empty param.page ? boardCount - ((param.page-1)*2+status.index) : (boardCount - status.index)}"/></td>
+	            <td class="col-1"><c:out value="${!empty param.page ? boardCount - ((param.page-1)*10+status.index) : (boardCount - status.index)}"/></td>
 	            <td class="col-6 text-start"><a href="${path}/board/view?no=${board.no}"><c:out value="${board.title}"/></a></td>
 	            <td class="col-2"><c:out value="${board.writerId}"/></td>
 	            <td class="col-2"><fmt:formatDate type="date" value="${board.createDate}"/></td>
@@ -94,7 +94,7 @@
         <li class="page-item"><a class="page-link" onclick="movePage('${path}/board/list?page=${pageInfo.nextPage}');"> <i class="fa fa-angle-right"></i></a></li>
       </ul>
     </nav>
-	<input type="hidden" value="${param.type}" id="paramType">
+	<input type="hidden" value="${type}" id="paramType">
  
 
 

@@ -154,7 +154,7 @@
 	            </div>
 	            <div class="card-body d-flex align-items-center">
 	              <div class="w-100">
-	                <h5 class="card-title"><a class="text-decoration-none text-dark" href="detail-rooms.html">${item.title}</a></h5>
+	                <h5 class="card-title"><a class="text-decoration-none text-dark" href="${path}/detail/detail-olle?no=${item.no}&category=${item.category}">${item.title}</a></h5>
 	                <div class="d-flex card-subtitle mb-3">
 	                  <p class="flex-grow-1 mb-0 text-muted">${item.si} > ${item.gu}</p>
 	                  <p class="flex-shrink-1 mb-0 card-stars text-xs text-end">

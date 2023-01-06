@@ -34,10 +34,10 @@
             <div style="margin-bottom: 5px;">
              <c:choose>
 	             <c:when test="${board.type == 'type1'}">
-	              <span class="text-primary">여행후기/일정공유</span>
+	              <a class="text-primary" href="${path}/board/list?type=type1">여행후기/일정공유</a>
 	             </c:when>
 	             <c:when test="${board.type == 'type2'}">
-	              <span class="text-primary">동행모집</span>
+	              <a class="text-primary" href="${path}/board/list?type=type2">동행모집</a>
 	             </c:when>
              </c:choose>
             </div>
